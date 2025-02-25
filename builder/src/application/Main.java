@@ -65,7 +65,7 @@ public class Main extends Application {
  2) 
  3) Interfaccia coach + controller *
  4) Interfaccia trainer
- 5) SonarCloud
+ 5) SonarCloud + git hub
  6) Interfaccia + Logica 'Get Lineup' (non intrappolare l'utente)
  7) Interfaccia footballer
  8) Regole aziendali (controlli generici)
