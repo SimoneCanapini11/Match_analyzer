@@ -3,7 +3,7 @@ name: SonarCloud
 on:
   push:
     branches:
-      - main  # O il nome del tuo branch principale
+      - main  
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -24,6 +24,7 @@ jobs:
           key: ${{ runner.os }}-sonar
       - name: SonarCloud Scan
         env:
+          GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
