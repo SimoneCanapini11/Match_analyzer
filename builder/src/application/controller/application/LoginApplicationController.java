@@ -1,0 +1,45 @@
+package application.controller.application;
+
+import application.config.SessionManager;
+import application.exception.ValidationException;
+
+import application.model.bean.User;
+import application.model.dao.DAOFactory;
+import application.model.dao.UserDAO;
+import application.util.Validator;
+
+public class LoginApplicationController {
+	 private UserDAO userDAO;
+	 private SessionManager sessionManager; // gestisce lo stato globale
+	    
+	    public LoginApplicationController() {
+	        this.userDAO = DAOFactory.getUserDAO();
+	        this.sessionManager = SessionManager.getInstance();
+	    }
+
+	public boolean authenticate(String email, String password) throws ValidationException {
+		String formattedEmail = email.toLowerCase();
+		 /*
+		System.out.println("Email : " + formattedEmail);		//-------per debug
+		System.out.println("Password : " + password);
+		*/
+		 // Validazione dei dati
+        if (!Validator.isValidEmail(formattedEmail)) {
+        	throw new ValidationException("Invalid email format. Example: name@mail.com");
+        }
+		
+		User user = userDAO.findByEmail(formattedEmail);
+		
+		if (!(user != null && user.getPassword().equals(password))) {			
+			throw new ValidationException("Incorrect email or password");
+		}
+		
+		sessionManager.setCurrentUser(user); // Memorizza l'utente nella "sessione"
+        return true;
+    }
+	
+	
+	public String getUserRole() {
+		return sessionManager.getCurrentUser().getRole().getDisplayName().toLowerCase();
+	}
+}
