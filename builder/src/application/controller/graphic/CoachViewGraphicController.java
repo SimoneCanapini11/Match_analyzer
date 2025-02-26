@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class CoachViewGraphicController {
 
-	private UserApplicationController coachController;				//-----------controller generico per tutti i ruoli (?)
+	private UserApplicationController coachController;				
 	 
 	 public CoachViewGraphicController() {
 		 this.coachController = new UserApplicationController(); 			
@@ -58,6 +58,18 @@ public class CoachViewGraphicController {
     	
     	String fxmlFile = "/application/view/coachView.fxml";
     	String title = "Coach Home";
+    	
+    	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
+    	
+        OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
+    }
+    
+    
+    @FXML
+    private void openGetLineup(MouseEvent event) throws IOException {
+    	
+    	String fxmlFile = "/application/view/getLineupView.fxml";
+    	String title = "Get Lineup";
     	
     	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
     	

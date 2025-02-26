@@ -5,6 +5,7 @@ module builder {
 	requires java.desktop;
 	requires org.apache.commons.lang3;
 	requires java.sql;
+	requires javafx.base;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens application.controller.graphic to javafx.fxml;

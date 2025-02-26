@@ -91,7 +91,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
                <HBox.margin>
-                  <Insets right="15.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </Label>
             <Button fx:id="btnSignOut" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleSignOut" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(227, 227, 227, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" text="Sign Out">
@@ -142,7 +142,7 @@
                <children>
                   <AnchorPane prefHeight="399.0" prefWidth="1313.0">
                      <children>
-                        <VBox fx:id="BoxGetLineup" alignment="TOP_CENTER" layoutX="160.0" layoutY="105.0" onMouseClicked="#comingSoonBtn" prefHeight="167.0" prefWidth="266.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-radius: 10; -fx-padding: 15; -fx-border-color: #e0e0e0; -fx-cursor: hand;" AnchorPane.leftAnchor="160.0">
+                        <VBox fx:id="BoxGetLineup" alignment="TOP_CENTER" layoutX="160.0" layoutY="105.0" onMouseClicked="#openGetLineup" prefHeight="190.0" prefWidth="266.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-radius: 10; -fx-padding: 15; -fx-border-color: #e0e0e0; -fx-cursor: hand;" AnchorPane.leftAnchor="160.0">
                            <children>
                               <Label text="Get the Lineup ">
                                  <font>
@@ -152,12 +152,12 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="95.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/home3.png" />
+                                    <Image url="@../../images/coach3.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets top="10.0" />
+                                    <Insets top="25.0" />
                                  </VBox.margin>
                               </ImageView>
                            </children>
@@ -172,12 +172,12 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <ImageView fitHeight="118.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="109.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/home4.jpg" />
+                                    <Image url="@../../images/coach2.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets top="15.0" />
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                               </ImageView>
                            </children>
