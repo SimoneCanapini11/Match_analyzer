@@ -69,7 +69,7 @@ public class Main extends Application {
  6) Interfaccia + Logica 'Get Lineup' (non intrappolare l'utente) *
  7) Interfaccia footballer
  8) Regole aziendali (controlli generici)
-  
+ 9) messaggi all'utente, dove vanno secondo MVC? ***
  */
 
 

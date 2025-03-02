@@ -26,17 +26,8 @@ public class HomepageGraphicController {
     	    
     	    switch (((Node) event.getSource()).getId()) {
     	        case "btnLogin":
-    	            fxmlFile = loginPath;
-    	            title = titleLogin;
-    	            break;
     	        case "BoxGetLineup":
-    	            fxmlFile = loginPath;
-    	            title = titleLogin;
-    	            break;
     	        case "BoxManage":
-    	            fxmlFile = loginPath;
-    	            title = titleLogin;
-    	            break;
     	        case "BoxPerformance":
     	            fxmlFile = loginPath;
     	            title = titleLogin;
@@ -46,9 +37,6 @@ public class HomepageGraphicController {
     	            title = "Sign Up";
     	            break;
     	        case "logoImage":
-    	        	fxmlFile = homepagePath;
-    	        	title = homepageTitle;
-    	        	break;
     	        case "btnHome":
     	        	fxmlFile = homepagePath;
     	        	title = homepageTitle;

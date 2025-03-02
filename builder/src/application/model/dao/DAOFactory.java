@@ -7,6 +7,11 @@ import application.model.dao.full.*;
 
 public class DAOFactory {
 	
+	  private DAOFactory() {
+		    throw new IllegalStateException("DAOFactory class");
+	  }
+
+	
 	private static final String MODE_DEMO = "demo";
 	private static final String MODE_EXCEPTION = "Mode not initialized!";
 	private static String mode = AppConfig.getInstance().getMode(); // "demo" o "full"

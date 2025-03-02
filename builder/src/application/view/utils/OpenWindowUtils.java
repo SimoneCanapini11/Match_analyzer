@@ -16,6 +16,10 @@ import javafx.stage.Window;
 
 public class OpenWindowUtils {
 	
+	private OpenWindowUtils() {
+	    throw new IllegalStateException("OpenWindowUtils class");
+	}
+	
     public static void checkAndRemoveBlur(Stage parentStage) {
         // Ritarda l'esecuzione per garantire che la nuova finestra venga aperta
         Platform.runLater(() -> {

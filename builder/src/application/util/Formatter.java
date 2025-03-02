@@ -1,6 +1,10 @@
 package application.util;
 
 public class Formatter {
+	
+	private Formatter() {
+	    throw new IllegalStateException("Formatter class");
+	}
 
 		// Rimuove spazi bianchi ad inizio e fine stringa
 		public static String removeBlanks(String str) {

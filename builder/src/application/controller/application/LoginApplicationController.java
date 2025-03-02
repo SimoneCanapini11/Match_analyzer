@@ -19,10 +19,7 @@ public class LoginApplicationController {
 
 	public boolean authenticate(String email, String password) throws ValidationException {
 		String formattedEmail = email.toLowerCase();
-		 /*
-		System.out.println("Email : " + formattedEmail);		//-------per debug
-		System.out.println("Password : " + password);
-		*/
+		
 		 // Validazione dei dati
         if (!Validator.isValidEmail(formattedEmail)) {
         	throw new ValidationException("Invalid email format. Example: name@mail.com");

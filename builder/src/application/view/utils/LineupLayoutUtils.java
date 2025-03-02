@@ -9,8 +9,11 @@ import javafx.geometry.Point2D;
 
 public class LineupLayoutUtils {		//dominio di layout
 	
+	private LineupLayoutUtils() {
+	    throw new IllegalStateException("LineupLayoutUtils class");
+	}
+	
 	 private static final Map<String, List<Point2D>> FORMATION_COORDS = new HashMap<>();
-	 
 	 private static final Map<String, List<String>> FORMATION_ROLES = new HashMap<>();
 
 	    static {

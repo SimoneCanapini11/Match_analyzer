@@ -51,11 +51,9 @@ public class SignupGraphicController {
 			choiceBoxRole.setItems(FXCollections.observableArrayList(signupController.getRoles()));		
 		 	choiceBoxTeam.setItems(FXCollections.observableArrayList("Inter", "Milan"));				//-------------caricarli da TeamDAO (?)
 		 }																//-------Squadre che diventano grigie quando scelgo un ruolo (coach) già occupato per la squadra  
-		 
-		/* // Imposta un valore di default
-		 comboBoxValori.setValue("Valore1");*/
-	    }
+	 }
 	
+	 
 	@FXML
     private void openLogin(ActionEvent event) throws IOException{
 

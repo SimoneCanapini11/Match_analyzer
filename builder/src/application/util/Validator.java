@@ -4,6 +4,11 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
 public class Validator {
+	
+	private Validator() {
+	    throw new IllegalStateException("Validator class");
+	}
+	
 	// Regex per validare un'email
 	private static final String EMAIL_REGEX =
 		    "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+){0,10}@"  // Limitato a 10 sottodomini

@@ -17,6 +17,10 @@ import java.util.Objects;
 
 public class AlertUtils {
 	
+	private AlertUtils() {
+	    throw new IllegalStateException("AlertUtils class");
+	}
+	
 	private static final String CSS_PATH = "/styles/alerts.css"; 
 	private static final String ICON_PATH = "/icons/app_icon.png";
 	
