@@ -6,9 +6,9 @@ import org.apache.commons.lang3.StringUtils;
 public class Validator {
 	// Regex per validare un'email
 	private static final String EMAIL_REGEX =
-		    "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+		    "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+){0,10}@"  // Limitato a 10 sottodomini
 		    + "[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?"
-		    + "(\\.[a-zA-Z]{2,})+$";
+		    + "(?:\\.[a-zA-Z]{2,6}){1,3}$";  // Limitato a 3 livelli di dominio
 	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
     
     
