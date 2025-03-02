@@ -27,7 +27,7 @@ public class CoachViewGraphicController {
     private Label nameLabel;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
     	
     	String userName = coachController.getUserName();
     	String userSurname = coachController.getUserSurname();
@@ -78,7 +78,7 @@ public class CoachViewGraphicController {
     
     
 	 @FXML
-     private void comingSoonBtn(MouseEvent event) throws IOException {
+     private void comingSoonBtn(MouseEvent event) {
     	 AlertUtils.comingSoonAlert();
      }
 }

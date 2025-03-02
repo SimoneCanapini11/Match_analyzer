@@ -23,5 +23,22 @@ public class Formatter {
 		    }
 		    return result.toString().trim();
 		}
-
+		
+		// Restiutuisce una stringa eliminado i caratteri prima dello split
+		public static String splitString(String str) {
+			String[] split = str.trim().split("\\s+");
+		    if (split.length > 1) {
+		        StringBuilder splittedBuilder = new StringBuilder();
+		        for (int i = 1; i < split.length; i++) {
+		        	splittedBuilder.append(split[i]);
+		            if (i < split.length - 1) {
+		            	splittedBuilder.append(" ");
+		            }
+		        }
+		        return splittedBuilder.toString();
+		    } else {
+		        return str;
+		    }
+		}
+		
 }

@@ -62,11 +62,11 @@ public class Main extends Application {
 
 /*
  1) signup e login (controllo logica e controlli)
- 2) 
- 3) Interfaccia coach + controller *
+ 2) gestione eccezioni (con exception handling) 
+ 3) Interfaccia coach + controller 
  4) Interfaccia trainer
- 5) SonarCloud + git hub
- 6) Interfaccia + Logica 'Get Lineup' (non intrappolare l'utente)
+ 5) SonarCloud **
+ 6) Interfaccia + Logica 'Get Lineup' (non intrappolare l'utente) *
  7) Interfaccia footballer
  8) Regole aziendali (controlli generici)
   

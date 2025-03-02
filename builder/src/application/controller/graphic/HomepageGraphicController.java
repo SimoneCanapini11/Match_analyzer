@@ -63,7 +63,7 @@ public class HomepageGraphicController {
      
      
      @FXML
-     private void comingSoonBtn(MouseEvent event) throws IOException{
+     private void comingSoonBtn(MouseEvent event) {
     	 AlertUtils.comingSoonAlert();
      }
      

@@ -1,8 +1,5 @@
 package application.controller.graphic;
 
-import application.config.AppContext;
-
-
 import application.controller.application.SignupApplicationController;
 import application.exception.DAOException;
 import application.exception.ValidationException;
@@ -25,7 +22,7 @@ public class SignupGraphicController {
 	 private SignupApplicationController signupController;
 	 
 	 public SignupGraphicController() {
-		 this.signupController = new SignupApplicationController(); 	//------AppContext.getSignupApplicationController();  da rimuovere (?)		
+		 this.signupController = new SignupApplicationController(); 		
 	 }
 	
 	 @FXML
@@ -102,6 +99,9 @@ public class SignupGraphicController {
 	   } catch (ValidationException ve) {
 	            // Gestione specifica per errori di validazione
 		   AlertUtils.showAlert(Alert.AlertType.ERROR, "Sign Up Error", ve.getMessage());
+	   } catch (DAOException dae) {
+		       // Gestione specifica per errori di DAO
+         AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
 	   } catch (Exception e) {
 	            // Gestione generica per tutte le altre eccezioni
 		   AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
@@ -130,9 +130,6 @@ public class SignupGraphicController {
      } catch (ValidationException ve) {
          // Gestione specifica per errori di validazione
     	 AlertUtils.showAlert(Alert.AlertType.ERROR, "Sign Up Error", ve.getMessage());
-     } catch (DAOException dae) {
-    	 	// Gestione specifica per errori di DAO
-    	 AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
      } catch (Exception e) {
          // Gestione generica per tutte le altre eccezioni
     	 AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");

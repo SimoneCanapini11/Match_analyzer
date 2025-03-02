@@ -25,6 +25,6 @@ public class UserApplicationController {
     }
     
 	public String getUserTeam() {
-		return sessionManager.getCurrentUser().getTeam().toLowerCase();
+		return sessionManager.getCurrentUser().getTeam();
 	}
 }

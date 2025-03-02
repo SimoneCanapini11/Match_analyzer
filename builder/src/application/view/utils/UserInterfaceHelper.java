@@ -16,7 +16,9 @@ public class UserInterfaceHelper {
 		// Imposta l'immagine del logo
 		try {
 			Image img = new Image(UserInterfaceHelper.class.getResource("/images/logos/" + teamName.toLowerCase() + ".png").toExternalForm());
-			teamLogoImage.setImage(img);		//dimensioni immagine
+			teamLogoImage.setImage(img);	
+			// Mantiene il rapporto di aspetto (evita distorsioni)
+			teamLogoImage.setPreserveRatio(true);
 			
 		} catch (NullPointerException e) {
 			// Gestione immagine mancante

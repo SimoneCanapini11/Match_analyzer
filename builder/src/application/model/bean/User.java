@@ -5,11 +5,10 @@ public class User {
     private String password;	//---------da salvare con hashing
     private String name;
     private String surname;
-    private Role role;
+    private RoleUser role;
     private String team;
-    //private String imagePath; // percorso o URL dell'immagine
 
-    public User(String email, String password, String name, String surname, Role role, String team) {
+    public User(String email, String password, String name, String surname, RoleUser role, String team) {
     	this.email = email;
         this.password = password;
         this.name = name;
@@ -53,11 +52,11 @@ public class User {
         this.surname = surname;
     }
     
-    public Role getRole() {
+    public RoleUser getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleUser role) {
         this.role = role;
     }
     
@@ -69,14 +68,6 @@ public class User {
         this.team = team;
     }
 
-    
-   /* public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }*/
 
     
     @Override

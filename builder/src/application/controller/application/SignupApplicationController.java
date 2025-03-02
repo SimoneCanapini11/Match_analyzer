@@ -11,7 +11,7 @@ import java.util.List;
 import application.config.SessionManager;
 import application.exception.DAOException;
 import application.exception.ValidationException;
-import application.model.bean.Role;
+import application.model.bean.RoleUser;
 
 public class SignupApplicationController {
 	private UserDAO userDAO;
@@ -47,7 +47,7 @@ public class SignupApplicationController {
         
         // Controlla se l'utente esiste già
         if (userDAO.findByEmail(formattedEmail) != null) {
-        	throw new ValidationException("The email is already in use");
+        	throw new DAOException("The email is already in use");
         }
         
         // Controlli superati, inserisco email e password in newUser
@@ -61,7 +61,7 @@ public class SignupApplicationController {
 	}
 	
 	
-	public boolean confirm(String name, String surname, String roleStr, String team) throws ValidationException, DAOException {
+	public boolean confirm(String name, String surname, String roleStr, String team) throws ValidationException  {
 		
 		if (!Validator.isValidString(name) || !Validator.isValidFormatString(name)) {
 			throw new ValidationException("Invalid name format");
@@ -79,7 +79,7 @@ public class SignupApplicationController {
 			throw new ValidationException("You need to enter a role");
 		}
 		
-		Role role = Role.fromString(roleStr);		//----------------se Role = Footballer -> controlli 'regole aziendali'
+		RoleUser role = RoleUser.fromString(roleStr);		//----------------se Role = Footballer -> controlli 'regole aziendali'
 		
 		if (!Validator.isValidString(team)) {
 			throw new ValidationException("You need to enter a team");
@@ -97,19 +97,16 @@ public class SignupApplicationController {
 		newUser.setTeam(team);
 		
 		sessionManager.setCurrentUser(newUser); // Memorizza l'utente nella "sessione"'
-		
-	 try {														//--------si fa cosi (?)
+									
 		// Passa il nuovo utente al DAO per il salvataggio
         userDAO.saveUser(newUser);		
-	 } catch (DAOException dae) {
-		throw new DAOException("Error saving user: ", dae);
-	 }
+
 		return true;
 	}
 	
 	
 	public List<String> getRoles(){
-		return Role.getRoleDisplayNames();
+		return RoleUser.getRoleDisplayNames();
 	}
 	
 	

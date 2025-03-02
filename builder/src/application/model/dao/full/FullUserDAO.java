@@ -1,8 +1,5 @@
 package application.model.dao.full;
 
-import java.sql.SQLException;
-
-import application.exception.DAOException;
 import application.model.bean.User;
 import application.model.dao.UserDAO;
 
