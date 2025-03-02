@@ -5,8 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Validator {
 	// Regex per validare un'email
-	private static final String EMAIL_REGEX = "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$";
-    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+	private static final String EMAIL_REGEX =
+		    "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+		    + "[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?"
+		    + "(\\.[a-zA-Z]{2,})+$";
+	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
     
     
     public static boolean isValidEmail(String email) {
