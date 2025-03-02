@@ -6,6 +6,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
 public class UserInterfaceHelper {
+	
+	private UserInterfaceHelper() {
+	    throw new IllegalStateException("UserInterfaceHelper class");
+  }
 
 	public static void initializeUserInfo(Label nameLabel, ImageView teamLogoImage, String name, String surname, String teamName) {
 		// Imposta il testo della Label

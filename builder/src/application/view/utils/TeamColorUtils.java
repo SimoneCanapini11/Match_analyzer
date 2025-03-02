@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class TeamColorUtils {
 
+	private TeamColorUtils() {
+	    throw new IllegalStateException("TeamColorUtils class");
+	}
+	
 	// Classe interna per raggruppare i colori del team
     public static class TeamColors {
         private String firstColor;
