@@ -107,20 +107,20 @@ public class AlertUtils {
 	    	        );
 
 	    	        // Effetto hover mantenendo dimensioni e colore testo
-	    	        okButton.setOnMouseEntered(e -> {
+	    	        okButton.setOnMouseEntered(e -> 
 	    	            okButton.setStyle(
 	    	            	BACKGROUND_COLOR + hoverColor + ";" +
 	    	            	FX_FONT + shadowColor + ", 12, 0.7, 0, 2);"
-	    	            );
-	    	        });
+	    	            )
+	    	        );
 
 	    	        // Ritorno allo stato originale
-	    	        okButton.setOnMouseExited(e -> {
+	    	        okButton.setOnMouseExited(e -> 
 	    	            okButton.setStyle(
 	    	            	BACKGROUND_COLOR + color + ";" +	
 	    	            	FX_FONT + shadowColor + ", 8, 0.5, 0, 1);"
-	    	            );
-	    	        });
+	    	            )
+	    	        );
 	    	    }
 	    }
 

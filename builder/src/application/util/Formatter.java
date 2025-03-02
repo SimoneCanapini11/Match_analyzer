@@ -17,7 +17,7 @@ public class Formatter {
 		    StringBuilder result = new StringBuilder();
 		    
 		    for (String word : words) {
-		        if (word.length() > 0) {
+		        if (!word.isEmpty()) {
 		            String firstLetter = word.substring(0, 1).toUpperCase();
 		            String wordNext = word.substring(1).toLowerCase();
 		            result.append(firstLetter).append(wordNext).append(" ");

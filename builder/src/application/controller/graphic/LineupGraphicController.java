@@ -37,7 +37,6 @@ public class LineupGraphicController {
 	 
 
 	private List<Label> shirtPlayers;
-	private List<Label> namePlayers;
 	private List<Label> roleLabels;
 	private List<StackPane> panePlayers;
 	private List<ChoiceBox<String>> choiceBoxPlayers;
@@ -126,6 +125,8 @@ public class LineupGraphicController {
     	String teamName = coachController.getUserTeam();
     	
     	UserInterfaceHelper.initializeUserInfo(nameLabel, teamLogoImage, userName, userSurname, teamName);
+    	
+    	List<Label> namePlayers;
     	
 	    // Lista per le “maglie”
 	    shirtPlayers = Arrays.asList(

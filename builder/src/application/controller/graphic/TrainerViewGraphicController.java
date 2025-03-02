@@ -44,7 +44,7 @@ public class TrainerViewGraphicController {
 	    	
 	    	trainerController.signOut();
 	    	
-	    	String fxmlFile = "/application/view/homepage.fxml";
+	    	String fxmlFile = "homepage.fxml";
 	 	    String title = "Homepage";
 	 	    
 	 	    // Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
@@ -58,7 +58,7 @@ public class TrainerViewGraphicController {
 	    @FXML
 	    private void openRoleHome(MouseEvent event) throws IOException {
 	    	
-	    	String fxmlFile = "/application/view/trainerView.fxml";
+	    	String fxmlFile = "trainerView.fxml";
 	    	String title = "Trainer Home";
 	    	
 	    	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
@@ -68,7 +68,7 @@ public class TrainerViewGraphicController {
 	    
 	    
 		 @FXML
-	     private void comingSoonBtn(MouseEvent event) throws IOException {
+	     private void comingSoonBtn(MouseEvent event) {
 	    	 AlertUtils.comingSoonAlert();
 	     }
 }

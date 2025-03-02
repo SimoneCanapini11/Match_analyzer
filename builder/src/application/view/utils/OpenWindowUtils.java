@@ -93,7 +93,7 @@ public class OpenWindowUtils {
         }
         
         // Chiusura finestra parent 
-        if (parentStage != null && secondaryWindow == false) {
+        if (parentStage != null && !secondaryWindow) {
         	parentStage.close();
         }
         

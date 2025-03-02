@@ -25,20 +25,14 @@ public class Validator {
     }
     
     
-    public static boolean isValidLenghtPassword(String password) {
-        if (!isValidString(password) || password.trim().length() < 8) { 	//------provare se password= 8 spazi bianchi + 1!Aa viene accettata
-            return false;
-        }
-        return true;
+    public static boolean isValidLenghtPassword(String password) {        	
+        return isValidString(password) && password.trim().length() >= 8;		//------provare se password= 8 spazi bianchi + 1!Aa viene accettata
     }
     
     
     // Controllo presenza di blank nella password 
     public static boolean isValidBlankPassword(String password) {
-    	 if (password.matches(".*\\s.*")) {
-            return false;
-        }
-        return true;
+        return !password.matches(".*\\s.*");
     }
     
     
@@ -59,10 +53,7 @@ public class Validator {
         }
         
      // Controllo presenza di un numero
-        if (!password.matches(".*\\d.*")) {
-        	return false;
-        }
-       return true;
+       return password.matches(".*\\d.*");
    } 
     
    
@@ -87,9 +78,6 @@ public class Validator {
         }
         
      // Controllo presenza di un numero
-        if (str.matches(".*\\d.*")) {
-        	return false;
-        }
-    	return true;
+    	return !str.matches(".*\\d.*");
     }
 }

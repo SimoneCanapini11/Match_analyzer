@@ -45,7 +45,7 @@ public class TeamColorUtils {
     private static final String GRAY = "#CCCCCC";
     private static final String WHITE_BLUE = "#12A0D7";
     private static final String DARK_BLUE = "#003C82";
-    private static final String DARK_RED = "#8B0000";;
+    private static final String DARK_RED = "#8B0000";
     private static final String PURPLE = "#482E92";
 
     static {
