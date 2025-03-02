@@ -35,7 +35,7 @@ public class Main extends Application {
         
      // Loop per input valido ("demo" o "full")
         while (true) {
-            System.out.print("Enter the mode (demo/full): ");	//---------anche per interfaccia javaFX o CLI (?)
+            System.out.print("Enter the mode (demo/full): "); // NOSONAR	//---------anche per interfaccia javaFX o CLI (?)
          try {
             mode = scanner.nextLine().trim().toLowerCase();
          } catch (NoSuchElementException e) {   

@@ -19,6 +19,15 @@ public class AlertUtils {
 	
 	private static final String CSS_PATH = "/styles/alerts.css"; 
 	private static final String ICON_PATH = "/icons/app_icon.png";
+	
+	private static final String BACKGROUND_COLOR = "-fx-background-color: ";
+	private static final String FX_FONT =  "-fx-text-fill: white;" +
+            							   "-fx-font-weight: bold;" +
+            							   "-fx-font-size: 14px;" +
+            							   "-fx-padding: 8 20;" +
+            							   "-fx-background-radius: 5;" +
+            							   "-fx-cursor: hand;" +
+            							   "-fx-effect: dropshadow(three-pass-box, ";
 
 	    public static void showAlert(Alert.AlertType alertType, String title, String message) {
 	        Platform.runLater(() -> {
@@ -89,41 +98,23 @@ public class AlertUtils {
 	    	        String shadowColor = color + "80";
 	    	        // Stile base
 	    	        okButton.setStyle(
-	    	            "-fx-background-color: " + color + ";" +
-	    	            "-fx-text-fill: white;" +
-	    	            "-fx-font-weight: bold;" +
-	    	            "-fx-font-size: 14px;" +
-	    	            "-fx-padding: 8 20;" +
-	    	            "-fx-background-radius: 5;" +
-	    	            "-fx-cursor: hand;" +
-	    	            "-fx-effect: dropshadow(three-pass-box, " + shadowColor + ", 8, 0.5, 0, 1);"
+	    	        	BACKGROUND_COLOR + color + ";" +
+	    	        	FX_FONT + shadowColor + ", 8, 0.5, 0, 1);"
 	    	        );
 
 	    	        // Effetto hover mantenendo dimensioni e colore testo
 	    	        okButton.setOnMouseEntered(e -> {
 	    	            okButton.setStyle(
-	    	                "-fx-background-color: " + hoverColor + ";" +
-	    	                "-fx-text-fill: white;" + // Mantiene lo stesso colore testo
-	    	                "-fx-font-weight: bold;" +
-	    	                "-fx-font-size: 14px;" + // Dimensione testo invariata
-	    	                "-fx-padding: 8 20;" + // Padding invariato
-	    	                "-fx-background-radius: 5;" +
-	    	                "-fx-cursor: hand;" +
-	    	                "-fx-effect: dropshadow(three-pass-box, " + shadowColor + ", 12, 0.7, 0, 2);"
+	    	            	BACKGROUND_COLOR + hoverColor + ";" +
+	    	            	FX_FONT + shadowColor + ", 12, 0.7, 0, 2);"
 	    	            );
 	    	        });
 
 	    	        // Ritorno allo stato originale
 	    	        okButton.setOnMouseExited(e -> {
 	    	            okButton.setStyle(
-	    	                "-fx-background-color: " + color + ";" +	
-	    	                "-fx-text-fill: white;" +
-	    	                "-fx-font-weight: bold;" +
-	    	                "-fx-font-size: 14px;" +
-	    	                "-fx-padding: 8 20;" +
-	    	                "-fx-background-radius: 5;" +
-	    	                "-fx-cursor: hand;" +
-	    	                "-fx-effect: dropshadow(three-pass-box, " + shadowColor + ", 8, 0.5, 0, 1);"
+	    	            	BACKGROUND_COLOR + color + ";" +	
+	    	            	FX_FONT + shadowColor + ", 8, 0.5, 0, 1);"
 	    	            );
 	    	        });
 	    	    }

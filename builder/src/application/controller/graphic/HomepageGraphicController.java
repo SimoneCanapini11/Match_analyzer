@@ -19,34 +19,39 @@ public class HomepageGraphicController {
     	 // Controlla l'ID del bottone per decidere quale finestra aprire
     	    String fxmlFile = "";
     	    String title = "";
+    	    final String loginPath = "/application/view/login.fxml";
+    	    final String titleLogin = "Login";
+    	    final String homepagePath = "/application/view/homepage.fxml";
+    	    final String homepageTitle = "Homepage";
+    	    
     	    switch (((Node) event.getSource()).getId()) {
     	        case "btnLogin":
-    	            fxmlFile = "/application/view/login.fxml";
-    	            title = "Login";
+    	            fxmlFile = loginPath;
+    	            title = titleLogin;
     	            break;
     	        case "BoxGetLineup":
-    	            fxmlFile = "/application/view/login.fxml";
-    	            title = "Login";
+    	            fxmlFile = loginPath;
+    	            title = titleLogin;
     	            break;
     	        case "BoxManage":
-    	            fxmlFile = "/application/view/login.fxml";
-    	            title = "Login";
+    	            fxmlFile = loginPath;
+    	            title = titleLogin;
     	            break;
     	        case "BoxPerformance":
-    	            fxmlFile = "/application/view/login.fxml";
-    	            title = "Login";
+    	            fxmlFile = loginPath;
+    	            title = titleLogin;
     	            break;
     	        case "btnSignUp":
     	            fxmlFile = "/application/view/signup.fxml";
     	            title = "Sign Up";
     	            break;
     	        case "logoImage":
-    	        	fxmlFile = "/application/view/homepage.fxml";
-    	        	title = "Homepage";
+    	        	fxmlFile = homepagePath;
+    	        	title = homepageTitle;
     	        	break;
     	        case "btnHome":
-    	        	fxmlFile = "/application/view/homepage.fxml";
-    	        	title = "Homepage";
+    	        	fxmlFile = homepagePath;
+    	        	title = homepageTitle;
     	        	break;    	        
     	    }
     	    // Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
@@ -56,7 +61,9 @@ public class HomepageGraphicController {
         	if (title.equals("Sign Up") || title.equals("Login")) {
         		OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, true);   
         		
-        	} if (title.equals("Homepage")) {
+        	} 
+        	
+        	if (title.equals("Homepage")) {
         		OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
         	}
      }

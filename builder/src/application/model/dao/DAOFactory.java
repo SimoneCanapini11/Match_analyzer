@@ -7,6 +7,8 @@ import application.model.dao.full.*;
 
 public class DAOFactory {
 	
+	private static final String MODE_DEMO = "demo";
+	private static final String MODE_EXCEPTION = "Mode not initialized!";
 	private static String mode = AppConfig.getInstance().getMode(); // "demo" o "full"
 	
 	private static DemoLineupDAO instanceLineup;	// singleton lineupDAO
@@ -14,9 +16,9 @@ public class DAOFactory {
 	
     public static UserDAO getUserDAO() {
     	if (mode == null) {					//-------da gestire
-            throw new IllegalStateException("Mode non inizializzato!");
+            throw new IllegalStateException(MODE_EXCEPTION);
         }
-        if ("demo".equals(mode)) { 
+        if (MODE_DEMO.equals(mode)) { 
         	if (instanceUser == null) {
   		  instanceUser = new DemoUserDAO();
         }	return instanceUser;            
@@ -28,9 +30,9 @@ public class DAOFactory {
     
     public static TeamDAO getTeamDAO() {
     	if (mode == null) {					//-------da gestire
-            throw new IllegalStateException("Mode non inizializzato!");
+            throw new IllegalStateException(MODE_EXCEPTION);
         }
-        if ("demo".equals(mode)) {
+        if (MODE_DEMO.equals(mode)) {
             return new DemoTeamDAO();
         } else {
         	return new FullTeamDAO();
@@ -40,9 +42,9 @@ public class DAOFactory {
     
     public static FootballerDAO getFootballerDAO() {
     	if (mode == null) {					//-------da gestire
-            throw new IllegalStateException("Mode non inizializzato!");
+            throw new IllegalStateException(MODE_EXCEPTION);
         }
-        if ("demo".equals(mode)) {
+        if (MODE_DEMO.equals(mode)) {
             return new DemoFootballerDAO();
         } else {
         	return new FullFootballerDAO();
@@ -52,9 +54,9 @@ public class DAOFactory {
     
     public static LineupDAO getLineupDAO() {
     	if (mode == null) {					//-------da gestire
-            throw new IllegalStateException("Mode non inizializzato!");
+            throw new IllegalStateException(MODE_EXCEPTION);
         }
-        if ("demo".equals(mode)) {
+        if (MODE_DEMO.equals(mode)) {
         	  if (instanceLineup == null) {
         		  instanceLineup = new DemoLineupDAO();
               }	return instanceLineup;

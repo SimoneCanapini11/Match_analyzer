@@ -32,19 +32,29 @@ public class TeamColorUtils {
 
     // Mappa che associa il nome del team ai colori
     private static final Map<String, TeamColors> teamColorsMap = new HashMap<>();
+    
+    private static final String WHITE = "#FFFFFF";
+    private static final String RED = "#FF0000";
+    private static final String BLUE = "#0000FF";
+    private static final String YELLOW = "#FFD700";
+    private static final String BLACK = "#000000";
+    private static final String GRAY = "#CCCCCC";
+    private static final String WHITE_BLUE = "#12A0D7";
+    private static final String DARK_BLUE = "#003C82";
+    private static final String DARK_RED = "#8B0000";;
+    private static final String PURPLE = "#482E92";
 
     static {
-        // Esempio di mappatura: sostituisci con i dati reali
-        teamColorsMap.put("Juventus", new TeamColors("#FFFFFF", "#000000", "#000000")); // bianco, nero, nero(contorno)
-        teamColorsMap.put("Milan", new TeamColors("#FF0000", "#000000", "#000000"));     
-        teamColorsMap.put("Inter", new TeamColors("#000000", "#0000FF", "#000000"));      
-        teamColorsMap.put("Roma", new TeamColors("#FFD700", "#FF0000", 	"#8B0000"));  
-        teamColorsMap.put("Napoli", new TeamColors("#12A0D7", "#12A0D7", "#003C82"));
-        teamColorsMap.put("Fiorentina", new TeamColors("#482E92", "#482E92", "#FFFFFF"));  
+        teamColorsMap.put("Juventus", new TeamColors(WHITE, BLACK, BLACK)); // bianco, nero, nero(contorno)
+        teamColorsMap.put("Milan", new TeamColors(RED, BLACK, BLACK));     
+        teamColorsMap.put("Inter", new TeamColors(BLACK, BLUE, BLACK));      
+        teamColorsMap.put("Roma", new TeamColors(YELLOW, RED, DARK_RED));  
+        teamColorsMap.put("Napoli", new TeamColors(WHITE_BLUE, WHITE_BLUE, DARK_BLUE));
+        teamColorsMap.put("Fiorentina", new TeamColors(PURPLE, PURPLE, WHITE));  
     }
 
     public static TeamColors getTeamColors(String teamName) {
         // Restituisce i colori associati, oppure colori di default se non trovati
-    	return teamColorsMap.getOrDefault(teamName, new TeamColors("#CCCCCC", "#666666", "black"));
+    	return teamColorsMap.getOrDefault(teamName, new TeamColors(GRAY, "#666666", BLACK));
     }
 }
