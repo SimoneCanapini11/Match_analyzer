@@ -42,7 +42,7 @@ public class CoachViewGraphicController {
     	
     	coachController.signOut();
     	
-    	String fxmlFile = "/application/view/homepage.fxml";
+    	String fxmlFile = "homepage.fxml";
  	    String title = "Homepage";
  	    
  	    // Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
@@ -56,7 +56,7 @@ public class CoachViewGraphicController {
     @FXML
     private void openRoleHome(MouseEvent event) throws IOException {
     	
-    	String fxmlFile = "/application/view/coachView.fxml";
+    	String fxmlFile = "coachView.fxml";
     	String title = "Coach Home";
     	
     	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
@@ -68,7 +68,7 @@ public class CoachViewGraphicController {
     @FXML
     private void openGetLineup(MouseEvent event) throws IOException {
     	
-    	String fxmlFile = "/application/view/getLineupView.fxml";
+    	String fxmlFile = "getLineupView.fxml";
     	String title = "Get Lineup";
     	
     	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();

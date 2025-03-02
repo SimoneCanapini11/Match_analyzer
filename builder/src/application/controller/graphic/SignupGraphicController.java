@@ -58,7 +58,7 @@ public class SignupGraphicController {
     private void openLogin(ActionEvent event) throws IOException{
 
 		// Ottieni il parent stage (homepage) attraverso il proprietario della finestra di signup
-		String fxmlPath = "/application/view/login.fxml";
+		String fxmlPath = "login.fxml";
 		String title = "Login";
 		Stage signupStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Stage parentStage = (Stage) signupStage.getOwner();			
@@ -70,7 +70,7 @@ public class SignupGraphicController {
     private void openSignUpDetails(ActionEvent event) throws IOException{
 
 		// Ottieni il parent stage (homepage) attraverso il proprietario della finestra di signup
-    	String fxmlPath = "/application/view/signupDetails.fxml";
+    	String fxmlPath = "signupDetails.fxml";
         String title = "Profile";
 		Stage signupStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Stage parentStage = (Stage) signupStage.getOwner();		

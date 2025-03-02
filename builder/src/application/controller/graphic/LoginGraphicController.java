@@ -26,7 +26,7 @@ public class LoginGraphicController {
 	 @FXML
      private void openSignUp(ActionEvent event) throws IOException{
 		 
-		 String fxmlPath = "/application/view/signup.fxml";
+		 String fxmlPath = "signup.fxml";
 		 String title = "Sign Up";
 		 Stage loginStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		 Stage parentStage = (Stage) loginStage.getOwner();

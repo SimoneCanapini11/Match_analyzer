@@ -43,11 +43,9 @@ public class LineupApplicationController {
 				.collect(Collectors.toList());
 		
 		// Ritorna la lista dei nomi e cognomi dei giocatori trovati
-		List<String> playersByRole = filteredPlayers.stream()
+		return filteredPlayers.stream()
 			    .map(f -> f.getName() + " " + f.getSurname())
 			    .collect(Collectors.toList());
-		
-		return playersByRole;
 	}
 	
 	
@@ -70,9 +68,9 @@ public class LineupApplicationController {
 	}
 	
 	
-	public String splitSurname(String playerName) {
-		String surname = Formatter.splitString(playerName);
-		return surname;
+	public String splitSurname(String playerName) {	
+		// Dividi il nome del giocatore in nome e cognome separandolo dal primo spazio
+		return Formatter.splitString(playerName);
 	}
 	
 	

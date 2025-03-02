@@ -19,9 +19,9 @@ public class HomepageGraphicController {
     	 // Controlla l'ID del bottone per decidere quale finestra aprire
     	    String fxmlFile = "";
     	    String title = "";
-    	    final String loginPath = "/application/view/login.fxml";
+    	    final String loginPath = "login.fxml";
     	    final String titleLogin = "Login";
-    	    final String homepagePath = "/application/view/homepage.fxml";
+    	    final String homepagePath = "homepage.fxml";
     	    final String homepageTitle = "Homepage";
     	    
     	    switch (((Node) event.getSource()).getId()) {
@@ -33,7 +33,7 @@ public class HomepageGraphicController {
     	            title = titleLogin;
     	            break;
     	        case "btnSignUp":
-    	            fxmlFile = "/application/view/signup.fxml";
+    	            fxmlFile = "signup.fxml";
     	            title = "Sign Up";
     	            break;
     	        case "logoImage":

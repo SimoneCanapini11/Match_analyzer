@@ -16,6 +16,8 @@ import javafx.stage.Window;
 
 public class OpenWindowUtils {
 	
+	private static final String BASE_PATH = "/application/view/";
+	
 	private OpenWindowUtils() {
 	    throw new IllegalStateException("OpenWindowUtils class");
 	}
@@ -64,7 +66,7 @@ public class OpenWindowUtils {
 		Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Stage parentStage = (Stage) currentStage.getOwner();
 		
-		String fxmlPath = "/application/view/" + role + "View.fxml";
+		String fxmlPath = role + "View.fxml";
 		
 		openFXMLWindow(fxmlPath, Formatter.uppercaseString(role) + " Home", currentStage, parentStage, false);	
     }
@@ -75,7 +77,7 @@ public class OpenWindowUtils {
         Stage newStage = new Stage();
         
         // Caricamento FXML
-        Parent root = FXMLLoader.load(OpenWindowUtils.class.getResource(fxmlPath));
+        Parent root = FXMLLoader.load(OpenWindowUtils.class.getResource(BASE_PATH + fxmlPath));
         
         // Inizializzazione finestra
         newStage.setScene(new Scene(root));
@@ -100,6 +102,7 @@ public class OpenWindowUtils {
         
         newStage.show();
     }
+    
 }
 
 
