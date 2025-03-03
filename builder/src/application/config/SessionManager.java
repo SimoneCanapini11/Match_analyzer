@@ -4,7 +4,7 @@ import application.model.bean.User;
 
 public class SessionManager {
 		
-		private static volatile SessionManager instance; // L'uso di volatile garantisce che i thread vedano sempre la versione più aggiornata dell'istanza.
+		private static SessionManager instance; // L'uso di volatile garantisce che i thread vedano sempre la versione più aggiornata dell'istanza.
 
 	    private User currentUser;
 
