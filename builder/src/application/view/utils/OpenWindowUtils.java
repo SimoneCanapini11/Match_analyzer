@@ -16,8 +16,9 @@ import javafx.stage.Window;
 
 public class OpenWindowUtils {
 	
-	private static final String BASE_PATH = "/application/view/";
-	
+    // Percorso base delle viste FXML
+	private static final String BASE_PATH = System.getProperty("app.view.basePath", "/application/view/");
+
 	private OpenWindowUtils() {
 	    throw new IllegalStateException("OpenWindowUtils class");
 	}
