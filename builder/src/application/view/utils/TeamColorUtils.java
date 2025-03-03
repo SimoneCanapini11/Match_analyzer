@@ -43,6 +43,7 @@ public class TeamColorUtils {
     private static final String YELLOW = "#FFD700";
     private static final String BLACK = "#000000";
     private static final String GRAY = "#CCCCCC";
+    private static final String DARK_GRAY = "#666666";
     private static final String WHITE_BLUE = "#12A0D7";
     private static final String DARK_BLUE = "#003C82";
     private static final String DARK_RED = "#8B0000";
@@ -59,6 +60,6 @@ public class TeamColorUtils {
 
     public static TeamColors getTeamColors(String teamName) {
         // Restituisce i colori associati, oppure colori di default se non trovati
-    	return teamColorsMap.getOrDefault(teamName, new TeamColors(GRAY, "#666666", BLACK));
+    	return teamColorsMap.getOrDefault(teamName, new TeamColors(GRAY, DARK_GRAY, BLACK));
     }
 }
