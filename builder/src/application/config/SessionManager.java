@@ -8,14 +8,9 @@ public class SessionManager {
 
 	    private User currentUser;
 
-	    public static SessionManager getInstance() {
+	    public static synchronized SessionManager getInstance() {
 	        if (instance == null) {
-	        	synchronized (SessionManager.class) {
-                    if (instance == null) {
-                        instance = new SessionManager();
-                    }
-                }
-	            instance = new SessionManager();
+	        	instance = new SessionManager();
 	        }
 	        return instance;
 	    }

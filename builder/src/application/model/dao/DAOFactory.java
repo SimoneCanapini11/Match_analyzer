@@ -19,19 +19,14 @@ public class DAOFactory {
 	private static DemoLineupDAO instanceLineup;	// singleton lineupDAO
 	private static DemoUserDAO instanceUser;    // singleton userDAO
 	
-    public static UserDAO getUserDAO() {
+    public static synchronized UserDAO getUserDAO() {
     	if (mode == null) {					//-------da gestire
             throw new IllegalStateException(MODE_EXCEPTION);
         }
     	if (MODE_DEMO.equals(mode)) { 
     	    if (instanceUser == null) {  
-    	        synchronized (DemoUserDAO.class) { 
-    	            if (instanceUser == null) {  
-    	                instanceUser = new DemoUserDAO();
-    	            }
-    	        }
+    	    	instanceUser = new DemoUserDAO();
     	    }
-    	    
     	    return instanceUser;           
     	    
     	} else {
@@ -64,19 +59,14 @@ public class DAOFactory {
         }
     } 
     
-    public static LineupDAO getLineupDAO() {
+    public static synchronized LineupDAO getLineupDAO() {
     	if (mode == null) {					//-------da gestire
             throw new IllegalStateException(MODE_EXCEPTION);
         }
     	if (MODE_DEMO.equals(mode)) { 
     	    if (instanceLineup == null) {  
-    	        synchronized (DemoLineupDAO.class) { 
-    	            if (instanceLineup == null) {  
-    	            	instanceLineup = new DemoLineupDAO();
-    	            }
-    	        }
+    	    	instanceLineup = new DemoLineupDAO();
     	    }
-    	    
     	    return instanceLineup;        
     	    
     	} else {
