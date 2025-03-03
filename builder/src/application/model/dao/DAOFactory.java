@@ -16,18 +16,25 @@ public class DAOFactory {
 	private static final String MODE_EXCEPTION = "Mode not initialized!";
 	private static String mode = AppConfig.getInstance().getMode(); // "demo" o "full"
 	
-	private static DemoLineupDAO instanceLineup;	// singleton lineupDAO
-	private static DemoUserDAO instanceUser;    // singleton userDAO
+	private static volatile DemoLineupDAO instanceLineup;	// singleton lineupDAO
+	private static volatile DemoUserDAO instanceUser;    // singleton userDAO
 	
     public static UserDAO getUserDAO() {
     	if (mode == null) {					//-------da gestire
             throw new IllegalStateException(MODE_EXCEPTION);
         }
-        if (MODE_DEMO.equals(mode)) { 
-        	if (instanceUser == null) {
-  		  instanceUser = new DemoUserDAO();
-        }	return instanceUser;            
-        } else {
+    	if (MODE_DEMO.equals(mode)) { 
+    	    if (instanceUser == null) {  
+    	        synchronized (DemoUserDAO.class) { 
+    	            if (instanceUser == null) {  
+    	                instanceUser = new DemoUserDAO();
+    	            }
+    	        }
+    	    }
+    	    
+    	    return instanceUser;           
+    	    
+    	} else {
         	return new FullUserDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
         }
@@ -61,14 +68,24 @@ public class DAOFactory {
     	if (mode == null) {					//-------da gestire
             throw new IllegalStateException(MODE_EXCEPTION);
         }
-        if (MODE_DEMO.equals(mode)) {
-        	  if (instanceLineup == null) {
-        		  instanceLineup = new DemoLineupDAO();
-              }	return instanceLineup;
-        } else {
+    	if (MODE_DEMO.equals(mode)) { 
+    	    if (instanceLineup == null) {  
+    	        synchronized (DemoLineupDAO.class) { 
+    	            if (instanceLineup == null) {  
+    	            	instanceLineup = new DemoLineupDAO();
+    	            }
+    	        }
+    	    }
+    	    
+    	    return instanceLineup;        
+    	    
+    	} else {
         	return new FullLineupDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
         }
     } 
+    
+    
+    
 }
 
