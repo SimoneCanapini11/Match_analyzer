@@ -1,6 +1,7 @@
 package application.controller.application;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -115,7 +116,7 @@ public class GetLineupApplicationController {
 		List<String> tactics = determineTactic(setStrategy, opponentFormation, opponentPlayStyle, ourTeamFormation, ourTeamPlayStyle);	
 		
 		// Scelta Footballer
-		tactics.addAll(getBestFootballers(teamName, tactics.get(0)));
+		tactics.addAll(getBestFootballers(tactics.get(0)));
 		
 		return tactics;
 	}
@@ -129,8 +130,9 @@ public class GetLineupApplicationController {
     	List<String> bestTactics = getBestLineup(teamName); 
     	boolean homeMach = getHomeOrAway(teamName);
     	int opponentStrength = getTeamStrength(getNextOpponent(teamName));
+    	List<String> chosenTactics = Arrays.asList(formation, playStyle, marking);
     			
-        rateCalculator.calculateAndUpdate(formation, playStyle, marking, players, roles, bestTactics, homeMach, opponentStrength);
+        rateCalculator.calculateAndUpdate(chosenTactics, players, roles, bestTactics, homeMach, opponentStrength);
     }
 
     
@@ -262,7 +264,7 @@ public class GetLineupApplicationController {
 	}
 	
 	
-	private List<String> getBestFootballers(String teamName, String formation) {    
+	private List<String> getBestFootballers(String formation) {    
 		
 		List<String> requiredRoles = getRequiredRoles(formation);    // prendo i ruoli dalla formazione scelta
 		

@@ -20,7 +20,7 @@ public class SuccessRateCalculator extends Subject {
 	 
 	 
 	 // Metodo per calcolare il success rate 	  				
-	 public void calculateAndUpdate(String formation, String playStyle, String marking, List<Footballer> players, 
+	 public void calculateAndUpdate(List<String> chosenTactics, List<Footballer> players, 
 			 						List<String> roles, List<String> bestTactics, boolean homeMatch, int opponentStrength) {
 	        
 		 // Inizializza il penalty a 0.
@@ -31,13 +31,13 @@ public class SuccessRateCalculator extends Subject {
 	        double markingPenaltyWeight = 2.0;
 
 	        // Confronta i valori inseriti con quelli migliori.
-	        if (!formation.equalsIgnoreCase(bestTactics.get(0))) {
+	        if (!chosenTactics.get(0).equalsIgnoreCase(bestTactics.get(0))) {
 	            tacticPenalty += formationPenaltyWeight;
 	        }
-	        if (!playStyle.equalsIgnoreCase(bestTactics.get(1))) {
+	        if (!chosenTactics.get(1).equalsIgnoreCase(bestTactics.get(1))) {
 	            tacticPenalty += playStylePenaltyWeight;
 	        }
-	        if (!marking.equalsIgnoreCase(bestTactics.get(2))) {
+	        if (!chosenTactics.get(2).equalsIgnoreCase(bestTactics.get(2))) {
 	            tacticPenalty += markingPenaltyWeight;
 	        }
 	        

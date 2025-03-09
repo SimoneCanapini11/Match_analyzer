@@ -8,7 +8,7 @@ public class Footballer {
 	   private String surname;
 	   private String team;
 	   private int age;		//-- year(data oggi - data nascita) 
-	   private List<RoleAffinity> roleAffinities;
+	   private List<RoleAffinity> roleAffinities = new ArrayList<>();;
 	   private int overallRating;    // da 0 a 100	//---------------controllo (?)
 	   private int physicalForm;   // da 0 a 100		
 	   private int mentalClarity;   // da 0 a 100
@@ -19,7 +19,6 @@ public class Footballer {
            this.surname = surname;
            this.team = team;
            this.age = age;
-           this.roleAffinities = new ArrayList<>();
            this.overallRating = overallRating;
            this.physicalForm = physicalForm;
            this.mentalClarity = mentalClarity;
