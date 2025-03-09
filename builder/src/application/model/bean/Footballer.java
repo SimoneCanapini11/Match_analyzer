@@ -8,21 +8,24 @@ public class Footballer {
 	   private String surname;
 	   private String team;
 	   private int age;		//-- year(data oggi - data nascita) 
-	   private List<RoleAffinity> roleAffinities = new ArrayList<>();;
-	   private int overallRating;    // da 0 a 100	//---------------controllo (?)
+	   private List<RoleAffinity> roleAffinities;
+	  /* private int overallRating;    // da 0 a 100	//---------------controllo (?)
 	   private int physicalForm;   // da 0 a 100		
 	   private int mentalClarity;   // da 0 a 100
-	   private int deployable; // 0 o 1
+	   private int deployable; // 0 o 1*/
+	   private FootballerAttributes attributes;
 	   
-	   public Footballer(String name, String surname, String team, int age, int overallRating, int physicalForm, int mentalClarity, int deployable) {
+	   public Footballer(String name, String surname, String team, int age, FootballerAttributes attributes) {
 		   this.name = name;
            this.surname = surname;
            this.team = team;
            this.age = age;
-           this.overallRating = overallRating;
+           this.attributes = attributes;
+           this.roleAffinities = new ArrayList<>();
+           /*this.overallRating = overallRating;
            this.physicalForm = physicalForm;
            this.mentalClarity = mentalClarity;
-           this.deployable = deployable;
+           this.deployable = deployable;*/
 	   }
 
 	// Getters e setters
@@ -66,39 +69,31 @@ public class Footballer {
 	public void addRoleAffinity(RoleFootballer role, double affinity) {
 		roleAffinities.add(new RoleAffinity(role, affinity));
 	}
+	
+	public FootballerAttributes getAttributes() {
+        return attributes;
+    }
+	
+	public void setAttributes(FootballerAttributes attributes) {
+		this.attributes = attributes;
+	}
 
 	public int getOverallRating() {
-		return overallRating;
+		return attributes.getOverallRating();
 	}
 
-	public void setOverallRating(int overallRating) {
-		this.overallRating = overallRating;
-	}
 
 	public double getPhysicalForm() {
-		return physicalForm;
-	}
-
-	public void setPhysicalForm(int physicalForm) {
-		this.physicalForm = physicalForm;
+		return attributes.getPhysicalForm();
 	}
 
 	public double getMentalClarity() {
-		return mentalClarity;
-	}
-
-	public void setMentalClarity(int mentalClarity) {
-		this.mentalClarity = mentalClarity;
+		return attributes.getMentalClarity();
 	}
 
 	public int getDeployable() {
-		return deployable;
+		return attributes.getDeployable();
 	}
-
-	public void setDeployable(int deployable) {
-		this.deployable = deployable;
-	}
-	
 	
 
 	public double getReadyToPlay(String roleStr) {
@@ -114,9 +109,9 @@ public class Footballer {
 		}
     
 		// Normalizza valori
-		double normalizedOverall = overallRating / 100.0;
-		double normalizedPhysical = physicalForm / 100.0;
-		double normalizedMentalClarity = mentalClarity / 100.0;
+		double normalizedOverall = attributes.getOverallRating() / 100.0;
+		double normalizedPhysical = attributes.getPhysicalForm() / 100.0;
+		double normalizedMentalClarity = attributes.getMentalClarity() / 100.0;
     
 		// Imposta i pesi per ogni parametro: questi valori sono da definire in base alle tue regole di business
 		double weightOverall = 0.4;
@@ -125,7 +120,7 @@ public class Footballer {
     	double weightLucidity = 0.1;
     
     	// Calcola il readyToPlay come somma pesata
-    	return  deployable * 
+    	return  attributes.getDeployable() * 
 				(normalizedOverall * weightOverall +
 				normalizedPhysical * weightPhysical +
                 affinityForRole * weightAffinity +
@@ -137,8 +132,8 @@ public class Footballer {
 	@Override
 	public String toString() {
 		return "Footballer [name=" + name + ", surname=" + surname + ", team=" + team + ", age=" + age
-				+ ", roleAffinities=" + roleAffinities + ", overallRating=" + overallRating + ", physicalForm="
-				+ physicalForm + ", mentalClarity=" + mentalClarity + ", deployable=" + deployable + "]";
+				+ ", roleAffinities=" + roleAffinities + ", overallRating=" + attributes.getOverallRating() + ", physicalForm="
+				+ attributes.getPhysicalForm() + ", mentalClarity=" + attributes.getMentalClarity() + ", deployable=" + attributes.getDeployable() + "]";
 	}	   
 	   
 }
