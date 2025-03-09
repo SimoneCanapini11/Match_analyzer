@@ -218,6 +218,9 @@ public class GetLineupGraphicController {
 				radioButton1.setDisable(true);
 				radioButton2.setDisable(true);
 				break;
+			default:
+				group1.selectToggle(radioButton3);
+                break;
 			}
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
