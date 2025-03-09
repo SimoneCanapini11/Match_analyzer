@@ -46,7 +46,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.LineupGraphicController">
+<BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.GetLineupGraphicController">
    <top>
       <HBox alignment="CENTER" prefHeight="53.0" prefWidth="1300.0" spacing="15.0" style="-fx-background-color: black; -fx-padding: 10;" BorderPane.alignment="CENTER">
          <children>
@@ -66,7 +66,7 @@
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button fx:id="lineupBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Lineup" textFill="WHITE" underline="true">
+            <Button fx:id="lineupBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openGetLineup" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Lineup" textFill="WHITE" underline="true">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -121,7 +121,7 @@
                   <AnchorPane prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;">
                      <children>
                         <ChoiceBox fx:id="choiceBoxFormation" layoutX="35.0" layoutY="204.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Button fx:id="btnShowOpponent" alignment="CENTER" layoutX="82.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;" text="Show Opponent" textFill="WHITE">
+                        <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;" text="Analyze Opponent" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
@@ -131,12 +131,12 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Label alignment="CENTER" layoutX="500.0" layoutY="55.0" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20;" text="Succes Rate:" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="491.0" layoutY="55.0" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;" text="Success Rate:" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="700.0" layoutY="43.0" prefHeight="57.0" prefWidth="92.0" style="-fx-background-color: black; -fx-background-radius: 50; -fx-border-radius: 50;" text="100 %" textFill="WHITE">
+                        <Label fx:id="successRateLabel" alignment="CENTER" layoutX="691.0" layoutY="43.0" prefHeight="57.0" prefWidth="92.0" style="-fx-background-color: black; -fx-background-radius: 50; -fx-border-radius: 50;" text="100 %" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="24.0" />
                            </font>
@@ -163,7 +163,7 @@
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <RadioButton layoutX="35.0" layoutY="480.0" mnemonicParsing="false" text="Stronger">
+                        <RadioButton fx:id="radioButton1" layoutX="35.0" layoutY="480.0" mnemonicParsing="false" text="Stronger">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -171,7 +171,7 @@
                               <ToggleGroup fx:id="group1" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton layoutX="35.0" layoutY="510.0" mnemonicParsing="false" text="Weaker" toggleGroup="$group1">
+                        <RadioButton fx:id="radioButton2" layoutX="35.0" layoutY="510.0" mnemonicParsing="false" text="Weaker" toggleGroup="$group1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -268,7 +268,7 @@
                         <ChoiceBox fx:id="choiceBoxPlayer3" layoutX="1106.0" layoutY="599.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
                         <ChoiceBox fx:id="choiceBoxPlayer2" layoutX="1106.0" layoutY="649.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
                         <ChoiceBox fx:id="choiceBoxPlayer1" layoutX="1106.0" layoutY="699.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <RadioButton layoutX="35.0" layoutY="540.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="109.0" text="Even Match" toggleGroup="$group1">
+                        <RadioButton fx:id="radioButton3" layoutX="35.0" layoutY="540.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="109.0" text="Even Match" toggleGroup="$group1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -372,7 +372,7 @@
                               </Label>
                            </children>
                         </StackPane>
-                        <Button fx:id="btnGetBestLineup" alignment="CENTER" layoutX="82.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 12; -fx-border-radius: 10; -fx-cursor: hand; -fx-border-color: #ff9000; -fx-border-width: 3;" text="Get best Lineup" textFill="WHITE">
+                        <Button fx:id="btnGetBestLineup" alignment="CENTER" layoutX="82.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#getBestLineup" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 12; -fx-border-radius: 10; -fx-cursor: hand; -fx-border-color: #ff9000; -fx-border-width: 3;" text="Get best Lineup" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>

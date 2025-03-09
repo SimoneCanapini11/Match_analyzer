@@ -1,9 +1,9 @@
 package application.exception;
 
-public class ValidationException extends Exception {
+public class LineupException extends Exception {
 	private static final long serialVersionUID = 1L;
 
-	public ValidationException(String message) {
+	public LineupException(String message) {
 	        super(message);
 	    }
 }

@@ -75,7 +75,17 @@ public class DAOFactory {
         }
     } 
     
-    
+    public static MatchDAO getMatchDAO() {
+    	if (mode == null) {					//-------da gestire
+            throw new IllegalStateException(MODE_EXCEPTION);
+        }
+        if (MODE_DEMO.equals(mode)) {
+            return new DemoMatchDAO();
+        } else {
+        	return new FullMatchDAO();
+            //return new FullUserDAO(getConnection()); //-- es. per DB
+        }
+    } 
     
 }
 

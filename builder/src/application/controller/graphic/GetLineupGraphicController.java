@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import application.controller.application.LineupApplicationController;
+import application.controller.application.GetLineupApplicationController;
 import application.controller.application.UserApplicationController;
+import application.exception.DAOException;
+import application.exception.LineupException;
+import application.view.observer.GUIObserver;
 import application.view.utils.AlertUtils;
 import application.view.utils.LineupLayoutUtils;
 import application.view.utils.OpenWindowUtils;
 import application.view.utils.TeamColorUtils;
 import application.view.utils.TeamColorUtils.TeamColors;
 import application.view.utils.UserInterfaceHelper;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -20,19 +24,21 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class LineupGraphicController {
+public class GetLineupGraphicController {
 	
 	private UserApplicationController coachController;			//--------metodi in comune con altre classi	
-	private LineupApplicationController lineupController;
+	private GetLineupApplicationController lineupController;
 	
-	 public LineupGraphicController() {
+	 public GetLineupGraphicController() {
 		 this.coachController = new UserApplicationController(); 
-		 this.lineupController = new LineupApplicationController();
+		 this.lineupController = new GetLineupApplicationController();
 	 }
 	 
 
@@ -112,9 +118,17 @@ public class LineupGraphicController {
 	
 	@FXML
     private ImageView teamLogoImage;
+	
+	@FXML
+    private Label successRateLabel;
 
     @FXML
     private Label nameLabel;
+    
+    @FXML private RadioButton radioButton1;
+    @FXML private RadioButton radioButton2;
+    @FXML private RadioButton radioButton3;
+    @FXML private ToggleGroup group1;
     
 
 	@FXML
@@ -158,30 +172,72 @@ public class LineupGraphicController {
 	    // Imposta colori "maglie"
 	    setTeamColors(teamName);
 	    
-	    // Popola le choiceBoxPlayer con i giocatori della squadra		//--da rivedere dopo formazione di default
+	    // Popola le choiceBoxPlayer con i giocatori della squadra		
 	    setTeamPlayers(teamName);
+	    
+	    // Collega ogni choiceBoxPlayer alla sua Label corrispondente
+        for (int i = 0; i < choiceBoxPlayers.size(); i++) {
+        	bindChoiceBoxToLabel(choiceBoxPlayers.get(i), namePlayers.get(i));
+        }
 	    
 	    
 	    choiceBoxFormation.setItems(FXCollections.observableArrayList(lineupController.getFormationList()));		
         choiceBoxFormation.setOnAction(e -> updateFormationAndRoles(teamName));
         choiceBoxFormation.setValue(lineupController.getFormation(teamName));
         
-        
-        // Collega ogni choiceBoxPlayer alla sua Label corrispondente
-        for (int i = 0; i < choiceBoxPlayers.size(); i++) {
-        	bindChoiceBoxToLabel(choiceBoxPlayers.get(i), namePlayers.get(i));
-        }
-        
-        // Formation di presentazione
+        // Imposta lineup salvata
         setTeamLineup(teamName);
-        
         
         // Inizializzazione choiceBoxPlayStyle e Marking
         choiceBoxPlayStyle.setItems(FXCollections.observableArrayList(lineupController.getPlayStyleList()));
         choiceBoxMarking.setItems(FXCollections.observableArrayList(lineupController.getMarkingList()));
        
         choiceBoxPlayStyle.setValue(lineupController.getPlayStyle(teamName));
-        choiceBoxMarking.setValue(lineupController.getMarking(teamName));
+        choiceBoxMarking.setValue(lineupController.getMarkingType(teamName));
+        
+        
+        // Inizializza radioButton 
+        int selectedOption;
+		try {
+			selectedOption = lineupController.getMyTeamIs(teamName);
+		
+        
+			switch(selectedOption) {
+			case 1:
+				group1.selectToggle(radioButton1);
+				radioButton2.setDisable(true);
+				radioButton3.setDisable(true);
+				break;
+			case 2:
+				group1.selectToggle(radioButton2);
+				radioButton1.setDisable(true);
+				radioButton3.setDisable(true);
+				break;
+			case 3:
+				group1.selectToggle(radioButton3);
+				radioButton1.setDisable(true);
+				radioButton2.setDisable(true);
+				break;
+			}
+		} catch (LineupException le) {
+			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+			openRoleHomeFromInit();
+		}
+        
+        // Registra l'observer GUI al SuccessRateCalculator 
+        lineupController.getSuccessRateCalculator().registerObserver(new GUIObserver(successRateLabel));
+        
+        // Listener: ogni volta che cambia un valore, aggiorna il success rate
+        choiceBoxFormation.valueProperty().addListener((obs, oldVal, newVal) -> updateSuccessRate());
+        choiceBoxPlayStyle.valueProperty().addListener((obs, oldVal, newVal) -> updateSuccessRate());
+        choiceBoxMarking.valueProperty().addListener((obs, oldVal, newVal) -> updateSuccessRate());
+        
+        for (int i = 0; i < choiceBoxPlayers.size(); i++) {
+        	choiceBoxPlayers.get(i).valueProperty().addListener((obs, oldVal, newVal) -> updateSuccessRate());
+        }
+        
+        // Imposta un valore inziale per labelSuccessRate
+        updateSuccessRate();
 	}
 	
 	
@@ -190,7 +246,7 @@ public class LineupGraphicController {
 		// Salva tutti i valori 
 		String formation = choiceBoxFormation.getValue();
 		String playStyle = choiceBoxPlayStyle.getValue();
-		String marking = choiceBoxMarking.getValue();
+		String markingType = choiceBoxMarking.getValue();
 		String teamName = coachController.getUserTeam();
 				
 		List<String> players = new ArrayList<>();
@@ -199,17 +255,25 @@ public class LineupGraphicController {
             players.add(choiceBox.getValue());
         }
 		
-        boolean isUpdated  = lineupController.saveLineup(teamName, formation, playStyle, marking, players);
+        boolean isUpdated;
         
-        if (isUpdated) {
+		try {
+			isUpdated = lineupController.saveLineup(teamName, formation, playStyle, markingType, players);
+		
+			if (isUpdated) {
         	AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Lineup saved successfully");
         	openRoleHome(event);
-        } 
+			} 
+		} catch (LineupException le) {
+			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+		} catch (DAOException dae) {
+			AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
+	   }
 	}
 	
 	
-	@FXML
-	private void handleSignOut(MouseEvent event) throws IOException {		//--------metodi in comune con altre classi
+	 @FXML
+	 private void handleSignOut(MouseEvent event) throws IOException {		//--------metodi in comune con altre classi
 	    	
 		coachController.signOut();
 	    	
@@ -218,10 +282,10 @@ public class LineupGraphicController {
 	 	    
 		// Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
 		Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-			
-		OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
+		
+		openHome(fxmlFile, title, parentStage);
 		AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Sign out successful");
-	}
+	 }
 	
 	
 	 @FXML
@@ -232,9 +296,48 @@ public class LineupGraphicController {
 	    	
 		 Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
 	    	
-		 OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
+		 openHome(fxmlFile, title, parentStage);
 	 }   
-	
+	 
+	 
+	 @FXML
+	 private void openGetLineup(MouseEvent event) throws IOException {
+	    	
+		 String fxmlFile = "getLineupView.fxml";
+		 String title = "Get Lineup";
+	    	
+		 Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
+		 
+		 openHome(fxmlFile, title, parentStage);
+	 }   
+	 
+	 
+	 @FXML													
+     private void getBestLineup(MouseEvent event) throws IOException {
+		
+		 List<String> tactics;
+		 
+		try {
+			tactics = lineupController.getBestLineup(coachController.getUserTeam());
+		
+			// Set delle ChoiceBox
+			choiceBoxFormation.setValue(tactics.get(0));
+			choiceBoxPlayStyle.setValue(tactics.get(1));
+			choiceBoxMarking.setValue(tactics.get(2));
+		 
+			// Set dei Footballer nelle choiceBoxPlayers
+			for (int i = 0; i < choiceBoxPlayers.size(); i++) {
+				choiceBoxPlayers.get(i).setValue(tactics.get(3 + i));
+			}
+		 
+		} catch (LineupException le) {
+			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+			openRoleHome(event);
+		}
+         
+		 AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Best lineup inserted");
+	 }
+	 
 	
 	 @FXML
      private void comingSoonBtn(MouseEvent event) {
@@ -242,20 +345,20 @@ public class LineupGraphicController {
      }
 	
 	
-	private void updateFormationAndRoles(String teamName) {		//----------observer (?)
+	private void updateFormationAndRoles(String teamName) {		
 		
 		 String formation = choiceBoxFormation.getValue();
 		 List<Point2D> coords = LineupLayoutUtils.getCoordinates(formation);
-		 List<String> roles = LineupLayoutUtils.getRoles(formation);
+		 List<String> roles = lineupController.getRequiredRoles(formation);
 		 
 		 if (coords == null || coords.size() < 11) {
-			 AlertUtils.showAlert(Alert.AlertType.ERROR, null, "Few parameters coords");
-			 return; 				//--------------eccezione da gestire
+			 AlertUtils.showAlert(Alert.AlertType.ERROR, null, "Few parameters coords. Please contact the administrator");
+			 openRoleHomeFromInit();
 		 }
 		 
 		 if (roles == null || roles.size() < 11) {
-			 AlertUtils.showAlert(Alert.AlertType.ERROR, null, "Few parameters roles");
-			 return;
+			 AlertUtils.showAlert(Alert.AlertType.ERROR, null, "Few parameters roles. Please contact the administrator");
+			 openRoleHomeFromInit();
 		 }
 		
 		// Assegna coordinate
@@ -282,6 +385,9 @@ public class LineupGraphicController {
 	    
 	    // Popola la ChoiceBox per i giocatori in base al ruolo richiesto
 	    setTeamPlayers(teamName);
+	    
+	    // Popola la ChoiceBox con startingLineup
+	    setTeamLineup(teamName);	    
 	}
 	
 	 // Assegna colori alla maglie
@@ -332,8 +438,8 @@ public class LineupGraphicController {
 	 
 	 
 	 // Imposta la lineup di default per una squadra
-	 private void setTeamLineup(String teamName) {
-		 
+	 private void setTeamLineup(String teamName) {			
+		 try {
 		 List<String> lineup = lineupController.getStartingLineup(teamName);
 		 
 		 if (lineup != null) {
@@ -341,6 +447,59 @@ public class LineupGraphicController {
 				 choiceBoxPlayers.get(i).setValue(lineup.get(i));
 			 }
 		 }
+		 } catch (Exception e) {
+             e.printStackTrace();
+		 }
+    
+	 }
+	 
+	 
+	 private void updateSuccessRate() {
+		 
+		 for (int i = 0; i < choiceBoxPlayers.size(); i++) {
+		    if (choiceBoxPlayers.get(i).getValue() == null) {
+		        Platform.runLater(() -> updateSuccessRate());
+		        return;
+		    }
+		 }
+		 
+		 // Raccoglie i valori attuali dalle ChoiceBox
+		 String formation = choiceBoxFormation.getValue();
+		 String playStyle = choiceBoxPlayStyle.getValue();
+		 String marking = choiceBoxMarking.getValue();
+		 List<String> playerNames = new ArrayList<>();
+		 
+		 for (int i = 0; i < choiceBoxPlayers.size(); i++) {
+			 playerNames.add(choiceBoxPlayers.get(i).getValue());
+		 }
+		 
+		 // Passa i dati al controller applicativo per il calcolo.
+		 try {
+			lineupController.updateSuccessRate(formation, playStyle, marking, playerNames, coachController.getUserTeam());
+		} catch (LineupException le) {
+			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+			openRoleHomeFromInit();
+		}
+	 }
+	 
+	 
+	 private void openRoleHomeFromInit()  {  
+		 
+		 String fxmlFile = "coachView.fxml";
+		 String title = "Coach Home";
+	    	
+		 Stage parentStage = (Stage)(rolePlayer1.getScene().getWindow());
+	    	
+		 openHome(fxmlFile, title, parentStage);
+	 }
+	 
+	 private void openHome(String fxmlFile, String title, Stage parentStage) {
+		 try {
+			OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	 }
 	 
 	 

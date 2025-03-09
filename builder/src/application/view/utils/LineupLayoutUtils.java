@@ -14,7 +14,6 @@ public class LineupLayoutUtils {		//dominio di layout
 	}
 	
 	 private static final Map<String, List<Point2D>> FORMATION_COORDS = new HashMap<>();
-	 private static final Map<String, List<String>> FORMATION_ROLES = new HashMap<>();
 
 	    static {
 	    	// Definizione coordinate per le formazioni
@@ -74,23 +73,6 @@ public class LineupLayoutUtils {		//dominio di layout
 	        		new Point2D(570, 281)  // Name Player 11
 	        ));
 	        
-	        
-	     // Definizione ruoli per le formazioni
-	        FORMATION_ROLES.put("4-5-1", Arrays.asList(
-	                "GK", "LB", "CB", "CB", "RB", "CDM", "CM", "CM", "LM", "RM", "ST"
-	            ));
-	        
-	        FORMATION_ROLES.put("4-4-2", Arrays.asList(
-                    "GK", "LB", "CB", "CB", "RB", "CM", "CM", "LM", "RM", "ST", "ST"
-                ));
-	        
-	        FORMATION_ROLES.put("3-5-2", Arrays.asList(
-	                "GK", "CB", "CB", "CB", "CDM", "CM", "CM", "LM", "RM", "ST", "ST"
-	            ));
-	        
-	        FORMATION_ROLES.put("4-3-3", Arrays.asList(
-                    "GK", "LB", "CB", "CB", "RB", "CDM", "CM", "CM", "LW", "RW", "ST"
-                ));
 	    }
 
 	    
@@ -99,8 +81,5 @@ public class LineupLayoutUtils {		//dominio di layout
 	    }
 	
 	    
-	    public static List<String> getRoles(String formation) {
-	        return FORMATION_ROLES.get(formation);
-	    }
 
 }

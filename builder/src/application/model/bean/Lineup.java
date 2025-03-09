@@ -6,16 +6,15 @@ public class Lineup {
 	 private String teamName;
 	 private String formation;
 	 private String playStyle;
-	 private String marking;
-	 //--private String teamStrength;
-	 private List<String> startingLineup; // Lista dei nomi dei giocatori titolari, in ordine
+	 private String markingType;
+	 private List<Footballer> startingLineup; // Lista dei nomi dei giocatori titolari, in ordine
 	 
 	 
-	 public Lineup(String teamName, String formation, String playStyle, String marking, List<String> startingLineup) {
+	 public Lineup(String teamName, String formation, String playStyle, String markingType, List<Footballer> startingLineup) {
 		this.teamName = teamName;
 		this.formation = formation;
 		this.playStyle = playStyle;
-		this.marking = marking;
+		this.markingType = markingType;
 		this.startingLineup = startingLineup;
 	}
 
@@ -50,22 +49,22 @@ public class Lineup {
 	}
 
 
-	public String getMarking() {
-		return marking;
+	public String getMarkingType() {
+		return markingType;
 	}
 
 
-	public void setMarking(String marking) {
-		this.marking = marking;
+	public void setMarkingType(String markingType) {
+		this.markingType = markingType;
 	}
 
 
-	public List<String> getStartingLineup() {
+	public List<Footballer> getStartingLineup() {
 		return startingLineup;
 	}
 
 
-	public void setStartingLineup(List<String> startingLineup) {
+	public void setStartingLineup(List<Footballer> startingLineup) {
 		this.startingLineup = startingLineup;
 	}
 
@@ -74,7 +73,7 @@ public class Lineup {
 	@Override
 	public String toString() {
 		return "Lineup [teamName=" + teamName + ", formation=" + formation + ", playStyle=" + playStyle + ", marking="
-				+ marking + ", startingLineup=" + startingLineup + "]";
+				+ markingType + ", startingLineup=" + startingLineup + "]";
 	}
 	 
 	 
