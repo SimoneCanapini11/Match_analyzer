@@ -48,7 +48,7 @@ public class SuccessRateCalculator extends Subject {
 	            totalReady += players.get(i).getReadyToPlay(roles.get(i));
 	        }
 	        
-	        double ourTeamStrength = ((totalReady / players.size()) * 100) - 10 ;
+	        double ourTeamStrength = ((totalReady / players.size()) * 100) - 80 ;
 	        
 	        // Base rate
 	        double baseRate = opponentStrength > 0 ? Math.min(((ourTeamStrength / opponentStrength) * 100), 100) - 15 : 0;

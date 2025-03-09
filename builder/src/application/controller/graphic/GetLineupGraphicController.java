@@ -500,7 +500,6 @@ public class GetLineupGraphicController {
 		 try {
 			OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	 }

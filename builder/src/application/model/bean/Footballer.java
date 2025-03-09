@@ -9,10 +9,6 @@ public class Footballer {
 	   private String team;
 	   private int age;		//-- year(data oggi - data nascita) 
 	   private List<RoleAffinity> roleAffinities;
-	  /* private int overallRating;    // da 0 a 100	//---------------controllo (?)
-	   private int physicalForm;   // da 0 a 100		
-	   private int mentalClarity;   // da 0 a 100
-	   private int deployable; // 0 o 1*/
 	   private FootballerAttributes attributes;
 	   
 	   public Footballer(String name, String surname, String team, int age, FootballerAttributes attributes) {
@@ -22,10 +18,6 @@ public class Footballer {
            this.age = age;
            this.attributes = attributes;
            this.roleAffinities = new ArrayList<>();
-           /*this.overallRating = overallRating;
-           this.physicalForm = physicalForm;
-           this.mentalClarity = mentalClarity;
-           this.deployable = deployable;*/
 	   }
 
 	// Getters e setters
@@ -114,10 +106,10 @@ public class Footballer {
 		double normalizedMentalClarity = attributes.getMentalClarity() / 100.0;
     
 		// Imposta i pesi per ogni parametro: questi valori sono da definire in base alle tue regole di business
-		double weightOverall = 0.4;
+		double weightOverall = 0.7;
 		double weightPhysical = 0.3;
-		double weightAffinity = 0.2;
-    	double weightLucidity = 0.1;
+		double weightAffinity = 0.5;
+    	double weightLucidity = 0.2;
     
     	// Calcola il readyToPlay come somma pesata
     	return  attributes.getDeployable() * 

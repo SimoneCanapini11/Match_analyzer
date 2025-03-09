@@ -23,7 +23,7 @@ public class DemoLineupDAO implements LineupDAO {
     // Metodo per inizializzare i dati demo
     private void initializeLineup() {
     	//Inter
-    	String TEAM_NAME_INTER = "Inter";
+    	final String TEAM_NAME_INTER = "Inter";
     	// Lista dei nomi dei giocatori titolari, in ordine (dalla posizione 1 a 11)
     	 List<Footballer> allInterPlayers = footballerDAO.getFootballersByTeam(TEAM_NAME_INTER);
     	 
@@ -37,7 +37,7 @@ public class DemoLineupDAO implements LineupDAO {
     	
     	
     	// Juventus
-    	String TEAM_NAME_JUVE = "Juventus";
+    	final String TEAM_NAME_JUVE = "Juventus";
     	// Lista dei nomi dei giocatori titolari, in ordine (dalla posizione 1 a 11)
     	 List<Footballer> allJuvePlayers = footballerDAO.getFootballersByTeam(TEAM_NAME_JUVE);
     	 
@@ -51,7 +51,7 @@ public class DemoLineupDAO implements LineupDAO {
         
         
         // Milan
-        String TEAM_NAME_MILAN = "Milan";
+        final String TEAM_NAME_MILAN = "Milan";
     	// Lista dei nomi dei giocatori titolari, in ordine (dalla posizione 1 a 11)
     	 List<Footballer> allMilanPlayers = footballerDAO.getFootballersByTeam(TEAM_NAME_MILAN);
     	 
