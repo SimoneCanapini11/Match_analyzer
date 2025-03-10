@@ -140,11 +140,21 @@ public class OpenWindowUtils {
         openHome(fxmlFile, title, event);
 	}
 	
+	public static void openOpponentLineup(MouseEvent event) throws IOException {
+		
+		String fxmlFile = "analyzeOpponentView.fxml";
+    	String title = "Analyze Opponent";
+        
+        openHome(fxmlFile, title, event);
+	}
+	
 	private static void openHome(String fxmlFile, String title, MouseEvent event) throws IOException {
 			
         Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
         openFXMLWindow(fxmlFile, title, null, parentStage, false);
 	}
+	
+
 }
 
 

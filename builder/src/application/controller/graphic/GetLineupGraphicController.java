@@ -2,6 +2,7 @@ package application.controller.graphic;
 
 import java.io.IOException;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,13 +15,10 @@ import application.view.observer.GUIObserver;
 import application.view.utils.AlertUtils;
 import application.view.utils.LineupLayoutUtils;
 import application.view.utils.OpenWindowUtils;
-import application.view.utils.TeamColorUtils;
-import application.view.utils.TeamColorUtils.TeamColors;
 import application.view.utils.UserInterfaceHelper;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -171,7 +169,7 @@ public class GetLineupGraphicController {
         
 	    
 	    // Imposta colori "maglie"
-	    setTeamColors(teamName);
+	    LineupLayoutUtils.setTeamColors(teamName, shirtPlayers);
 	    
 	    // Popola le choiceBoxPlayer con i giocatori della squadra		
 	    setTeamPlayers(teamName);
@@ -299,6 +297,15 @@ public class GetLineupGraphicController {
 	 }   
 	 
 	 
+	 @FXML
+	 private void openAnalyzeOpponent(MouseEvent event) throws IOException {
+	    	try {
+		 OpenWindowUtils.openOpponentLineup(event);
+	    	} catch (Exception e) {
+	    		e.printStackTrace();
+	    	}
+	 }
+	 
 	 @FXML													
      private void getBestLineup(MouseEvent event) throws IOException {
 		
@@ -335,65 +342,16 @@ public class GetLineupGraphicController {
 	private void updateFormationAndRoles(String teamName) {		
 		
 		 String formation = choiceBoxFormation.getValue();
-		 List<Point2D> coords = LineupLayoutUtils.getCoordinates(formation);
 		 List<String> roles = lineupController.getRequiredRoles(formation);
 		 
-		 if (coords == null || coords.size() < 11) {
-			 AlertUtils.showAlert(Alert.AlertType.ERROR, null, "Few parameters coords. Please contact the administrator");
-			 openRoleHomeFromInit();
-		 }
-		 
-		 if (roles == null || roles.size() < 11) {
-			 AlertUtils.showAlert(Alert.AlertType.ERROR, null, "Few parameters roles. Please contact the administrator");
-			 openRoleHomeFromInit();
-		 }
-		
-		// Assegna coordinate
-		for (int i = 0; i < shirtPlayers.size(); i++) {
-		    Label shirt = shirtPlayers.get(i);
-		    StackPane name = panePlayers.get(i);
-		    Point2D point = coords.get(i);
-		    
-
-		    // Posizionamento nome 
-		    name.setLayoutX(point.getX());
-		    name.setLayoutY(point.getY());
-		  
-		    // Posizionamento maglia
-		    shirt.setLayoutX(point.getX() + 44);	
-		    shirt.setLayoutY(point.getY() - 32);    
-		}
-		
-		
-		// Assegna i ruoli alle label
-	    for (int i = 0; i < roleLabels.size(); i++) {
-	        roleLabels.get(i).setText(roles.get(i));
-	    }
+		 LineupLayoutUtils.setFormationAndRoles(teamName, formation, shirtPlayers, panePlayers, roleLabels, roles);
 	    
 	    // Popola la ChoiceBox per i giocatori in base al ruolo richiesto
 	    setTeamPlayers(teamName);
 	    
 	    // Popola la ChoiceBox con startingLineup
 	    setTeamLineup(teamName);	    
-	}
-	
-	 // Assegna colori alla maglie
-	 private void setTeamColors(String teamName) {
-	        // Colori per il Team
-	        TeamColors colors = TeamColorUtils.getTeamColors(teamName);
-	        // Stile CSS con i colori ottenuti
-	        String style = "-fx-background-color: linear-gradient(to bottom, " 
-	                		+ colors.getFirstColor() + " 50%, " + colors.getSecondColor() + " 50%); "
-	                		+ "-fx-border-color: " + colors.getThirdColor() + "; "
-	                		+ "-fx-border-width: 3;"
-	                		+ "-fx-background-radius: 20;"
-	                		+ "-fx-border-radius: 20;";
-	        // Imposta lo stile per ogni label
-	        for (Label label : shirtPlayers) {
-	            label.setStyle(style);
-	        }
-	    }
-	 
+	}	 
 	 
 	 // Popola le choiceBoxPlayer con i giocatori della squadra
 	 private void setTeamPlayers(String teamName) {
@@ -426,18 +384,14 @@ public class GetLineupGraphicController {
 	 
 	 // Imposta la lineup di default per una squadra
 	 private void setTeamLineup(String teamName) {			
-		 try {
+		 
 		 List<String> lineup = lineupController.getStartingLineup(teamName);
 		 
 		 if (lineup != null) {
 			 for (int i = 0; i < choiceBoxPlayers.size(); i++) {
 				 choiceBoxPlayers.get(i).setValue(lineup.get(i));
 			 }
-		 }
-		 } catch (Exception e) {
-             e.printStackTrace();
-		 }
-    
+		 }	
 	 }
 	 
 	 

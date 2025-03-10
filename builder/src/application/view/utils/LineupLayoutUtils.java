@@ -1,11 +1,15 @@
 package application.view.utils;
 
 import java.util.Arrays;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import application.view.utils.TeamColorUtils.TeamColors;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 
 public class LineupLayoutUtils {		//dominio di layout
 	
@@ -81,5 +85,48 @@ public class LineupLayoutUtils {		//dominio di layout
 	    }
 	
 	    
+	    // Assegna colori alla maglie
+		 public static void setTeamColors(String teamName, List<Label> shirtPlayers) {
+		        // Colori per il Team
+		        TeamColors colors = TeamColorUtils.getTeamColors(teamName);
+		        // Stile CSS con i colori ottenuti
+		        String style = "-fx-background-color: linear-gradient(to bottom, " 
+		                		+ colors.getFirstColor() + " 50%, " + colors.getSecondColor() + " 50%); "
+		                		+ "-fx-border-color: " + colors.getThirdColor() + "; "
+		                		+ "-fx-border-width: 3;"
+		                		+ "-fx-background-radius: 20;"
+		                		+ "-fx-border-radius: 20;";
+		        // Imposta lo stile per ogni label
+		        for (Label label : shirtPlayers) {
+		            label.setStyle(style);
+		        }
+		    }
+		 
+		 
+		 public static void setFormationAndRoles(String teamName, String formation, List<Label> shirtPlayers, List<StackPane> panePlayers, List<Label> roleLabels, List<String> roles) {		
+			
+			 List<Point2D> coords = getCoordinates(formation);
+			
+			// Assegna coordinate
+			for (int i = 0; i < shirtPlayers.size(); i++) {
+			    Label shirt = shirtPlayers.get(i);
+			    StackPane name = panePlayers.get(i);
+			    Point2D point = coords.get(i);
+			    
 
+			    // Posizionamento nome 
+			    name.setLayoutX(point.getX());
+			    name.setLayoutY(point.getY());
+			  
+			    // Posizionamento maglia
+			    shirt.setLayoutX(point.getX() + 44);	
+			    shirt.setLayoutY(point.getY() - 32);    
+			}
+			
+			
+			// Assegna i ruoli alle label
+		    for (int i = 0; i < roleLabels.size(); i++) {
+		        roleLabels.get(i).setText(roles.get(i));
+		    }
+		 }
 }

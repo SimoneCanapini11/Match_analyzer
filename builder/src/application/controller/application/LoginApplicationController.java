@@ -28,7 +28,7 @@ public class LoginApplicationController {
 		User user = userDAO.findByEmail(formattedEmail);
 		
 		if (!(user != null && user.getPassword().equals(password))) {			
-			throw new ValidationException("Incorrect email or password");
+			throw new ValidationException("Invalid email or password");
 		}
 		
 		sessionManager.setCurrentUser(user); // Memorizza l'utente nella "sessione"

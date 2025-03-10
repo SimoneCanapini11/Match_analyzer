@@ -49,7 +49,7 @@ public class SignupGraphicController {
 		 if (choiceBoxRole != null && choiceBoxTeam !=null) {
 		 	// Crea una lista di valori 	
 			choiceBoxRole.setItems(FXCollections.observableArrayList(signupController.getRoles()));		
-		 	choiceBoxTeam.setItems(FXCollections.observableArrayList("Inter", "Milan"));				//-------------caricarli da TeamDAO (?)
+		 	choiceBoxTeam.setItems(FXCollections.observableArrayList(signupController.getTeamNames()));				
 		 }																//-------Squadre che diventano grigie quando scelgo un ruolo (coach) già occupato per la squadra  
 	 }
 	

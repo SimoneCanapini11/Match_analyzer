@@ -121,7 +121,7 @@
                   <AnchorPane prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;">
                      <children>
                         <ChoiceBox fx:id="choiceBoxFormation" layoutX="35.0" layoutY="204.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;" text="Analyze Opponent" textFill="WHITE">
+                        <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#openAnalyzeOpponent" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;" text="Analyze Opponent" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>

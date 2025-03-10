@@ -1,9 +1,6 @@
 package application.controller.graphic;
 
 import java.io.IOException;
-
-
-
 import application.controller.application.LoginApplicationController;
 import application.exception.ValidationException;
 import application.view.utils.*;

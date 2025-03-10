@@ -1,6 +1,8 @@
 package application.model.dao.demo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import application.model.bean.Team;
@@ -31,4 +33,10 @@ public class DemoTeamDAO implements TeamDAO {
     public Team getTeamByName(String teamName) {
         return teams.get(teamName);
     }
+	
+	public List<String> getTeamNameList() {
+		List<String> teamNames = new ArrayList<String>();
+		teamNames.addAll(teams.keySet());
+		return teamNames;
+	}
 }

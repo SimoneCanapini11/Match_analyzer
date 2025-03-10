@@ -3,6 +3,7 @@ package application.controller.application;
 import application.util.Validator;
 import application.model.bean.User;
 import application.model.dao.DAOFactory;
+import application.model.dao.TeamDAO;
 import application.model.dao.UserDAO;
 import application.util.Formatter;
 
@@ -16,10 +17,12 @@ import application.model.bean.RoleUser;
 public class SignupApplicationController {
 	private UserDAO userDAO;
 	private SessionManager sessionManager; // gestisce lo stato globale
+	private TeamDAO teamDAO;
 		    
 	public SignupApplicationController() {
 		this.userDAO = DAOFactory.getUserDAO();
         this.sessionManager = SessionManager.getInstance();
+        this.teamDAO = DAOFactory.getTeamDAO();
 	}
 
 	public boolean register(String email, String password, String repPassword) throws ValidationException {
@@ -113,4 +116,8 @@ public class SignupApplicationController {
 	public String getUserRole() {
 		return sessionManager.getCurrentUser().getRole().getDisplayName().toLowerCase();
 	}
+	
+	public List<String> getTeamNames() {
+        return teamDAO.getTeamNameList();
+    }
 }
