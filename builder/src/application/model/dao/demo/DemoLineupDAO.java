@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import application.exception.DAOException;
 import application.model.bean.Footballer;
 import application.model.bean.Lineup;
 import application.model.dao.LineupDAO;
@@ -67,7 +68,11 @@ public class DemoLineupDAO implements LineupDAO {
 
 	@Override
 	public Lineup getFormationByTeam(String nameTeam) {
-		return defaultLineup.get(nameTeam);
+		Lineup lineup = defaultLineup.get(nameTeam);
+		if (lineup == null) {
+            throw new DAOException("Details not found for team: " + nameTeam);
+        }
+		return lineup;
 	}
 
 	@Override

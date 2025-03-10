@@ -1,6 +1,7 @@
 package application.controller.graphic;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -31,9 +31,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+
 public class GetLineupGraphicController {
 	
-	private UserApplicationController coachController;			//--------metodi in comune con altre classi	
+	private UserApplicationController coachController;			
 	private GetLineupApplicationController lineupController;
 	
 	 public GetLineupGraphicController() {
@@ -184,6 +185,7 @@ public class GetLineupGraphicController {
 	    choiceBoxFormation.setItems(FXCollections.observableArrayList(lineupController.getFormationList()));		
         choiceBoxFormation.setOnAction(e -> updateFormationAndRoles(teamName));
         choiceBoxFormation.setValue(lineupController.getFormation(teamName));
+		
         
         // Imposta lineup salvata
         setTeamLineup(teamName);
@@ -276,42 +278,24 @@ public class GetLineupGraphicController {
 	
 	
 	 @FXML
-	 private void handleSignOut(MouseEvent event) throws IOException {		//--------metodi in comune con altre classi
+	 private void handleSignOut(MouseEvent event) throws IOException {		
 	    	
 		coachController.signOut();
-	    	
-		String fxmlFile = "homepage.fxml";
-		String title = "Homepage";
-	 	    
-		// Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
-		Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-		
-		openHome(fxmlFile, title, parentStage);
-		AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Sign out successful");
+		OpenWindowUtils.signOut(event);
 	 }
 	
 	
 	 @FXML
-	 private void openRoleHome(MouseEvent event) throws IOException {		//--------metodi in comune con altre classi
+	 private void openRoleHome(MouseEvent event) throws IOException {		
 	    	
-		 String fxmlFile = "coachView.fxml";
-		 String title = "Coach Home";
-	    	
-		 Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-	    	
-		 openHome(fxmlFile, title, parentStage);
+		 OpenWindowUtils.openCoachHome(event);
 	 }   
 	 
 	 
 	 @FXML
 	 private void openGetLineup(MouseEvent event) throws IOException {
 	    	
-		 String fxmlFile = "getLineupView.fxml";
-		 String title = "Get Lineup";
-	    	
-		 Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-		 
-		 openHome(fxmlFile, title, parentStage);
+		 OpenWindowUtils.openLineup(event);
 	 }   
 	 
 	 
@@ -491,7 +475,7 @@ public class GetLineupGraphicController {
 		 String fxmlFile = "coachView.fxml";
 		 String title = "Coach Home";
 	    	
-		 Stage parentStage = (Stage)(rolePlayer1.getScene().getWindow());
+		 Stage parentStage = (Stage)(nameLabel.getScene().getWindow());
 	    	
 		 openHome(fxmlFile, title, parentStage);
 	 }

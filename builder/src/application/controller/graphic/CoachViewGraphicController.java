@@ -2,15 +2,16 @@ package application.controller.graphic;
 
 import java.io.IOException;
 
+import application.controller.application.GetLineupApplicationController;
 import application.controller.application.UserApplicationController;
+import application.exception.DAOException;
 import application.view.utils.*;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+
 
 public class CoachViewGraphicController {
 
@@ -41,39 +42,29 @@ public class CoachViewGraphicController {
     private void handleSignOut(MouseEvent event) throws IOException {
     	
     	coachController.signOut();
-    	
-    	String fxmlFile = "homepage.fxml";
- 	    String title = "Homepage";
- 	    
- 	    // Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
-		Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-		
-		OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
-		AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Sign out successful");
+    	OpenWindowUtils.signOut(event);
     }
     
     
     @FXML
     private void openRoleHome(MouseEvent event) throws IOException {
     	
-    	String fxmlFile = "coachView.fxml";
-    	String title = "Coach Home";
-    	
-    	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-    	
-        OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
+    	OpenWindowUtils.openCoachHome(event);
     }
     
     
     @FXML
     private void openGetLineup(MouseEvent event) throws IOException {
     	
-    	String fxmlFile = "getLineupView.fxml";
-    	String title = "Get Lineup";
+    	GetLineupApplicationController lineupController = new GetLineupApplicationController();
+    	try {
+    		String teamDetails = lineupController.getFormation(coachController.getUserTeam());
+    	} catch (DAOException dae) {
+			AlertUtils.showAlert(Alert.AlertType.WARNING, null, dae.getMessage());
+			return;
+		}
     	
-    	Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-    	
-        OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
+    	OpenWindowUtils.openLineup(event);
     }
     
     

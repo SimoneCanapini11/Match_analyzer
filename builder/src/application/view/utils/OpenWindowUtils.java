@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -104,6 +106,45 @@ public class OpenWindowUtils {
         newStage.show();
     }
     
+    
+    public static void signOut(MouseEvent event) throws IOException {
+		
+		String fxmlFile = "homepage.fxml";
+ 	    String title = "Homepage";
+ 	    
+ 	    openHome(fxmlFile, title, event);
+		AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Sign out successful");
+	}
+	
+	public static void openTrainerHome(MouseEvent event) throws IOException {
+		
+		String fxmlFile = "trainerView.fxml";
+    	String title = "Trainer Home";
+    	
+    	openHome(fxmlFile, title, event);
+	}
+	
+	public static void openCoachHome(MouseEvent event) throws IOException {
+			
+        String fxmlFile = "coachView.fxml";
+        String title = "Coach Home";
+        
+       openHome(fxmlFile, title, event);
+	}
+	
+	public static void openLineup(MouseEvent event) throws IOException {
+			
+		String fxmlFile = "getLineupView.fxml";
+    	String title = "Get Lineup";
+        
+        openHome(fxmlFile, title, event);
+	}
+	
+	private static void openHome(String fxmlFile, String title, MouseEvent event) throws IOException {
+			
+        Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
+        openFXMLWindow(fxmlFile, title, null, parentStage, false);
+	}
 }
 
 
