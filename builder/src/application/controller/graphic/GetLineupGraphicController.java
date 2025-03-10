@@ -344,7 +344,7 @@ public class GetLineupGraphicController {
 		 String formation = choiceBoxFormation.getValue();
 		 List<String> roles = lineupController.getRequiredRoles(formation);
 		 
-		 LineupLayoutUtils.setFormationAndRoles(teamName, formation, shirtPlayers, panePlayers, roleLabels, roles);
+		 LineupLayoutUtils.setFormationAndRoles(formation, shirtPlayers, panePlayers, roleLabels, roles);
 	    
 	    // Popola la ChoiceBox per i giocatori in base al ruolo richiesto
 	    setTeamPlayers(teamName);

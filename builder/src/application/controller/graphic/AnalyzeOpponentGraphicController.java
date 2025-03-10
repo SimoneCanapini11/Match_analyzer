@@ -159,7 +159,7 @@ public class AnalyzeOpponentGraphicController {
 		    labelFormation.setText(lineupController.getFormation(opponentName));
 		    labelPlayStyle.setText(lineupController.getPlayStyle(opponentName));
 		    
-		    updateFormationAndRoles(opponentName);
+		    updateFormationAndRoles();
 		    
 		    setTeamLineup(opponentName);
 		    
@@ -197,12 +197,12 @@ public class AnalyzeOpponentGraphicController {
 		 OpenWindowUtils.openLineup(event);
 	 }   
 	
-	private void updateFormationAndRoles(String teamName) {		
+	private void updateFormationAndRoles() {		
 		
 		 String formation = labelFormation.getText();
 		 List<String> roles = lineupController.getRequiredRoles(formation);
 		 
-		 LineupLayoutUtils.setFormationAndRoles(teamName, formation, shirtPlayers, panePlayers, roleLabels, roles);
+		 LineupLayoutUtils.setFormationAndRoles(formation, shirtPlayers, panePlayers, roleLabels, roles);
 	}
 	
 	 // Imposta la lineup di default per una squadra

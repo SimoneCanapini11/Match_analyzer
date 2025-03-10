@@ -103,7 +103,7 @@ public class LineupLayoutUtils {		//dominio di layout
 		    }
 		 
 		 
-		 public static void setFormationAndRoles(String teamName, String formation, List<Label> shirtPlayers, List<StackPane> panePlayers, List<Label> roleLabels, List<String> roles) {		
+		 public static void setFormationAndRoles(String formation, List<Label> shirtPlayers, List<StackPane> panePlayers, List<Label> roleLabels, List<String> roles) {		
 			
 			 List<Point2D> coords = getCoordinates(formation);
 			
