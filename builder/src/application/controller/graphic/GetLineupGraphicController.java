@@ -231,19 +231,17 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		coachController.signOut();
 		OpenWindowUtils.signOut(event);
 	 }
-	
-	
-	 @FXML
-	 private void openRoleHome(MouseEvent event) throws IOException {		
-	    	
-		 OpenWindowUtils.openCoachHome(event);
-	 }   
-	 
 	 
 	 @FXML
 	 private void openGetLineup(MouseEvent event) throws IOException {
 	    	
 		 OpenWindowUtils.openLineup(event);
+	 }
+	
+	 @FXML
+	 private void openRoleHome(MouseEvent event) throws IOException {		
+	    	
+		 OpenWindowUtils.openCoachHome(event);
 	 }   
 	 
 	 
