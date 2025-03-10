@@ -58,7 +58,7 @@ public class CoachViewGraphicController {
     	
     	GetLineupApplicationController lineupController = new GetLineupApplicationController();
     	try {
-    		String teamDetails = lineupController.getFormation(coachController.getUserTeam());
+    		lineupController.getFormation(coachController.getUserTeam());
     	} catch (DAOException dae) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, dae.getMessage());
 			return;
