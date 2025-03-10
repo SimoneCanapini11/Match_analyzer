@@ -35,7 +35,7 @@ public class DemoTeamDAO implements TeamDAO {
     }
 	
 	public List<String> getTeamNameList() {
-		List<String> teamNames = new ArrayList<String>();
+		List<String> teamNames = new ArrayList<>();
 		teamNames.addAll(teams.keySet());
 		return teamNames;
 	}
