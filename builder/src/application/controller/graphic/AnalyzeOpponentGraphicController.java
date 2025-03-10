@@ -18,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
-public class AnalyzeOpponentGraphicController {
+public class AnalyzeOpponentGraphicController extends BaseGraphicController {
 	
 
 	private UserApplicationController coachController;			
@@ -48,56 +48,7 @@ public class AnalyzeOpponentGraphicController {
      private Label labelFormation;
 	 @FXML
      private Label labelPlayStyle;
-	 
-	 @FXML private Label shirtPlayer1;
-	 @FXML private Label shirtPlayer2;
-	 @FXML private Label shirtPlayer3;
-	 @FXML private Label shirtPlayer4; 
-	 @FXML private Label shirtPlayer5;
-	 @FXML private Label shirtPlayer6;
-	 @FXML private Label shirtPlayer7;
-	 @FXML private Label shirtPlayer8;
-	 @FXML private Label shirtPlayer9;
-	 @FXML private Label shirtPlayer10;
-	 @FXML private Label shirtPlayer11;	
 		
-		
-	 @FXML private Label namePlayer1;
-	 @FXML private Label namePlayer2;
-	 @FXML private Label namePlayer3;
-	 @FXML private Label namePlayer4; 
-	 @FXML private Label namePlayer5;
-	 @FXML private Label namePlayer6;
-	 @FXML private Label namePlayer7;
-	 @FXML private Label namePlayer8;
-	 @FXML private Label namePlayer9;
-	 @FXML private Label namePlayer10;
-	 @FXML private Label namePlayer11;
-		
-	 @FXML private Label rolePlayer1;
-	 @FXML private Label rolePlayer2; 
-	 @FXML private Label rolePlayer3;
-	 @FXML private Label rolePlayer4; 
-	 @FXML private Label rolePlayer5;
-	 @FXML private Label rolePlayer6;
-	 @FXML private Label rolePlayer7;
-	 @FXML private Label rolePlayer8;
-	 @FXML private Label rolePlayer9;
-	 @FXML private Label rolePlayer10;
-	 @FXML private Label rolePlayer11;
-		
-	 @FXML private StackPane panePlayer1;
-	 @FXML private StackPane panePlayer2;
-	 @FXML private StackPane panePlayer3;
-	 @FXML private StackPane panePlayer4;
-	 @FXML private StackPane panePlayer5;
-	 @FXML private StackPane panePlayer6;
-	 @FXML private StackPane panePlayer7;
-	 @FXML private StackPane panePlayer8;
-	 @FXML private StackPane panePlayer9;
-	 @FXML private StackPane panePlayer10;
-	 @FXML private StackPane panePlayer11;	 
-	 
 	 @FXML private Label labelPlayer1;
 	 @FXML private Label labelPlayer2;
 	 @FXML private Label labelPlayer3;
