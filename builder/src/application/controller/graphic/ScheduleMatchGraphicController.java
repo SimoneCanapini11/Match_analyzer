@@ -3,6 +3,7 @@ package application.controller.graphic;
 
 import java.io.IOException;
 
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -30,7 +31,6 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
 
 
 
@@ -119,7 +119,6 @@ public class ScheduleMatchGraphicController {
 	
 		 UserInterfaceHelper.initializeLabelImage(nameLabel, teamLogoImage, userName, userSurname, teamName);
 		 
-		setWeekendDate();
 		configureDatePicker(); 
 		 
 		// Converter personalizzato
@@ -210,46 +209,37 @@ public class ScheduleMatchGraphicController {
      }
 	 
    
-	private void setWeekendDate() {
-		matchDate.setDayCellFactory(datePicker -> new DateCell() {
-		    @Override
-		    public void updateItem(LocalDate date, boolean empty) {
-		        super.updateItem(date, empty);
-		        if (!empty && date != null) {
-		            DayOfWeek day = date.getDayOfWeek();
-		            if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
-		                getStyleClass().add("weekend-cell");
-		            } else {
-		                getStyleClass().remove("weekend-cell");
-		            }
-		        }
-		    }
-		});
-	}
-	
 	private void configureDatePicker() {
+	    matchDate.setPromptText("dd/MM/yy"); 
 
-		matchDate.setPromptText("dd/MM/yy"); 
-	    
-	    // Disabilita la selezione di date passate
-	    matchDate.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+	    // Unica DayCellFactory che fa entrambe le cose
+	    matchDate.setDayCellFactory(datePicker -> new DateCell() {
 	        @Override
-	        public DateCell call(final DatePicker datePicker) {
-	            return new DateCell() {
-	                @Override
-	                public void updateItem(LocalDate item, boolean empty) {
-	                    super.updateItem(item, empty);
+	        public void updateItem(LocalDate item, boolean empty) {
+	            super.updateItem(item, empty);
 
-	                    // Disabilita le date precedenti a oggi
-	                    if (item.isBefore(LocalDate.now())) {
-	                        setDisable(true);
-	                        setStyle("-fx-background-color: #eeeeee;"); 
-	                    }
+	            // Pulisci eventuali stili o disabilitazioni precedenti
+	            getStyleClass().remove("weekend-cell");
+	            setDisable(false);
+	            setStyle(null);
+
+	            if (!empty && item != null) {
+	                // 1) Disabilita date precedenti a oggi
+	                if (item.isBefore(LocalDate.now())) {
+	                    setDisable(true);
+	                    setStyle("-fx-background-color: #eeeeee;");
 	                }
-	            };
+
+	                // 2) Aggiungi stile ai weekend
+	                DayOfWeek day = item.getDayOfWeek();
+	                if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
+	                    getStyleClass().add("weekend-cell");
+	                }
+	            }
 	        }
 	    });
 	}
+
 	
 	private void parseEditorText() {
 	    String newText = matchDate.getEditor().getText();

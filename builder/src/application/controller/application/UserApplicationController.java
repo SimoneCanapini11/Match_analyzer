@@ -29,12 +29,7 @@ public class UserApplicationController {
 	}
 	
 	public boolean nextMatchCoachRequest(String teamName) {
-		
-		if (!sessionManager.isMatchScheduled(teamName)) {
-			return false;
-		}
-		
-		return true;
+		return sessionManager.isMatchScheduled(teamName);
 	}
 	
 	public void gameEntered(String teamName) {

@@ -75,13 +75,13 @@ public class ScheduleMatchApplicationController {
 			 }
 		 }
 		 
-		if (!checkMatch(teamName, matchDateTime, existingMatches)) {
+		if (!checkMatch(matchDateTime, existingMatches)) {
 			 throw new TrainerException("The team already has a match within 24 hours");
          }
 		
 		List<Match> existingOpponentMatches = matchDAO.getMatchesByTeam(opponent);
 		
-		if (!checkMatch(opponent, matchDateTime, existingOpponentMatches)) {
+		if (!checkMatch(matchDateTime, existingOpponentMatches)) {
 			 throw new TrainerException(opponent + " already has a match within 24 hours");
         }
          
@@ -102,7 +102,7 @@ public class ScheduleMatchApplicationController {
 	}
 	
 	
-	private boolean checkMatch(String teamName, LocalDateTime matchDateTime, List<Match> existingMatches) {
+	private boolean checkMatch(LocalDateTime matchDateTime, List<Match> existingMatches) {
 		
 		for (Match match : existingMatches) {
 			// Controlla su esistanza di un match entro 24 ore di distanza

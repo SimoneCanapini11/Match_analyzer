@@ -1,7 +1,7 @@
 /* Stile di base del DatePicker */
 .date-picker .text-field {
     -fx-background-color: rgba(248, 247, 247, 1); /* Colore di sfondo */
-    -fx-border-color: #ccc; /* Bordo grigio sottile */
+    -fx-border-color: #ccc; 
     -fx-border-radius: 5; /* Angoli arrotondati */
     -fx-background-radius: 5; /* Arrotondamento anche dello sfondo */
     -fx-text-fill: #333; /* Colore del testo */
@@ -10,8 +10,8 @@
 
 /* Quando la casella è attiva (cliccata) */
 .date-picker .text-field:focused {
-    -fx-background-color: rgba(240, 240, 240, 1); /* Colore leggermente più scuro */
-    -fx-border-color: #999; /* Bordo più scuro */
+    -fx-background-color: rgba(240, 240, 240, 1); 
+    -fx-border-color: #999; 
 }
 
 /* Bottone a destra (icona calendario) */
@@ -59,10 +59,10 @@
 
 /* Weekend con sfondo a forma di cerchio grigio */
 .weekend-cell {
-    -fx-background-color: #eee;    /* Sfondo grigio chiaro */
-    -fx-background-radius: 15;     /* Rende lo sfondo circolare  */
+    -fx-background-color: #eee;    
+    -fx-background-radius: 15;     
     -fx-text-fill: #333;
 }
 .weekend-cell:filled:hover {
-    -fx-background-color: #ddd;    /* Hover un po’ più scuro */
+    -fx-background-color: #ddd;    
 }
