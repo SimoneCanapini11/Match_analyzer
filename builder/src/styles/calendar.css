@@ -9,7 +9,7 @@
 }
 
 /* Quando la casella è attiva (cliccata) */
-.date-picker .text-field:focused {
+.date-picker .text-field:focus {
     -fx-background-color: rgba(240, 240, 240, 1); 
     -fx-border-color: #999; 
 }
@@ -46,12 +46,12 @@
 }
 
 /* Colore di hover */
-.date-cell:filled:hover {
+.date-cell.filled:hover {
     -fx-background-color: #f0f0f0;
 }
 
 /* Giorno selezionato */
-.date-cell:selected {
+.date-cell.selected {
     -fx-background-color: #0066cc;
     -fx-text-fill: white;
     -fx-background-radius: 5;
@@ -63,6 +63,6 @@
     -fx-background-radius: 15;     
     -fx-text-fill: #333;
 }
-.weekend-cell:filled:hover {
+.weekend-cell.filled:hover {
     -fx-background-color: #ddd;    
 }

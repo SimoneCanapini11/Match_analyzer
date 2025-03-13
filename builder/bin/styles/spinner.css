@@ -26,8 +26,8 @@
     -fx-background-color: #e0e0e0; /* Leggero grigio in hover */
 }
 
-.spinner .increment-arrow-button:pressed,
-.spinner .decrement-arrow-button:pressed {
+.spinner .increment-arrow-button.pressed,
+.spinner .decrement-arrow-button.pressed {
     -fx-background-color: #d0d0d0;
 }
 
