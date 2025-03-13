@@ -212,24 +212,25 @@ public class ScheduleMatchGraphicController {
 	 
    
 	private void configureDatePicker() {
-	    matchDate.setPromptText("dd/MM/yy"); 
+		matchDate.setPromptText("dd/MM/yy"); 
 
 	    matchDate.setDayCellFactory(datePicker -> new DateCell() {
 	        @Override
 	        public void updateItem(LocalDate item, boolean empty) {
 	            super.updateItem(item, empty);
 
-	            getStyleClass().remove("weekend-cell");
-	            setDisable(false);
-	            setStyle(null);
+	            // Reset stile prima di ogni aggiornamento
+	            getStyleClass().removeAll("weekend-cell", "disabled-cell");
+	            setStyle("");
 
 	            if (!empty && item != null) {
-	                // Disabilita date precedenti a oggi
+	                // Disabilita date passate
 	                if (item.isBefore(LocalDate.now())) {
+	                    getStyleClass().add("disabled-cell");
 	                    setDisable(true);
-	                    setStyle("-fx-background-color: #eeeeee;");
 	                }
 
+	                // Evidenzia weekend
 	                if (item.getDayOfWeek() == DayOfWeek.SATURDAY || item.getDayOfWeek() == DayOfWeek.SUNDAY) {
 	                    getStyleClass().add("weekend-cell");
 	                }

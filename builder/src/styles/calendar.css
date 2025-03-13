@@ -57,12 +57,24 @@
     -fx-background-radius: 5;
 }
 
-/* Weekend con sfondo a forma di cerchio grigio */
-.weekend-cell {
-    -fx-background-color: #eee;    
-    -fx-background-radius: 15;     
-    -fx-text-fill: #333;
+
+/* Aumenta la specificità dei selettori */
+.date-picker-popup .weekend-cell {
+    -fx-background-color: #f0f0f0 !important;
+    -fx-background-radius: 15;
+    -fx-text-fill: #666;
 }
-.weekend-cell.filled:hover {
-    -fx-background-color: #ddd;    
+
+.date-picker-popup .weekend-cell:hover {
+    -fx-background-color: #e0e0e0 !important;
+}
+
+.date-picker-popup .weekend-cell.selected {
+    -fx-background-color: #0078d4 !important;
+    -fx-text-fill: white !important;
+}
+
+.date-picker-popup .disabled-cell {
+    -fx-background-color: #f8f8f8 !important;
+    -fx-text-fill: #ccc !important;
 }
