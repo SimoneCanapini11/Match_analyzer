@@ -3,6 +3,7 @@ package application.controller.graphic;
 import java.io.IOException;
 
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +28,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+
 
 
 public class GetLineupGraphicController extends BaseGraphicController {
@@ -87,7 +88,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
     	String userSurname = coachController.getUserSurname();
     	String teamName = coachController.getUserTeam();
     	
-    	UserInterfaceHelper.initializeUserInfo(nameLabel, teamLogoImage, userName, userSurname, teamName);
+    	UserInterfaceHelper.initializeLabelImage(nameLabel, teamLogoImage, userName, userSurname, teamName);
     	
     	List<Label> namePlayers;
     	
@@ -174,7 +175,8 @@ public class GetLineupGraphicController extends BaseGraphicController {
 			}
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
-			openRoleHomeFromInit();
+				
+			return;
 		}
         
         // Registra l'observer GUI al SuccessRateCalculator 
@@ -247,11 +249,11 @@ public class GetLineupGraphicController extends BaseGraphicController {
 	 
 	 @FXML
 	 private void openAnalyzeOpponent(MouseEvent event) throws IOException {
-	    	try {
-		 OpenWindowUtils.openOpponentLineup(event);
-	    	} catch (Exception e) {
-	    		e.printStackTrace();
-	    	}
+		 if (coachController.nextMatchCoachRequest(coachController.getUserTeam())) {
+			 OpenWindowUtils.openOpponentLineup(event);
+	 	} else {
+	 		AlertUtils.showAlert(Alert.AlertType.WARNING, null, "Next opponent has not been scheduled");
+	 	} 
 	 }
 	 
 	 @FXML													
@@ -275,6 +277,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
 			openRoleHome(event);
+			return;
 		}
          
 		 AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Best lineup inserted");
@@ -367,28 +370,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 			lineupController.updateSuccessRate(formation, playStyle, marking, playerNames, coachController.getUserTeam());
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
-			openRoleHomeFromInit();
 		}
 	 }
-	 
-	 
-	 private void openRoleHomeFromInit()  {  
-		 
-		 String fxmlFile = "coachView.fxml";
-		 String title = "Coach Home";
-	    	
-		 Stage parentStage = (Stage)(nameLabel.getScene().getWindow());
-	    	
-		 openHome(fxmlFile, title, parentStage);
-	 }
-	 
-	 private void openHome(String fxmlFile, String title, Stage parentStage) {
-		 try {
-			OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, false);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	 }
-	 
 	 
 }

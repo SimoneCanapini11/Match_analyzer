@@ -14,6 +14,12 @@ public class FullTeamDAO implements TeamDAO {
 	}
 
 	@Override
+	public List<String> getOpponentList(String teamName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public List<String> getTeamNameList() {
 		// TODO Auto-generated method stub
 		return null;

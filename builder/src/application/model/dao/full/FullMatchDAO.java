@@ -21,8 +21,20 @@ public class FullMatchDAO implements MatchDAO {
 
 	@Override
 	public List<Match> getMatchesByTeam(String teamName) {
-		// TODO Auto-generated method stub
+		//--- solo match futuri
 		return null;
+	}
+
+	@Override
+	public void saveMatch(Match match) {
+		//----- da implementare
+		
+	}
+
+	@Override
+	public void updateMatch(Match match, String teamName) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -27,4 +27,17 @@ public class UserApplicationController {
 	public String getUserTeam() {
 		return sessionManager.getCurrentUser().getTeam();
 	}
+	
+	public boolean nextMatchCoachRequest(String teamName) {
+		
+		if (!sessionManager.isMatchScheduled(teamName)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public void gameEntered(String teamName) {
+		sessionManager.setMatchScheduled(teamName, true); 
+	}
 }

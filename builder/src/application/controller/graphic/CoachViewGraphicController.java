@@ -34,7 +34,7 @@ public class CoachViewGraphicController {
     	String userSurname = coachController.getUserSurname();
     	String teamName = coachController.getUserTeam();
     	
-    	UserInterfaceHelper.initializeUserInfo(nameLabel, teamLogoImage, userName, userSurname, teamName);
+    	UserInterfaceHelper.initializeLabelImage(nameLabel, teamLogoImage, userName, userSurname, teamName);
     }
     
 	

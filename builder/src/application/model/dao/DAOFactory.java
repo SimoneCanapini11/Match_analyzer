@@ -18,9 +18,10 @@ public class DAOFactory {
 	
 	private static DemoLineupDAO instanceLineup;	// singleton lineupDAO
 	private static DemoUserDAO instanceUser;    // singleton userDAO
+	private static DemoMatchDAO instanceMatch;
 	
     public static synchronized UserDAO getUserDAO() {
-    	if (mode == null) {					//-------da gestire
+    	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
     	if (MODE_DEMO.equals(mode)) { 
@@ -36,7 +37,7 @@ public class DAOFactory {
     }
     
     public static TeamDAO getTeamDAO() {
-    	if (mode == null) {					//-------da gestire
+    	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
         if (MODE_DEMO.equals(mode)) {
@@ -48,7 +49,7 @@ public class DAOFactory {
     } 
     
     public static FootballerDAO getFootballerDAO() {
-    	if (mode == null) {					//-------da gestire
+    	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
         if (MODE_DEMO.equals(mode)) {
@@ -60,7 +61,7 @@ public class DAOFactory {
     } 
     
     public static synchronized LineupDAO getLineupDAO() {
-    	if (mode == null) {					//-------da gestire
+    	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
     	if (MODE_DEMO.equals(mode)) { 
@@ -76,11 +77,14 @@ public class DAOFactory {
     } 
     
     public static MatchDAO getMatchDAO() {
-    	if (mode == null) {					//-------da gestire
+    	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
         if (MODE_DEMO.equals(mode)) {
-            return new DemoMatchDAO();
+        	if (instanceMatch == null) {  
+        		instanceMatch = new DemoMatchDAO();
+    	    }
+    	    return instanceMatch;   
         } else {
         	return new FullMatchDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB

@@ -148,6 +148,14 @@ public class OpenWindowUtils {
         openHome(fxmlFile, title, event);
 	}
 	
+	public static void openScheduleMatch(MouseEvent event) throws IOException {
+		
+		String fxmlFile = "scheduleMatchView.fxml";
+    	String title = "Schedule Upcoming Match";
+        
+        openHome(fxmlFile, title, event);
+	}
+	
 	private static void openHome(String fxmlFile, String title, MouseEvent event) throws IOException {
 			
         Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();

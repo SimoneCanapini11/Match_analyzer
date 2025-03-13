@@ -123,6 +123,10 @@ public class SignupGraphicController {
         if (isConfirmed) {
         	// Lancio schermata in base al ruolo	
         	String userRole = signupController.getUserRole();
+        	if (userRole.equals("footballer")) {
+        		AlertUtils.comingSoonAlert();
+        		return;
+        	}
         	OpenWindowUtils.openRoleView(event, userRole);			
         }
      } catch (ValidationException ve) {

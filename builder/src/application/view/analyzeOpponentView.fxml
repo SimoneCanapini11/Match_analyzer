@@ -73,7 +73,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="matchesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Matches" textFill="WHITE">
+            <Button fx:id="FixturesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Fixtures" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

@@ -68,7 +68,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="matchesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Matches" textFill="WHITE">
+            <Button fx:id="FixturesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Fixtures" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -162,7 +162,7 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <VBox fx:id="BoxManage" alignment="TOP_CENTER" layoutX="517.0" layoutY="105.0" onMouseClicked="#comingSoonBtn" prefHeight="190.0" prefWidth="266.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-radius: 10; -fx-padding: 15; -fx-border-color: #e0e0e0; -fx-cursor: hand;">
+                        <VBox fx:id="BoxManage" alignment="TOP_CENTER" layoutX="517.0" layoutY="105.0" onMouseClicked="#openMatchSchedule" prefHeight="190.0" prefWidth="266.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-radius: 10; -fx-padding: 15; -fx-border-color: #e0e0e0; -fx-cursor: hand;">
                            <children>
                               <Label text="Schedule Match">
                                  <font>

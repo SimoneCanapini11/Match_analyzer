@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.ScheduleMatchGraphicController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="1300.0" spacing="15.0" style="-fx-background-color: black; -fx-padding: 10;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="logoImage" fitHeight="66.0" fitWidth="66.0" onMouseClicked="#openRoleHome" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../../images/logo_black.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </ImageView>
+            <Button fx:id="lineupHomeBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="31.0" prefWidth="59.0" style="-fx-cursor: hand; -fx-background-color: black;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="matchBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openMatchSchedule" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Matches" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="tableBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="23.0" prefWidth="57.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Table" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="fixturesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Fixtures" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: black;" text="Team Stats" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="250.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fx:id="teamLogoImage" fitHeight="66.0" fitWidth="66.0">
+               <image>
+                  <Image url="@../../images/logo_black.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="20.0" prefWidth="142.0" text="Nome Cognome" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnSignOut" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleSignOut" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(227, 227, 227, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" text="Sign Out">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="70.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;">
+                     <children>
+                        <Button fx:id="btnBack" alignment="CENTER" layoutX="113.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Back">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="115.0" layoutY="120.0" prefHeight="44.0" prefWidth="88.0" text="Date:">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="115.0" layoutY="213.0" prefHeight="44.0" prefWidth="88.0" text="Time: ">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="115.0" layoutY="306.0" prefHeight="44.0" prefWidth="97.0" text="Opponent:">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="choiceBoxOpponent" layoutX="115.0" layoutY="346.0" prefHeight="34.0" prefWidth="171.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
+                        <Label layoutX="115.0" layoutY="397.0" prefHeight="44.0" prefWidth="140.0" text="Home or Away:">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="radioButtonHome" layoutX="113.0" layoutY="438.0" mnemonicParsing="false" text="Home">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group2" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioButtonAway" layoutX="113.0" layoutY="469.0" mnemonicParsing="false" text="Away" toggleGroup="$group2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="668.0" layoutY="120.0" prefHeight="44.0" prefWidth="154.0" text="Next five match:">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnSave" alignment="CENTER" layoutX="243.0" layoutY="548.0" mnemonicParsing="false" onMouseClicked="#saveMatch" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: black; -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Save" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <DatePicker fx:id="matchDate" layoutX="115.0" layoutY="159.0" prefHeight="40.0" prefWidth="170.0" promptText="dd/MM/yy" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-border-radius: 7; -fx-background-radius: 7;" stylesheets="@../../styles/calendar.css" />
+                        <Label layoutX="114.0" layoutY="253.0" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-border-radius: 7; -fx-border-radius: 7;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="hourSpinner" layoutX="116.0" layoutY="256.0" prefHeight="18.0" prefWidth="69.0" stylesheets="@../../styles/spinner.css" />
+                        <Label layoutX="194.0" layoutY="257.0" text=":">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="minuteSpinner" layoutX="208.0" layoutY="256.0" prefHeight="25.0" prefWidth="69.0" stylesheets="@../../styles/spinner.css" />
+                        <HBox layoutX="668.0" layoutY="171.0" prefHeight="532.0" prefWidth="559.0">
+                           <children>
+                              <AnchorPane prefHeight="438.0" prefWidth="559.0">
+                                 <children>
+                                    <Label fx:id="labelTime1" alignment="CENTER" layoutX="259.0" layoutY="54.0" text="20:45" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelHomeTeam1" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="54.0" prefWidth="80.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelAwayTeam1" layoutX="320.0" layoutY="54.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="homeLogo1" fitHeight="38.0" fitWidth="39.0" layoutX="118.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="awayLogo1" fitHeight="38.0" fitWidth="39.0" layoutX="403.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="labelDate1" layoutX="14.0" layoutY="14.0" prefHeight="20.0" prefWidth="98.0" text="Sun, 16 Mar" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelDate2" layoutX="14.0" layoutY="114.0" prefHeight="20.0" prefWidth="98.0" text="Sun, 16 Mar" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelDate3" layoutX="14.0" layoutY="214.0" prefHeight="20.0" prefWidth="98.0" text="Sun, 16 Mar" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelDate4" layoutX="14.0" layoutY="314.0" prefHeight="20.0" prefWidth="98.0" text="Sun, 16 Mar" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelDate5" layoutX="14.0" layoutY="414.0" prefHeight="20.0" prefWidth="98.0" text="Sun, 16 Mar" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="homeLogo2" fitHeight="38.0" fitWidth="39.0" layoutX="118.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="homeLogo3" fitHeight="38.0" fitWidth="39.0" layoutX="118.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="homeLogo4" fitHeight="38.0" fitWidth="39.0" layoutX="118.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="homeLogo5" fitHeight="38.0" fitWidth="39.0" layoutX="118.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="labelHomeTeam2" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="154.0" prefWidth="80.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelHomeTeam3" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="254.0" prefWidth="80.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelHomeTeam4" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="354.0" prefWidth="80.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelHomeTeam5" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="454.0" prefWidth="80.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelTime2" alignment="CENTER" layoutX="259.0" layoutY="154.0" text="20:45" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelTime5" alignment="CENTER" layoutX="259.0" layoutY="454.0" text="20:45" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelTime4" alignment="CENTER" layoutX="259.0" layoutY="354.0" text="20:45" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelTime3" alignment="CENTER" layoutX="259.0" layoutY="254.0" text="20:45" textFill="#8d8d8d">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelAwayTeam4" layoutX="320.0" layoutY="354.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelAwayTeam3" layoutX="320.0" layoutY="254.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelAwayTeam2" layoutX="320.0" layoutY="154.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelAwayTeam5" layoutX="320.0" layoutY="454.0" text="Juventus">
+                                       <font>
+                                          <Font name="Arial Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="awayLogo5" fitHeight="38.0" fitWidth="39.0" layoutX="403.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="awayLogo4" fitHeight="38.0" fitWidth="39.0" layoutX="403.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="awayLogo3" fitHeight="38.0" fitWidth="39.0" layoutX="403.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="awayLogo2" fitHeight="38.0" fitWidth="39.0" layoutX="403.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/logos/default.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

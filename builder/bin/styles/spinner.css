@@ -1,0 +1,33 @@
+.spinner {
+    -fx-background-color: #f8f8f8; /* Sfondo chiaro */
+    -fx-border-radius: 5;          /* Angoli arrotondati */
+    -fx-background-radius: 5;      /* Arrotondati anche per lo sfondo */
+    -fx-padding: 5;                /* Spazio interno */
+    -fx-font-size: 14px;           /* Dimensione del testo */
+}
+
+.spinner .text-field {
+    -fx-background-color: transparent; /* Nessuno sfondo aggiuntivo */
+    -fx-text-fill: #333;               /* Testo scuro */
+    -fx-alignment: center-right;       /* Allinea il testo a destra, in centro verticale */
+    -fx-padding: 0 5;                  /* Spaziatura interna orizzontale */
+    -fx-prompt-text-fill: #999;        /* Colore placeholder (se usi un prompt) */
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color:  #aeaeae; /* Freccia grigio scuro */
+    -fx-border-color: transparent;
+    -fx-padding: 3 5;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #e0e0e0; /* Leggero grigio in hover */
+}
+
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-color: #d0d0d0;
+}
+

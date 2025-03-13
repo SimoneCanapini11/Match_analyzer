@@ -53,4 +53,23 @@ public class DemoMatchDAO implements MatchDAO {
                 .collect(Collectors.toList());
 	}
 
+	@Override
+	public void saveMatch(Match match) {
+		matches.add(match);
+	}
+	
+	@Override
+	public void updateMatch(Match match, String teamName) {
+		for (Match m : matches) {
+	        if (m.getMatchDate().equals(match.getMatchDate()) &&
+	           (m.getHomeTeam().equals(teamName) || m.getAwayTeam().equals(teamName))) {
+	            
+	            // Update del match
+	            m.setMatchTime(match.getMatchTime());
+	            m.setHomeTeam(match.getHomeTeam());
+	            m.setAwayTeam(match.getAwayTeam());
+	        }
+	    }
+	}
+
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import application.config.SessionManager;
 import application.exception.LineupException;
 import application.model.bean.Footballer;
 import application.model.bean.Lineup;
@@ -30,12 +31,14 @@ public class GetLineupApplicationController {
 	private Match nextMatch;
 	private List<Footballer> availablePlayers;
 	private SuccessRateCalculator rateCalculator;
+	private SessionManager sessionManager;
 
 	public GetLineupApplicationController() {
         this.footballerDAO = DAOFactory.getFootballerDAO();
         this.lineupDAO = DAOFactory.getLineupDAO();
         this.matchDAO = DAOFactory.getMatchDAO();
-        this.rateCalculator = new SuccessRateCalculator();		
+        this.rateCalculator = new SuccessRateCalculator();	
+        this.sessionManager = SessionManager.getInstance();
     }
 	
 	
@@ -189,8 +192,12 @@ public class GetLineupApplicationController {
 		// Trova il prossimo match
         nextMatch = matchDAO.getNextMatch(teamName);
                         
-        if (nextMatch == null) {            
-        	throw new LineupException("Upcoming match details missing. The trainer has been notified");  //---------sollecitare il trainer a inserire il nextMatch
+        if (nextMatch == null) {      
+        	// Sollecita il trainer a inserire il nextMatch
+        	sessionManager.setMatchScheduled(teamName, false);
+        	throw new LineupException("Upcoming match details missing. The trainer has been notified");  
+        } else {
+        	sessionManager.setMatchScheduled(teamName, true);  //-----se chiudo l'applicazione?
         }
         
         // Determina il nome della squadra avversaria
@@ -201,12 +208,8 @@ public class GetLineupApplicationController {
 	private int getTeamStrength(String teamName) {
         // Ottieni la lista dei giocatori della squadra
         List<Footballer> teamPlayers = footballerDAO.getFootballersByTeam(teamName);
-       /* if (teamPlayers == null || teamPlayers.isEmpty()) {		
-            System.out.println("Nessun giocatore trovato per la squadra " + teamName);
-            return 0;
-        }*/
-        
-     // Calcola la forza media: somma degli overallRating diviso per il numero dei giocatori
+       
+        // Calcola la forza media: somma degli overallRating diviso per il numero dei giocatori
         double totalRating = teamPlayers.stream()
                 .mapToDouble(Footballer::getOverallRating)
                 .sum();

@@ -11,13 +11,17 @@ public class UserInterfaceHelper {
 	    throw new IllegalStateException("UserInterfaceHelper class");
   }
 
-	public static void initializeUserInfo(Label nameLabel, ImageView teamLogoImage, String name, String surname, String teamName) {
+	public static void initializeLabelImage(Label label, ImageView image, String str1, String str2, String teamName) {
 		// Imposta il testo della Label
-		nameLabel.setText(name + " " + surname);
-		nameLabel.setPrefWidth(Region.USE_COMPUTED_SIZE);
-		nameLabel.setPrefHeight(Region.USE_COMPUTED_SIZE);
+		if (str2 != null) {
+			label.setText(str1 + " " + str2);
+        } else {
+        	label.setText(str1);
+		}
+		label.setPrefWidth(Region.USE_COMPUTED_SIZE);
+		label.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-		setImage(teamLogoImage, teamName);
+		setImage(image, teamName);
 	}
 
 	

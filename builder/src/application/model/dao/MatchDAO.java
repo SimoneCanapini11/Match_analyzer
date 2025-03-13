@@ -5,8 +5,9 @@ import java.util.List;
 import application.model.bean.Match;
 
 public interface MatchDAO {
-	public List<Match> getUpcomingMatches();
-	public Match getNextMatch(String nameTeam);
-	public List<Match> getMatchesByTeam(String teamName);
-	//--addMatch()
+	List<Match> getUpcomingMatches();
+	Match getNextMatch(String nameTeam);
+	List<Match> getMatchesByTeam(String teamName);
+	void saveMatch(Match match);
+	void updateMatch(Match match, String teamName);
 }

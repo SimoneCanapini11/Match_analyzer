@@ -34,6 +34,18 @@ public class DemoTeamDAO implements TeamDAO {
         return teams.get(teamName);
     }
 	
+	@Override
+	public List<String> getOpponentList(String teamName) {
+		List<String> teamNames = new ArrayList<>();
+	    for (String key : teams.keySet()) {
+	        if (!key.equals(teamName)) {
+	            teamNames.add(key);
+	        }
+	    }
+	    return teamNames;
+	}
+	
+	@Override
 	public List<String> getTeamNameList() {
 		List<String> teamNames = new ArrayList<>();
 		teamNames.addAll(teams.keySet());

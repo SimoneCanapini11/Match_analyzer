@@ -69,7 +69,7 @@ public class AnalyzeOpponentGraphicController extends BaseGraphicController {
     	String userSurname = coachController.getUserSurname();
     	String teamName = coachController.getUserTeam();
     	
-    	UserInterfaceHelper.initializeUserInfo(nameLabel, teamLogoImage, userName, userSurname, teamName);
+    	UserInterfaceHelper.initializeLabelImage(nameLabel, teamLogoImage, userName, userSurname, teamName);
     	
     	try {
 			String opponentName = lineupController.getNextOpponent(teamName);
@@ -117,7 +117,6 @@ public class AnalyzeOpponentGraphicController extends BaseGraphicController {
 			
     	} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
-			//-----openHome
 		}
 	}
     
