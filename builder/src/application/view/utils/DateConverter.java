@@ -3,13 +3,14 @@ package application.view.utils;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 import javafx.util.StringConverter;
 
-public class MyCustomDateConverter extends StringConverter<LocalDate> {		//---indip. da view
+public class DateConverter extends StringConverter<LocalDate> {		
 	
 	// Definisci il formatter principale (dd/MM/yy)
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy", Locale.ENGLISH);
 
 	
 	 @Override

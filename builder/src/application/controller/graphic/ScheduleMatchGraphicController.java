@@ -9,12 +9,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import application.controller.application.ScheduleMatchApplicationController;
 import application.controller.application.UserApplicationController;
 import application.exception.TrainerException;
 import application.view.utils.AlertUtils;
-import application.view.utils.MyCustomDateConverter;
+import application.view.utils.DateConverter;
 import application.view.utils.OpenWindowUtils;
 import application.view.utils.UserInterfaceHelper;
 import javafx.collections.FXCollections;
@@ -112,7 +113,8 @@ public class ScheduleMatchGraphicController {
 	 
 	 @FXML
 	 public void initialize() {
-   	
+		 Locale.setDefault(Locale.ENGLISH);
+		 
 		 String userName = trainerController.getUserName();
 		 String teamName = trainerController.getUserTeam();
 		 String userSurname = trainerController.getUserSurname();
@@ -122,7 +124,7 @@ public class ScheduleMatchGraphicController {
 		configureDatePicker(); 
 		 
 		// Converter personalizzato
-		matchDate.setConverter(new MyCustomDateConverter());	//--------indip. da view
+		matchDate.setConverter(new DateConverter());	//--------indip. da view
 
         // Listener per ogni modifica del testo
 		matchDate.getEditor().focusedProperty().addListener((obs, wasFocused, isFocused) -> {
@@ -212,27 +214,23 @@ public class ScheduleMatchGraphicController {
 	private void configureDatePicker() {
 	    matchDate.setPromptText("dd/MM/yy"); 
 
-	    // Unica DayCellFactory che fa entrambe le cose
 	    matchDate.setDayCellFactory(datePicker -> new DateCell() {
 	        @Override
 	        public void updateItem(LocalDate item, boolean empty) {
 	            super.updateItem(item, empty);
 
-	            // Pulisci eventuali stili o disabilitazioni precedenti
 	            getStyleClass().remove("weekend-cell");
 	            setDisable(false);
 	            setStyle(null);
 
 	            if (!empty && item != null) {
-	                // 1) Disabilita date precedenti a oggi
+	                // Disabilita date precedenti a oggi
 	                if (item.isBefore(LocalDate.now())) {
 	                    setDisable(true);
 	                    setStyle("-fx-background-color: #eeeeee;");
 	                }
 
-	                // 2) Aggiungi stile ai weekend
-	                DayOfWeek day = item.getDayOfWeek();
-	                if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
+	                if (item.getDayOfWeek() == DayOfWeek.SATURDAY || item.getDayOfWeek() == DayOfWeek.SUNDAY) {
 	                    getStyleClass().add("weekend-cell");
 	                }
 	            }
