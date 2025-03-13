@@ -32,10 +32,6 @@ public class ScheduleMatchApplicationController {
 			 throw new TrainerException("Enter the match date");
 		 }
 		 
-		 if (selectedTime == null) {
-			 throw new TrainerException("Enter the match time");
-		 }
-		 
 		 if (opponent == null) {
 			 throw new TrainerException("Enter the Opponent");
 		 }
@@ -63,10 +59,7 @@ public class ScheduleMatchApplicationController {
 	        
 		 // Controllo su esistenza match con gli stessi valori
 		 for (Match m : existingMatches) {
-			 if (m.getHomeTeam().equalsIgnoreCase(homeTeam) &&
-				m.getAwayTeam().equalsIgnoreCase(awayTeam) &&
-				m.getMatchDate().equals(selectedDate) &&
-				m.getMatchTime().equals(selectedTime)) {
+			 if (isAlreadySet(m, homeTeam, awayTeam, selectedDate, selectedTime)) {
 	                return 0;
 	            }
 		 }
@@ -147,5 +140,13 @@ public class ScheduleMatchApplicationController {
 
 	        return matchesData;
     }
+	
+	
+	private boolean isAlreadySet(Match m, String homeTeam, String awayTeam, LocalDate selectedDate, LocalTime selectedTime) {
+		return m.getHomeTeam().equalsIgnoreCase(homeTeam) &&
+				m.getAwayTeam().equalsIgnoreCase(awayTeam) &&
+				m.getMatchDate().equals(selectedDate) &&
+				m.getMatchTime().equals(selectedTime);
+	}
 	
 }
