@@ -30,6 +30,18 @@ public class FormationRoles {
         FORMATION_ROLES.put("4-3-3", Arrays.asList(
                 "GK", "LB", "CB", "CB", "RB", "CDM", "CM", "CM", "LW", "RW", "ST"
             ));
+        
+        FORMATION_ROLES.put("5-3-2", Arrays.asList(
+                "GK", "CB", "CB", "CB", "LB", "RB", "CDM", "CM", "CM", "ST", "ST"
+            ));
+        
+        FORMATION_ROLES.put("5-2-2-1", Arrays.asList(
+                "GK", "CB", "CB", "CB", "LB", "RB", "CM", "CM", "CAM", "CAM", "ST"
+            ));
+        
+        FORMATION_ROLES.put("3-4-2-1", Arrays.asList(
+                "GK", "CB", "CB", "CB", "CM", "CM", "LM", "RM", "CAM", "CAM", "ST"
+            ));
     }
 	
 	
