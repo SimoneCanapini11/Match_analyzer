@@ -88,15 +88,10 @@ public class SignupApplicationController {
 			throw new ValidationException("You need to enter a team");
 		}
 		
-		//-------------controlli su: ruolo già preso (coach) per la squadra scelta*****************\\
 		
-		 if ("COACH".equalsIgnoreCase(roleStr)) {
-		        if (userDAO.isCoachAlreadyAssigned(team)) {
-		            throw new ValidationException("The team already has a coach assigned!");
-		        }
-		    }
-		
-		//System.out.println("Email: "+ newUser.getEmail());		//------------------per debug
+		if ("COACH".equalsIgnoreCase(roleStr) && userDAO.isCoachAlreadyAssigned(team)) {
+			throw new ValidationException("The team already has a coach assigned!");
+		}
 		
         // Controlli superati, inserisco name, surname, role e team in newUser
 		User newUser = sessionManager.getCurrentUser();
