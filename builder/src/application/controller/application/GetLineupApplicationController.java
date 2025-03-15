@@ -82,7 +82,11 @@ public class GetLineupApplicationController {
             }
         }
         
-        newLineup.setStartingLineup(convertNamesToFootballers(startingLineup, teamName));
+        List<Footballer> footballers = convertNamesToFootballers(startingLineup, teamName);
+        
+        validateDeployableFootballers(footballers);
+        
+        newLineup.setStartingLineup(footballers);
         
         lineupDAO.updateTactics(newLineup);
         
@@ -351,5 +355,16 @@ public class GetLineupApplicationController {
 	                .filter(f -> f != null) // Rimuove eventuali null
 	                .collect(Collectors.toList());
 	}
+	
+	
+	private void validateDeployableFootballers(List<Footballer> footballers) throws LineupException {
+	    for (Footballer footballer : footballers) {
+	        // Assumiamo che footballer.getAttributes() non sia null
+	        if (footballer.getAttributes().getDeployable() == 0) {
+	            throw new LineupException(footballer.getName() + " " + footballer.getSurname() + " is not deployable");
+	        }
+	    }
+	}
+
 
 }
