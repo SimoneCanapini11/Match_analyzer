@@ -13,7 +13,11 @@ public class FullUserDAO implements UserDAO{
 
 	@Override
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
+		/*   // Hasha la password prima di salvare
+        String hashedPassword = PasswordUtils.hashPassword(user.getPassword());
+        user.setPassword(hashedPassword); 
+		 */
+		
 		/* try {
 		        // Codice per salvare l'utente nel database
 		    } catch (SQLException e) {

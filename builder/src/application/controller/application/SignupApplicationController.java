@@ -6,6 +6,7 @@ import application.model.dao.DAOFactory;
 import application.model.dao.TeamDAO;
 import application.model.dao.UserDAO;
 import application.util.Formatter;
+import application.util.PasswordCrypt;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class SignupApplicationController {
         // Controlli superati, inserisco email e password in newUser
         User newUser = new User();
         newUser.setEmail(formattedEmail);
-        newUser.setPassword(password);  		//---------da salvare con Hash
+        newUser.setPassword(PasswordCrypt.hashPassword(password));  		
         
         sessionManager.setCurrentUser(newUser); // Memorizza l'utente nella "sessione"
         

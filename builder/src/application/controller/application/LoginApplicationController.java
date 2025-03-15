@@ -6,6 +6,7 @@ import application.exception.ValidationException;
 import application.model.bean.User;
 import application.model.dao.DAOFactory;
 import application.model.dao.UserDAO;
+import application.util.PasswordCrypt;
 import application.util.Validator;
 
 public class LoginApplicationController {
@@ -26,8 +27,8 @@ public class LoginApplicationController {
         }
 		
 		User user = userDAO.findByEmail(formattedEmail);
-		
-		if (!(user != null && user.getPassword().equals(password))) {			
+	
+		if (!(user != null && PasswordCrypt.checkPassword(password, user.getPassword()))) {			
 			throw new ValidationException("Invalid email or password");
 		}
 		

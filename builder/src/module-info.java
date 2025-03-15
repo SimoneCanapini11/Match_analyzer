@@ -7,6 +7,7 @@ module builder {
 	requires java.sql;
 	requires javafx.base;
 	requires java.prefs;
+	requires jbcrypt;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens application.controller.graphic to javafx.fxml;
