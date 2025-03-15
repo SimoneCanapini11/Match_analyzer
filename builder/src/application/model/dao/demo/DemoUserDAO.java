@@ -39,7 +39,17 @@ public class DemoUserDAO implements UserDAO {
 	public void saveUser(User user) {
 		// Salvataggio dell'utente
 		users.put(user.getEmail(), user);
-	
+	}
+
+
+	@Override
+	public boolean isCoachAlreadyAssigned(String teamName) {
+		for (User user : users.values()) {
+	        if (user.getTeam().equalsIgnoreCase(teamName) && user.getRole() == RoleUser.COACH) {
+	            return true;
+	        }
+	    }
+		return false;
 	}
     
 }

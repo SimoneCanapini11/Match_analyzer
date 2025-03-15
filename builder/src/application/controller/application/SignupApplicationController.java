@@ -54,7 +54,6 @@ public class SignupApplicationController {
         	throw new DAOException("The email is already in use");
         }
         
-        // Controlli superati, inserisco email e password in newUser
         User newUser = new User();
         newUser.setEmail(formattedEmail);
         newUser.setPassword(PasswordCrypt.hashPassword(password));  		
@@ -70,7 +69,7 @@ public class SignupApplicationController {
 		if (!Validator.isValidString(name) || !Validator.isValidFormatString(name)) {
 			throw new ValidationException("Invalid name format");
 		}
-		String formattedName = Formatter.removeBlanks(name);		//----da rimuovere
+		String formattedName = Formatter.removeBlanks(name);		
 		formattedName = Formatter.uppercaseString(formattedName);
 		
 		if (!Validator.isValidString(surname) || !Validator.isValidFormatString(surname)) {
@@ -91,6 +90,12 @@ public class SignupApplicationController {
 		
 		//-------------controlli su: ruolo già preso (coach) per la squadra scelta*****************\\
 		
+		 if ("COACH".equalsIgnoreCase(roleStr)) {
+		        if (userDAO.isCoachAlreadyAssigned(team)) {
+		            throw new ValidationException("The team already has a coach assigned!");
+		        }
+		    }
+		
 		//System.out.println("Email: "+ newUser.getEmail());		//------------------per debug
 		
         // Controlli superati, inserisco name, surname, role e team in newUser
@@ -100,9 +105,8 @@ public class SignupApplicationController {
 		newUser.setRole(role);
 		newUser.setTeam(team);
 		
-		sessionManager.setCurrentUser(newUser); // Memorizza l'utente nella "sessione"'
+		sessionManager.setCurrentUser(newUser); 
 									
-		// Passa il nuovo utente al DAO per il salvataggio
         userDAO.saveUser(newUser);		
 
 		return true;
@@ -112,7 +116,6 @@ public class SignupApplicationController {
 	public List<String> getRoles(){
 		return RoleUser.getRoleDisplayNames();
 	}
-	
 	
 	public String getUserRole() {
 		return sessionManager.getCurrentUser().getRole().getDisplayName().toLowerCase();

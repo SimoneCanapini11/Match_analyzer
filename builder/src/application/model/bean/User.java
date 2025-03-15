@@ -2,7 +2,7 @@ package application.model.bean;
 
 public class User {
 	private String email;
-    private String password;	//---------da salvare con hashing
+    private String password;	
     private String name;
     private String surname;
     private RoleUser role;
