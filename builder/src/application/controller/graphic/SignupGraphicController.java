@@ -44,20 +44,19 @@ public class SignupGraphicController {
 	 
 	 
 	 @FXML
-	 public void initialize() {			// metodo chiamato automaticamente dal meccanismo di caricamento dell’FXML
+	 public void initialize() {			
 		 
 		 if (choiceBoxRole != null && choiceBoxTeam !=null) {
 		 	// Crea una lista di valori 	
 			choiceBoxRole.setItems(FXCollections.observableArrayList(signupController.getRoles()));		
 		 	choiceBoxTeam.setItems(FXCollections.observableArrayList(signupController.getTeamNames()));				
-		 }																//-------Squadre che diventano grigie quando scelgo un ruolo (coach) già occupato per la squadra  
+		 }																
 	 }
 	
 	 
 	@FXML
     private void openLogin(ActionEvent event) throws IOException{
 
-		// Ottieni il parent stage (homepage) attraverso il proprietario della finestra di signup
 		String fxmlPath = "login.fxml";
 		String title = "Login";
 		Stage signupStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
