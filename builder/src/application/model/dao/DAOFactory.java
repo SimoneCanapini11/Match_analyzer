@@ -2,8 +2,10 @@ package application.model.dao;
 
 import application.config.AppConfig;
 
+
 import application.model.dao.demo.*;
 import application.model.dao.full.*;
+import application.model.dao.file.*;
 
 public class DAOFactory {
 	
@@ -13,6 +15,7 @@ public class DAOFactory {
 
 	
 	private static final String MODE_DEMO = "demo";
+	private static final String MODE_FILE = "file";  
 	private static final String MODE_EXCEPTION = "Mode not initialized!";
 	private static String mode = AppConfig.getInstance().getMode(); // "demo" o "full"
 	
@@ -30,6 +33,8 @@ public class DAOFactory {
     	    }
     	    return instanceUser;           
     	    
+    	} else if (MODE_FILE.equals(mode)) {
+    		return new FileUserDAO();
     	} else {
         	return new FullUserDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
@@ -42,7 +47,9 @@ public class DAOFactory {
         }
         if (MODE_DEMO.equals(mode)) {
             return new DemoTeamDAO();
-        } else {
+        } else if (MODE_FILE.equals(mode)) {
+    		return new FileTeamDAO();
+    	} else {
         	return new FullTeamDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
         }
@@ -54,7 +61,9 @@ public class DAOFactory {
         }
         if (MODE_DEMO.equals(mode)) {
             return new DemoFootballerDAO();
-        } else {
+        } else if (MODE_FILE.equals(mode)) {
+    		return new FileFootballerDAO();
+    	}else {
         	return new FullFootballerDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
         }
@@ -70,7 +79,9 @@ public class DAOFactory {
     	    }
     	    return instanceLineup;        
     	    
-    	} else {
+    	} else if (MODE_FILE.equals(mode)) {
+    		return new FileLineupDAO();
+    	}else {
         	return new FullLineupDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
         }
@@ -85,7 +96,9 @@ public class DAOFactory {
         		instanceMatch = new DemoMatchDAO();
     	    }
     	    return instanceMatch;   
-        } else {
+        } else if (MODE_FILE.equals(mode)) {
+    		return new FileMatchDAO();
+    	}else {
         	return new FullMatchDAO();
             //return new FullUserDAO(getConnection()); //-- es. per DB
         }

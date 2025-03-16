@@ -94,14 +94,14 @@ public class SignupGraphicController {
 	        	openSignUpDetails(event);
 	        }
 	   } catch (ValidationException ve) {
-	            // Gestione specifica per errori di validazione
 		   AlertUtils.showAlert(Alert.AlertType.ERROR, "Sign Up Error", ve.getMessage());
+		   
 	   } catch (DAOException dae) {
-		       // Gestione specifica per errori di DAO
          AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
+         
 	   } catch (Exception e) {
-	            // Gestione generica per tutte le altre eccezioni
-		   AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
+		  // AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
+		   e.printStackTrace();
 	   }
 	}
 	

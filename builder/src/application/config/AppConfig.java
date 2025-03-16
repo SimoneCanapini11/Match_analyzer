@@ -14,7 +14,7 @@ public class AppConfig {
 
     public static AppConfig getInstance() {
         if (instance == null) {
-            throw new IllegalStateException("AppConfig non inizializzato!");
+            throw new IllegalStateException("AppConfig not initialized!");
         }
         return instance;
     }

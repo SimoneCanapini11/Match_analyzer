@@ -1,43 +1,83 @@
 package application.model.dao.full;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import application.model.bean.RoleUser;
 import application.model.bean.User;
+import application.model.dao.full.queries.*;
 import application.model.dao.UserDAO;
 
-public class FullUserDAO implements UserDAO{
+public class FullUserDAO implements UserDAO {
 
 	@Override
 	public User findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(SQLQueries.FIND_USER_BY_EMAIL)) {
+             
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User(
+                		rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getString("surname"),
+                        RoleUser.valueOf(rs.getString("role")),
+                        rs.getString("team")
+                );
+            }
+        } catch (SQLException se) {
+            se.printStackTrace(); 
+        } catch (IOException ie) {
+			ie.printStackTrace();
+		}
+        return user;
 	}
 
 	@Override
 	public void saveUser(User user) {
-		
-		/* try {
-		        // Codice per salvare l'utente nel database
-		    } catch (SQLException e) {
-		        throw new DAOException("Error saving user", e);
-		    } */
+		try (Connection conn = DatabaseConnection.getConnection();
+	             PreparedStatement stmt = conn.prepareStatement(SQLQueries.INSERT_USER)) {
+
+	            stmt.setString(1, user.getEmail());
+	            stmt.setString(2, user.getPassword()); 
+	            stmt.setString(3, user.getName());
+	            stmt.setString(4, user.getSurname());
+	            stmt.setString(5, user.getRole().name());
+	            stmt.setString(6, user.getTeam());
+
+	            stmt.executeUpdate();
+		} catch (SQLException se) {
+            se.printStackTrace(); 
+        } catch (IOException ie) {
+			ie.printStackTrace();
+		}
 	}
 
 	@Override
 	public boolean isCoachAlreadyAssigned(String teamName) {
-		/*
-		  String query = "SELECT COUNT(*) FROM users WHERE team_name = ? AND role = 'COACH'";
-    
-    try (Connection conn = DatabaseConnection.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(query)) {
-        stmt.setString(1, teamName);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            return rs.getInt(1) > 0; // Se il numero è maggiore di 0, c'è già un coach
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } 
-		 */
-		return false;
+		 boolean exists = false;
+	        try (Connection conn = DatabaseConnection.getConnection();
+	             PreparedStatement stmt = conn.prepareStatement(SQLQueries.CHECK_COACH_EXISTS)) {
+
+	            stmt.setString(1, teamName);
+	            ResultSet rs = stmt.executeQuery();
+
+	            if (rs.next() && rs.getInt(1) > 0) {
+	                exists = true;
+	            }
+	        } catch (SQLException se) {
+	            se.printStackTrace(); 
+	        } catch (IOException ie) {
+				ie.printStackTrace();
+			}
+	        return exists;
 	} 
 
 }

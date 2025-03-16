@@ -2,12 +2,8 @@ package application.model.bean;
 
 public class Team {
 	private String nameTeam;
-	//--private String coach;	//--regole aziendali
-	//--private List<Footballer> footballers;
-	//--private List<Trainer> trainers;
 	private String stadium;
 	private String city;
-	//--private List<---> lineup   //---formazione titolare di default
 	
 	public Team(String nameTeam, String stadium, String city) {
 		this.nameTeam = nameTeam;
@@ -23,24 +19,6 @@ public class Team {
 		this.nameTeam = nameTeam;
 	}
 
-
-	/*
-	public String getCoach() {
-		return coach;
-	}
-
-	public void setCoach(String coach) {
-		this.coach = coach;
-	}
-	
-	 public void assignCoach(User user) throws ValidationException {
-	        if (user == null || user.getRole() != Role.COACH.getValue()) {
-	            throw new ValidationException("L'utente non ha il ruolo di COACH.");
-	        }
-	        // Puoi decidere cosa memorizzare, ad esempio l'email o il nome
-	        this.coach = user.getEmail(); // oppure user.getUsername()
-	    }
-	 */
 	
 	public String getStadium() {
 		return stadium;

@@ -35,13 +35,13 @@ public class Main extends Application {
         
      // Loop per input valido ("demo" o "full")
         while (true) {
-            System.out.print("Enter the mode (demo/full): "); // NOSONAR	//---------anche per interfaccia javaFX o CLI (?)
+            System.out.print("Enter the mode (demo/full/file): "); 	//---------anche per interfaccia javaFX o CLI (?)
          try {
             mode = scanner.nextLine().trim().toLowerCase();
          } catch (NoSuchElementException e) {   
         	 e.printStackTrace();
          }
-            if ("demo".equals(mode) || "full".equals(mode)) {
+            if ("demo".equals(mode) || "full".equals(mode) || "file".equals(mode)) {
                 break;
             } else {
                 System.out.println("Invalid input.");
@@ -62,7 +62,7 @@ public class Main extends Application {
 
 /*
  1) signup e login (logica e controlli)
- 2) gestione eccezioni (con exception handling) (DAOException)   
+ 2) gestione eccezioni (con exception handling) (DAOException)   **
  3) Interfaccia coach + controller 
  4) Interfaccia trainer + plan training (non intrappolare l'utente) ****
  5) SonarCloud 	

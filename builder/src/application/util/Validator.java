@@ -59,15 +59,7 @@ public class Validator {
    
     public static boolean isValidString(String str) {
     	// Controllo stringa vuota
-    	if (StringUtils.isBlank(str)) {
-    		return false;
-    	}
-    	
-    /*	//stringa troppo lunga (inserimento db) ------------------dove va fatto questo controllo?
-    	if (str.length() > 50) {
-    		return false;
-    	}	*/
-    	return true;
+    	return !StringUtils.isBlank(str);
     }
     
     
