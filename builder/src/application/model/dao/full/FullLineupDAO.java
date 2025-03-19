@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import application.exception.DAOException;
@@ -93,9 +95,9 @@ public class FullLineupDAO implements LineupDAO {
 		         PreparedStatement stmtUpdateLineup = conn.prepareStatement(SQLQueries.UPDATE_LINEUP);
 		         PreparedStatement stmtGetLineupId = conn.prepareStatement(SQLQueries.FIND_LINEUP_ID);
 		         PreparedStatement stmtDeletePlayers = conn.prepareStatement(SQLQueries.DELETE_LINEUP_PLAYERS);
-		         PreparedStatement stmtGetFootballerId = conn.prepareStatement(SQLQueries.FIND_FOOTBALLER_ID);
-		         PreparedStatement stmtInsertPlayer = conn.prepareStatement(SQLQueries.INSERT_LINEUP_PLAYERS)) {
-
+		         PreparedStatement stmtGetFootballerId = conn.prepareStatement(SQLQueries.FIND_FOOTBALLER_ID); 
+		 		 PreparedStatement stmtInsertPlayer = conn.prepareStatement(SQLQueries.INSERT_LINEUP_PLAYERS)) {
+			 
 		        conn.setAutoCommit(false); // Avvia la transazione
 
 		        // Aggiorna la tabella lineups
@@ -117,7 +119,7 @@ public class FullLineupDAO implements LineupDAO {
 		        stmtDeletePlayers.setInt(1, lineupId);
 		        stmtDeletePlayers.executeUpdate();
 
-		        // lineup_players update 
+		        /*// lineup_players update 
 		        stmtInsertPlayer.setInt(1, lineupId);
 		        
 		        int position = 1;
@@ -140,8 +142,60 @@ public class FullLineupDAO implements LineupDAO {
 		            } else {
 		                throw new DAOException("Not founded footballer: " + player.getName() + " " + player.getSurname());
 		            }
-		        }
+		        }*/
 		        
+		        //stmtInsertPlayer.executeBatch();
+		        
+		        
+		        // Footballer in Lineup
+		        List<Footballer> allPlayers = lineup.getStartingLineup();
+
+		        // Query unica per tutti gli ID dei Footballer inseriti
+		        StringBuilder query = new StringBuilder(
+		            "SELECT id, name, surname, team FROM Footballers WHERE ");
+		        List<String> params = new ArrayList<>();
+
+		        for (int i = 0; i < allPlayers.size(); i++) {
+		            params.add("(name = ? AND surname = ? AND team = ?)");
+		        }
+		        query.append(String.join(" OR ", params));
+
+		        PreparedStatement stmtGetFootballerIds = conn.prepareStatement(query.toString());
+
+		        int paramIndex = 1;
+		        for (Footballer player : allPlayers) {
+		            stmtGetFootballerIds.setString(paramIndex++, player.getName());
+		            stmtGetFootballerIds.setString(paramIndex++, player.getSurname());
+		            stmtGetFootballerIds.setString(paramIndex++, player.getTeam());
+		        }
+
+		        ResultSet rsFootballersId = stmtGetFootballerIds.executeQuery();
+
+		        // Crea una mappa (nome, cognome, squadra) -> id
+		        Map<String, Integer> footballerIdMap = new HashMap<>();
+		        while (rsFootballersId.next()) {
+		            String key = rsFootballersId.getString("name") + "|"
+		                       + rsFootballersId.getString("surname") + "|"
+		                       + rsFootballersId.getString("team");
+		            footballerIdMap.put(key, rsFootballersId.getInt("id"));
+		        }
+
+		        
+		        int position = 1;
+		        for (Footballer player : allPlayers) {
+		            String key = player.getName() + "|" + player.getSurname() + "|" + player.getTeam();
+		            Integer footballerId = footballerIdMap.get(key);
+		            
+		            if (footballerId == null) {
+		                throw new DAOException("Footballer not found: " + player.getName() + " " + player.getSurname());
+		            }
+		            
+		            stmtInsertPlayer.setInt(1, lineupId);
+		            stmtInsertPlayer.setInt(2, footballerId);
+		            stmtInsertPlayer.setInt(3, position++);
+		            stmtInsertPlayer.addBatch();
+		        }
+
 		        stmtInsertPlayer.executeBatch();
 
 		        conn.commit(); // Conferma la transazione
