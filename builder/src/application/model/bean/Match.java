@@ -49,29 +49,29 @@ public class Match {
     } 
 	
 
-    public String getOpponent(String teamName) {	// teamName è il nostro team
+    public String getOpponent(String teamName) {	// nostro team
         if (teamName == null) {
-            throw new IllegalArgumentException("Il nome della squadra non può essere null");		//----eccezione da rivedere
+            throw new IllegalArgumentException("Team name cannot be null");		
         }
         if (teamName.equalsIgnoreCase(homeTeam)) {
             return awayTeam;
         } else if (teamName.equalsIgnoreCase(awayTeam)) {
             return homeTeam;
         } else {
-            throw new IllegalArgumentException("La squadra " + teamName + " non è coinvolta in questo match");		//----eccezione da rivedere
+            throw new IllegalArgumentException("Team " + teamName + " is not involved in this match");		
         }
     }
     
     public boolean getMatchLocation(String teamName) {
         if (teamName == null) {
-            throw new IllegalArgumentException("Il nome della squadra non può essere null");		//----eccezione da rivedere
+            throw new IllegalArgumentException("Team name cannot be null");		
         }
         if (teamName.equalsIgnoreCase(homeTeam)) {
             return true;
         } else if (teamName.equalsIgnoreCase(awayTeam)) {
             return false;
         } else {
-            throw new IllegalArgumentException("La squadra " + teamName + " non è coinvolta in questo match");		//----eccezione da rivedere
+            throw new IllegalArgumentException("Team " + teamName + " is not involved in this match");		
         }
     }
     

@@ -64,7 +64,7 @@ public class DemoMatchDAO implements MatchDAO {
 	        if (m.getMatchDate().equals(match.getMatchDate()) &&
 	           (m.getHomeTeam().equals(teamName) || m.getAwayTeam().equals(teamName))) {
 	            
-	            // Update del match
+	            // Update match
 	            m.setMatchTime(match.getMatchTime());
 	            m.setHomeTeam(match.getHomeTeam());
 	            m.setAwayTeam(match.getAwayTeam());

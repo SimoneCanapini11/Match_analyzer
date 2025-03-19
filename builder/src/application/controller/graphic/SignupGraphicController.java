@@ -100,8 +100,7 @@ public class SignupGraphicController {
          AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
          
 	   } catch (Exception e) {
-		  // AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
-		   e.printStackTrace();
+		  AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 
 	   }
 	}
 	
@@ -129,10 +128,12 @@ public class SignupGraphicController {
         	OpenWindowUtils.openRoleView(event, userRole);			
         }
      } catch (ValidationException ve) {
-         // Gestione specifica per errori di validazione
     	 AlertUtils.showAlert(Alert.AlertType.ERROR, "Sign Up Error", ve.getMessage());
+    	 
+     } catch (DAOException dae) {
+         AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
+         
      } catch (Exception e) {
-         // Gestione generica per tutte le altre eccezioni
     	 AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
      }   
 	}

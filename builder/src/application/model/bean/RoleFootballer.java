@@ -12,5 +12,14 @@ public enum RoleFootballer {
 	 RM, // Right Midfield
 	 LW, // Left Winger
 	 RW, // Right Winger
-	 ST  // Striker
+	 ST;  // Striker
+	 
+	 
+	 public static RoleFootballer fromString(String role) {
+	        try {
+	            return RoleFootballer.valueOf(role.toUpperCase()); 
+	        } catch (IllegalArgumentException e) {
+	            throw new RuntimeException("Invalid role: " + role);
+	        }
+	 }
 }

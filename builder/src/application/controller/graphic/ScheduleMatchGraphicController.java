@@ -207,7 +207,10 @@ public class ScheduleMatchGraphicController {
 			
 		} catch (TrainerException te) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, te.getMessage());
-		}
+		
+		} catch (Exception e) {
+			AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 
+		}   
      }
 	 
    

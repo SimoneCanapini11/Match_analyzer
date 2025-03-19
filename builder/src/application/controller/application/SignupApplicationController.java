@@ -90,7 +90,7 @@ public class SignupApplicationController {
 		
 		
 		if ("COACH".equalsIgnoreCase(roleStr) && userDAO.isCoachAlreadyAssigned(team)) {
-			throw new ValidationException("The team already has a coach assigned!");
+			throw new DAOException("The team already has a coach assigned!");
 		}
 		
         // Controlli superati, inserisco name, surname, role e team in newUser

@@ -35,9 +35,9 @@ public class DAOFactory {
     	    
     	} else if (MODE_FILE.equals(mode)) {
     		return new FileUserDAO();
+    		
     	} else {
         	return new FullUserDAO();
-            //return new FullUserDAO(getConnection()); //-- es. per DB
         }
     }
     
@@ -47,11 +47,12 @@ public class DAOFactory {
         }
         if (MODE_DEMO.equals(mode)) {
             return new DemoTeamDAO();
+            
         } else if (MODE_FILE.equals(mode)) {
     		return new FileTeamDAO();
+    		
     	} else {
         	return new FullTeamDAO();
-            //return new FullUserDAO(getConnection()); //-- es. per DB
         }
     } 
     
@@ -61,11 +62,9 @@ public class DAOFactory {
         }
         if (MODE_DEMO.equals(mode)) {
             return new DemoFootballerDAO();
-        } else if (MODE_FILE.equals(mode)) {
-    		return new FileFootballerDAO();
-    	}else {
+            
+        } else {
         	return new FullFootballerDAO();
-            //return new FullUserDAO(getConnection()); //-- es. per DB
         }
     } 
     
@@ -79,11 +78,8 @@ public class DAOFactory {
     	    }
     	    return instanceLineup;        
     	    
-    	} else if (MODE_FILE.equals(mode)) {
-    		return new FileLineupDAO();
-    	}else {
+    	} else {
         	return new FullLineupDAO();
-            //return new FullUserDAO(getConnection()); //-- es. per DB
         }
     } 
     
@@ -95,12 +91,12 @@ public class DAOFactory {
         	if (instanceMatch == null) {  
         		instanceMatch = new DemoMatchDAO();
     	    }
-    	    return instanceMatch;   
+    	    return instanceMatch;  
+    	    
         } else if (MODE_FILE.equals(mode)) {
     		return new FileMatchDAO();
-    	}else {
+    	} else {
         	return new FullMatchDAO();
-            //return new FullUserDAO(getConnection()); //-- es. per DB
         }
     } 
     

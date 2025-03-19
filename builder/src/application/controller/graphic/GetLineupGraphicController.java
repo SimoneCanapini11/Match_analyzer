@@ -221,9 +221,14 @@ public class GetLineupGraphicController extends BaseGraphicController {
 			} 
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+			
 		} catch (DAOException dae) {
 			AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
-	   }
+			
+		} catch (Exception e) {
+			AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
+		}
+			   
 	}
 	
 	
@@ -368,8 +373,13 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		 // Passa i dati al controller applicativo per il calcolo.
 		 try {
 			lineupController.updateSuccessRate(formation, playStyle, marking, playerNames, coachController.getUserTeam());
+			
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+		
+		} catch (Exception e) {
+		  AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 
+	   
 		}
 	 }
 	 

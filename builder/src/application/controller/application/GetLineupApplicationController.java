@@ -201,7 +201,7 @@ public class GetLineupApplicationController {
         	sessionManager.setMatchScheduled(teamName, false);
         	throw new LineupException("Upcoming match details missing. The trainer has been notified");  
         } else {
-        	sessionManager.setMatchScheduled(teamName, true);  //-----se chiudo l'applicazione?
+        	sessionManager.setMatchScheduled(teamName, true);  
         }
         
         // Determina il nome della squadra avversaria

@@ -29,9 +29,19 @@ public class DatabaseConnection {
             DB_PASSWORD = properties.getProperty("db.password");
 
             Class.forName("com.mysql.cj.jdbc.Driver"); 
+            
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        
+        // Chiude la connessione quando l'applicazione termina
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+        	try {
+				closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }));
     }
     
     public synchronized static Connection getConnection() throws SQLException, IOException {

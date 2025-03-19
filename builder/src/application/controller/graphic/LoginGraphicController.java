@@ -53,9 +53,8 @@ public class LoginGraphicController {
             // Gestione specifica per errori di validazione
 	    	AlertUtils.showAlert(Alert.AlertType.ERROR, "Login Error", ve.getMessage());
 	    } catch (Exception e) {
-            // Gestione generica per tutte le altre eccezioni
-	    	//UIUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");		
-	    	e.printStackTrace();
+	    	AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");		
+	    	//--e.printStackTrace();
 	    }
 	 }	    
 }
