@@ -131,7 +131,6 @@ public class FullLineupDAO implements LineupDAO {
 		            if (rsFootballerId.next()) {
 		                int footballerId = rsFootballerId.getInt("id");
 
-		                //stmtInsertPlayer.setInt(1, lineupId);
 		                stmtInsertPlayer.setInt(2, footballerId);
 		                stmtInsertPlayer.setInt(3, position);
 		                stmtInsertPlayer.addBatch();
