@@ -1,6 +1,5 @@
 package application.model.dao.full;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,9 +33,7 @@ public class FullUserDAO implements UserDAO {
             }
         } catch (SQLException se) {
             se.printStackTrace(); 
-        } catch (IOException ie) {
-			ie.printStackTrace();
-		}
+        }
         return user;
 	}
 
@@ -55,9 +52,7 @@ public class FullUserDAO implements UserDAO {
 	            stmt.executeUpdate();
 		} catch (SQLException se) {
             se.printStackTrace(); 
-        } catch (IOException ie) {
-			ie.printStackTrace();
-		}
+        }
 	}
 
 	@Override
@@ -74,9 +69,7 @@ public class FullUserDAO implements UserDAO {
 	            }
 	        } catch (SQLException se) {
 	            se.printStackTrace(); 
-	        } catch (IOException ie) {
-				ie.printStackTrace();
-			}
+	        }
 	        return exists;
 	} 
 

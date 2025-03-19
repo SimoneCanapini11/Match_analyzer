@@ -1,9 +1,9 @@
 package application.model.dao.full;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import application.model.dao.full.queries.*;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,8 +33,6 @@ public class FullTeamDAO implements TeamDAO {
 		        }
 		 } catch (SQLException se) {
 	            se.printStackTrace(); 
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 		return team; 
 	}
@@ -53,8 +51,6 @@ public class FullTeamDAO implements TeamDAO {
 		        }
 		 } catch (SQLException se) {
 	            se.printStackTrace(); 
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 		return opponents;     
 	}
@@ -72,8 +68,6 @@ public class FullTeamDAO implements TeamDAO {
 			 }
 		 } catch (SQLException se) {
 	            se.printStackTrace(); 
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 		 return teamNames;
 	}

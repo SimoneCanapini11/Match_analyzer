@@ -3,7 +3,6 @@ package application.model.dao.full;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,8 +52,6 @@ public class FullFootballerDAO implements FootballerDAO  {
 		            }
 		        } catch (SQLException se) {
 		            se.printStackTrace();
-		        } catch (IOException ie) {
-					ie.printStackTrace();
 		        }      
 		  
 		  try (Connection conn = DatabaseConnection.getConnection();
@@ -75,8 +72,6 @@ public class FullFootballerDAO implements FootballerDAO  {
 		            }
 		  } catch (SQLException se) {
 	            se.printStackTrace();
-		  } catch (IOException ie) {
-				ie.printStackTrace();
 		  } 
 		  
 		  return footballers;

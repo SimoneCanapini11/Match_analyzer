@@ -1,6 +1,5 @@
 package application.model.dao.full;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -41,8 +40,6 @@ public class FullMatchDAO implements MatchDAO {
 			        }
 		  } catch (SQLException se) {
 		        se.printStackTrace();
-		  } catch (IOException ie) {
-				ie.printStackTrace();
 		  }
 		  return upcomingMatches;
 	}
@@ -71,8 +68,6 @@ public class FullMatchDAO implements MatchDAO {
 		        }
 		 } catch (SQLException se) {
 		        se.printStackTrace();
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 		 return nextMatch;		 
 	}
@@ -101,8 +96,6 @@ public class FullMatchDAO implements MatchDAO {
 		        }
 		 } catch (SQLException se) {
 		        se.printStackTrace();
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 		return teamMatches;
 	}
@@ -123,8 +116,6 @@ public class FullMatchDAO implements MatchDAO {
 		        
 		 } catch (SQLException se) {
 		        se.printStackTrace();
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 	}
 
@@ -146,8 +137,6 @@ public class FullMatchDAO implements MatchDAO {
 		        
 		 } catch (SQLException se) {
 		        se.printStackTrace();
-		 } catch (IOException ie) {
-				ie.printStackTrace();
 		 }
 	}
 

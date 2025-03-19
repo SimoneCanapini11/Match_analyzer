@@ -1,7 +1,5 @@
 package application.model.dao.full;
 
-import java.io.IOException;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,8 +76,6 @@ public class FullLineupDAO implements LineupDAO {
 		        }
 		    } catch (SQLException se) {
 		        se.printStackTrace();
-		    } catch (IOException ie) {
-				ie.printStackTrace();
 		    }
 		
 		if (lineup == null) {
@@ -135,19 +131,21 @@ public class FullLineupDAO implements LineupDAO {
 		                stmtInsertPlayer.setInt(1, lineupId);
 		                stmtInsertPlayer.setInt(2, footballerId);
 		                stmtInsertPlayer.setInt(3, position);
-		                stmtInsertPlayer.executeUpdate();
+		                stmtInsertPlayer.addBatch();
+		                
 		                position++;
+		                
 		            } else {
-		                throw new SQLException("Not founded footballer: " + player.getName() + " " + player.getSurname());
+		                throw new DAOException("Not founded footballer: " + player.getName() + " " + player.getSurname());
 		            }
 		        }
+		        
+		        stmtInsertPlayer.executeBatch();
 
 		        conn.commit(); // Conferma la transazione
 		        
 		    } catch (SQLException se) {
 		        se.printStackTrace();
-		    } catch (IOException ie) {
-				ie.printStackTrace();
 		    }
 	}
 

@@ -13,9 +13,9 @@ public class DatabaseConnection {
 	private DatabaseConnection() {} 
 	
     private static final String PROPERTIES_FILE = "resources/db.properties";
-    private static String DB_URL;
-    private static String DB_USER;
-    private static String DB_PASSWORD;
+    private static String dbUrl;
+    private static String dbUser;
+    private static String dbPassword;
     private static Connection connection;
     
     
@@ -24,9 +24,9 @@ public class DatabaseConnection {
             Properties properties = new Properties();
             properties.load(new FileInputStream(PROPERTIES_FILE));
 
-            DB_URL = properties.getProperty("db.url");
-            DB_USER = properties.getProperty("db.user");
-            DB_PASSWORD = properties.getProperty("db.password");
+            dbUrl = properties.getProperty("db.url");
+            dbUser = properties.getProperty("db.user");
+            dbPassword = properties.getProperty("db.password");
 
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             
@@ -44,10 +44,10 @@ public class DatabaseConnection {
         }));
     }
     
-    public synchronized static Connection getConnection() throws SQLException, IOException {
+    public static synchronized Connection getConnection() throws SQLException {
         
     	if (connection == null || connection.isClosed()) {
-    		connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);            
+    		connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);            
         }
         return connection;
     }
