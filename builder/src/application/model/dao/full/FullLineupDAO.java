@@ -118,6 +118,8 @@ public class FullLineupDAO implements LineupDAO {
 		        stmtDeletePlayers.executeUpdate();
 
 		        // lineup_players update 
+		        stmtInsertPlayer.setInt(1, lineupId);
+		        
 		        int position = 1;
 		        for (Footballer player : lineup.getStartingLineup()) {
 		            stmtGetFootballerId.setString(1, player.getName());
@@ -125,10 +127,11 @@ public class FullLineupDAO implements LineupDAO {
 		            stmtGetFootballerId.setString(3, player.getTeam());
 
 		            ResultSet rsFootballerId = stmtGetFootballerId.executeQuery();
+		            
 		            if (rsFootballerId.next()) {
 		                int footballerId = rsFootballerId.getInt("id");
 
-		                stmtInsertPlayer.setInt(1, lineupId);
+		                //stmtInsertPlayer.setInt(1, lineupId);
 		                stmtInsertPlayer.setInt(2, footballerId);
 		                stmtInsertPlayer.setInt(3, position);
 		                stmtInsertPlayer.addBatch();
