@@ -15,6 +15,11 @@ import application.model.dao.MatchDAO;
 import application.model.dao.full.queries.SQLQueries;
 
 public class FullMatchDAO implements MatchDAO {
+	
+	private static final String HOME_TEAM = "home_team";
+	private static final String AWAY_TEAM = "away_team";
+	private static final String MATCH_DATE = "match_date";
+	private static final String MATCH_TIME = "match_time";
 
 	@Override
 	public List<Match> getUpcomingMatches() {
@@ -27,10 +32,10 @@ public class FullMatchDAO implements MatchDAO {
 
 			        while (rs.next()) {
 			            Match match = new Match(
-			                rs.getString("home_team"),
-			                rs.getString("away_team"),
-			                rs.getDate("match_date").toLocalDate(),
-			                rs.getTime("match_time").toLocalTime()
+			                rs.getString(HOME_TEAM),
+			                rs.getString(AWAY_TEAM),
+			                rs.getDate(MATCH_DATE).toLocalDate(),
+			                rs.getTime(MATCH_TIME).toLocalTime()
 			            );
 			            upcomingMatches.add(match);
 			        }
@@ -57,10 +62,10 @@ public class FullMatchDAO implements MatchDAO {
 		        try (ResultSet rs = stmt.executeQuery()) {
 		            if (rs.next()) {
 		                nextMatch = new Match(
-		                    rs.getString("home_team"),
-		                    rs.getString("away_team"),
-		                    rs.getDate("match_date").toLocalDate(),
-		                    rs.getTime("match_time").toLocalTime()
+		                    rs.getString(HOME_TEAM),
+		                    rs.getString(AWAY_TEAM),
+		                    rs.getDate(MATCH_DATE).toLocalDate(),
+		                    rs.getTime(MATCH_TIME).toLocalTime()
 		                );
 		            }
 		        }
@@ -87,10 +92,10 @@ public class FullMatchDAO implements MatchDAO {
 
 		        while (rs.next()) {
 		            	Match match = new Match(
-		                    rs.getString("home_team"),
-		                    rs.getString("away_team"),
-		                    rs.getDate("match_date").toLocalDate(),
-		                    rs.getTime("match_time").toLocalTime()
+		                    rs.getString(HOME_TEAM),
+		                    rs.getString(AWAY_TEAM),
+		                    rs.getDate(MATCH_DATE).toLocalDate(),
+		                    rs.getTime(MATCH_TIME).toLocalTime()
 		                );
 		            	teamMatches.add(match);
 		        }

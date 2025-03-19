@@ -12,6 +12,8 @@ import application.model.bean.Team;
 import application.model.dao.TeamDAO;
 
 public class FullTeamDAO implements TeamDAO {
+	
+	private static final String NAME_TEAM = "name_team";
 
 	@Override
 	public Team getTeamByName(String teamName) {
@@ -24,7 +26,7 @@ public class FullTeamDAO implements TeamDAO {
 		        
 		        if (rs.next()) {
 		            team = new Team(
-		                rs.getString("name_team"),
+		                rs.getString(NAME_TEAM),
 		                rs.getString("stadium"),
 		                rs.getString("city")
 		            );
@@ -47,7 +49,7 @@ public class FullTeamDAO implements TeamDAO {
 		        ResultSet rs = stmt.executeQuery();
 		        
 		        while (rs.next()) {
-		            opponents.add(rs.getString("name_team"));
+		            opponents.add(rs.getString(NAME_TEAM));
 		        }
 		 } catch (SQLException se) {
 	            se.printStackTrace(); 
@@ -66,7 +68,7 @@ public class FullTeamDAO implements TeamDAO {
 			 ResultSet rs = stmt.executeQuery();
 			 
 			 while (rs.next()) {
-		            teamNames.add(rs.getString("name_team"));
+		            teamNames.add(rs.getString(NAME_TEAM));
 			 }
 		 } catch (SQLException se) {
 	            se.printStackTrace(); 
