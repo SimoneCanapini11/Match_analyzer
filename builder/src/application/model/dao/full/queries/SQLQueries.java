@@ -1,5 +1,8 @@
 package application.model.dao.full.queries;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SQLQueries {
 
 	private SQLQueries() {}
@@ -89,5 +92,19 @@ public class SQLQueries {
 			   "UPDATE matches " +
 			   "SET match_time = ?, home_team = ?, away_team = ? " +
 			   "WHERE match_date = ? AND (home_team = ? OR away_team = ?)";
+	   
+	   public static String getLineupFootballersId() {
+		   // Query unica per tutti gli ID dei Footballer inseriti
+		   StringBuilder query = new StringBuilder(
+		            "SELECT id, name, surname, team FROM Footballers WHERE ");
+		        List<String> params = new ArrayList<>();
+
+		        for (int i = 0; i < 11; i++) {
+		            params.add("(name = ? AND surname = ? AND team = ?)");
+		        }
+		        query.append(String.join(" OR ", params));
+		        
+		        return query.toString();
+	   }
 			   
 }

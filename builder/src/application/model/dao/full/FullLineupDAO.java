@@ -96,7 +96,8 @@ public class FullLineupDAO implements LineupDAO {
 		         PreparedStatement stmtGetLineupId = conn.prepareStatement(SQLQueries.FIND_LINEUP_ID);
 		         PreparedStatement stmtDeletePlayers = conn.prepareStatement(SQLQueries.DELETE_LINEUP_PLAYERS);
 		         PreparedStatement stmtGetFootballerId = conn.prepareStatement(SQLQueries.FIND_FOOTBALLER_ID); 
-		 		 PreparedStatement stmtInsertPlayer = conn.prepareStatement(SQLQueries.INSERT_LINEUP_PLAYERS)) {
+		 		 PreparedStatement stmtInsertPlayer = conn.prepareStatement(SQLQueries.INSERT_LINEUP_PLAYERS);
+				 PreparedStatement stmtGetFootballerIds = conn.prepareStatement(SQLQueries.getLineupFootballersId())) {
 			 
 		        conn.setAutoCommit(false); // Avvia la transazione
 
@@ -119,48 +120,10 @@ public class FullLineupDAO implements LineupDAO {
 		        stmtDeletePlayers.setInt(1, lineupId);
 		        stmtDeletePlayers.executeUpdate();
 
-		        /*// lineup_players update 
-		        stmtInsertPlayer.setInt(1, lineupId);
-		        
-		        int position = 1;
-		        for (Footballer player : lineup.getStartingLineup()) {
-		            stmtGetFootballerId.setString(1, player.getName());
-		            stmtGetFootballerId.setString(2, player.getSurname());
-		            stmtGetFootballerId.setString(3, player.getTeam());
-
-		            ResultSet rsFootballerId = stmtGetFootballerId.executeQuery();
-		            
-		            if (rsFootballerId.next()) {
-		                int footballerId = rsFootballerId.getInt("id");
-
-		                stmtInsertPlayer.setInt(2, footballerId);
-		                stmtInsertPlayer.setInt(3, position);
-		                stmtInsertPlayer.addBatch();
-		                
-		                position++;
-		                
-		            } else {
-		                throw new DAOException("Not founded footballer: " + player.getName() + " " + player.getSurname());
-		            }
-		        }*/
-		        
-		        //stmtInsertPlayer.executeBatch();
-		        
 		        
 		        // Footballer in Lineup
 		        List<Footballer> allPlayers = lineup.getStartingLineup();
-
-		        // Query unica per tutti gli ID dei Footballer inseriti
-		        StringBuilder query = new StringBuilder(
-		            "SELECT id, name, surname, team FROM Footballers WHERE ");
-		        List<String> params = new ArrayList<>();
-
-		        for (int i = 0; i < allPlayers.size(); i++) {
-		            params.add("(name = ? AND surname = ? AND team = ?)");
-		        }
-		        query.append(String.join(" OR ", params));
-
-		        PreparedStatement stmtGetFootballerIds = conn.prepareStatement(query.toString());
+		        
 
 		        int paramIndex = 1;
 		        for (Footballer player : allPlayers) {
