@@ -143,6 +143,7 @@ public class FullLineupDAO implements LineupDAO {
 		            footballerIdMap.put(key, rsFootballersId.getInt("id"));
 		        }
 
+		        stmtInsertPlayer.setInt(1, lineupId);
 		        
 		        int position = 1;
 		        for (Footballer player : allPlayers) {
@@ -153,7 +154,6 @@ public class FullLineupDAO implements LineupDAO {
 		                throw new DAOException("Footballer not found: " + player.getName() + " " + player.getSurname());
 		            }
 		            
-		            stmtInsertPlayer.setInt(1, lineupId);
 		            stmtInsertPlayer.setInt(2, footballerId);
 		            stmtInsertPlayer.setInt(3, position++);
 		            stmtInsertPlayer.addBatch();
