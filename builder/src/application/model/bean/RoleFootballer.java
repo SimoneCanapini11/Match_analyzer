@@ -1,5 +1,7 @@
 package application.model.bean;
 
+import application.exception.DAOException;
+
 public enum RoleFootballer {
 	 GK, // Goalkeeper
 	 LB, // Left Back
@@ -19,7 +21,7 @@ public enum RoleFootballer {
 	        try {
 	            return RoleFootballer.valueOf(role.toUpperCase()); 
 	        } catch (IllegalArgumentException e) {
-	            throw new RuntimeException("Invalid role: " + role);
+	            throw new DAOException("Invalid role: " + role);
 	        }
 	 }
 }

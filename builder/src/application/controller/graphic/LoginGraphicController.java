@@ -52,9 +52,9 @@ public class LoginGraphicController {
 	    } catch (ValidationException ve) {
             // Gestione specifica per errori di validazione
 	    	AlertUtils.showAlert(Alert.AlertType.ERROR, "Login Error", ve.getMessage());
+	    	
 	    } catch (Exception e) {
 	    	AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");		
-	    	//--e.printStackTrace();
 	    }
 	 }	    
 }

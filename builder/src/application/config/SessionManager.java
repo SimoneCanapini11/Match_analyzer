@@ -36,10 +36,7 @@ public class SessionManager {
 	        this.currentUser = user;
 	    }
 	    
-	    public boolean isMatchScheduled(String team) {
-	        // Restituisce true se per il team c'è un match programmato; altrimenti false
-	       // return matchScheduledMap.getOrDefault(team, true);
-	    	
+	    public boolean isMatchScheduled(String team) {	
 	    	// Prima controlla la mappa in memoria, se non presente prova a caricarla dalle preferenze
 	        if (matchScheduledMap.containsKey(team)) {
 	            return matchScheduledMap.get(team);
