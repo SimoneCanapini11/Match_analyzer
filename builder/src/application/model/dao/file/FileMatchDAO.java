@@ -1,7 +1,9 @@
 package application.model.dao.file;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -78,17 +80,39 @@ public class FileMatchDAO implements MatchDAO {
 	        
 	        return teamMatches;
 	}
+	
 
 	@Override
 	public void saveMatch(Match match) {
-		// TODO Auto-generated method stub
-		
+		 try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
+	            writer.write(match.getHomeTeam() + "," + match.getAwayTeam() + "," + match.getMatchDate() + "," + match.getMatchTime() + "\n");
+	            writer.newLine();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 	}
 
 	@Override
 	public void updateMatch(Match match, String teamName) {
-		// TODO Auto-generated method stub
-		
+		  List<Match> matches = getAllMatches();
+	        boolean updated = false;
+
+	        for (Match m : matches) {
+	            if (m.getMatchDate().equals(match.getMatchDate()) &&
+	                (m.getHomeTeam().equalsIgnoreCase(teamName) || m.getAwayTeam().equalsIgnoreCase(teamName))) {
+	                
+	                // Aggiornamento Match
+	                m.setMatchTime(match.getMatchTime());
+	                m.setHomeTeam(match.getHomeTeam());
+	                m.setAwayTeam(match.getAwayTeam());
+	                updated = true;
+	                break; 
+	            }
+	        }
+
+	        if (updated) {
+	            overwriteFile(matches); // Riscrive il file con le modifiche
+	        }
 	}
 	
 	private List<Match> getAllMatches() {
@@ -118,8 +142,20 @@ public class FileMatchDAO implements MatchDAO {
         return matches;
     }
 	
+	
 	private static boolean isBeforeMatch( Match nextMatch, LocalDateTime matchDateTime) {
 		return nextMatch == null || matchDateTime.isBefore(LocalDateTime.of(nextMatch.getMatchDate(), nextMatch.getMatchTime()));
 	}
+	
 
+	  private void overwriteFile(List<Match> matches) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+	            writer.write("homeTeam,awayTeam,matchDate,matchTime\n"); 
+	            for (Match match : matches) {
+	                writer.write(match.getHomeTeam() + "," + match.getAwayTeam() + "," + match.getMatchDate() + "," + match.getMatchTime() + "\n");
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 }
