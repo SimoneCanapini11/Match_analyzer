@@ -133,7 +133,8 @@ public class SignupGraphicController {
          AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());
          
      } catch (Exception e) {
-    	 AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
+    	// AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");
+    	 e.printStackTrace();
      }   
 	}
 }

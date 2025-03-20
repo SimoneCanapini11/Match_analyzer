@@ -50,11 +50,10 @@ public class FileMatchDAO implements MatchDAO {
 	            LocalDateTime matchDateTime = LocalDateTime.of(match.getMatchDate(), match.getMatchTime());
 
 	            if (matchDateTime.isAfter(now) &&
-	                (match.getHomeTeam().equalsIgnoreCase(nameTeam) || match.getAwayTeam().equalsIgnoreCase(nameTeam))) {
-	                
-	                if (nextMatch == null || matchDateTime.isBefore(LocalDateTime.of(nextMatch.getMatchDate(), nextMatch.getMatchTime()))) {
-	                    nextMatch = match;
-	                }
+	                (match.getHomeTeam().equalsIgnoreCase(nameTeam) || match.getAwayTeam().equalsIgnoreCase(nameTeam)) && 
+	                isBeforeMatch(nextMatch, matchDateTime)) {
+	            
+	            		nextMatch = match;
 	            }
 	        }
 	        return nextMatch;
@@ -116,5 +115,9 @@ public class FileMatchDAO implements MatchDAO {
         }
         return matches;
     }
+	
+	private static boolean isBeforeMatch( Match nextMatch, LocalDateTime matchDateTime) {
+		return nextMatch == null || matchDateTime.isBefore(LocalDateTime.of(nextMatch.getMatchDate(), nextMatch.getMatchTime()));
+	}
 
 }

@@ -54,9 +54,11 @@ public class FileUserDAO implements UserDAO {
 
 	@Override
 	public boolean isCoachAlreadyAssigned(String teamName) {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {            
+            @SuppressWarnings("unused")
+            String header = br.readLine(); // Salta l'header
+            
             String line;
-            br.readLine(); // Salta l'header
 
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
