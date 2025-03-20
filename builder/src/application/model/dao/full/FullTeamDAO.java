@@ -40,6 +40,7 @@ public class FullTeamDAO implements TeamDAO {
 	@Override
 	public List<String> getOpponentList(String teamName) {
 		List<String> opponents = new ArrayList<>();
+		
 		try (Connection conn = DatabaseConnection.getConnection();
 		         PreparedStatement stmt = conn.prepareStatement(SQLQueries.OPPONENT_LIST)) {
 			
@@ -58,6 +59,7 @@ public class FullTeamDAO implements TeamDAO {
 	@Override
 	public List<String> getTeamNameList() {
 		 List<String> teamNames = new ArrayList<>();
+		 
 		 try (Connection conn = DatabaseConnection.getConnection();
 		         PreparedStatement stmt = conn.prepareStatement(SQLQueries.TEAM_NAME_LIST)) {
 			 

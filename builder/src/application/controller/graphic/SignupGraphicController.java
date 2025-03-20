@@ -68,7 +68,6 @@ public class SignupGraphicController {
 	
     private void openSignUpDetails(ActionEvent event) throws IOException{
 
-		// Ottieni il parent stage (homepage) attraverso il proprietario della finestra di signup
     	String fxmlPath = "signupDetails.fxml";
         String title = "Profile";
 		Stage signupStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

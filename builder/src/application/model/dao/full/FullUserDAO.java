@@ -50,6 +50,7 @@ public class FullUserDAO implements UserDAO {
 	            stmt.setString(6, user.getTeam());
 
 	            stmt.executeUpdate();
+	            
 		} catch (SQLException se) {
             se.printStackTrace(); 
         }
