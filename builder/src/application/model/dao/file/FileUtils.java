@@ -5,6 +5,8 @@ import java.nio.file.*;
 import java.util.Collections;
 
 public class FileUtils {
+	
+	private FileUtils() {}  
 
 	// Assicura che un file esista e abbia un'intestazione
     public static void ensureFileExists(String filePath, String header) {

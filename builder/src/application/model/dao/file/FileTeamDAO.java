@@ -23,8 +23,10 @@ public class FileTeamDAO implements TeamDAO {
 		Team team = null;
 		
 		 try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-	            String line;
-	            br.readLine(); 
+			 	@SuppressWarnings("unused")
+	            String header = br.readLine();
+			 
+			 	String line;
 
 	            while ((line = br.readLine()) != null) {
 	                String[] fields = line.split(",");
@@ -50,8 +52,10 @@ public class FileTeamDAO implements TeamDAO {
 		 List<String> opponents = new ArrayList<>();
 		 
 	        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-	            String line;
-	            br.readLine(); 
+	        	@SuppressWarnings("unused")
+	            String header = br.readLine();
+	        	
+	        	String line;
 
 	            while ((line = br.readLine()) != null) {
 	                String[] fields = line.split(",");
@@ -74,8 +78,10 @@ public class FileTeamDAO implements TeamDAO {
 		 List<String> teams = new ArrayList<>();
 		 
 	        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-	            String line;
-	            br.readLine(); 
+	        	@SuppressWarnings("unused")
+	            String header = br.readLine();
+	        	
+	        	String line;
 
 	            while ((line = br.readLine()) != null) {
 	                String[] fields = line.split(",");

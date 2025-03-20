@@ -95,9 +95,11 @@ public class FileMatchDAO implements MatchDAO {
         List<Match> matches = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-            String line;
-            br.readLine(); 
-
+        	@SuppressWarnings("unused")
+            String header = br.readLine();
+        	
+        	String line;
+            
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
                 if (fields.length < 4) continue; 
