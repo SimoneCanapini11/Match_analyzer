@@ -95,9 +95,10 @@ public class OpenWindowUtils {
             currentStage.close();
         }
         
-        // Chiusura finestra parent 
+        // Primary Windows actions 
         if (parentStage != null && !secondaryWindow) {
         	parentStage.close();
+        	newStage.setMaximized(true); 
         }
         
         // Gestione evento chiusura

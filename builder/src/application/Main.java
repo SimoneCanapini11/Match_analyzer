@@ -23,6 +23,7 @@ public class Main extends Application {
 
             primaryStage.setTitle("Homapage");
             primaryStage.setScene(new Scene(root));
+            primaryStage.setMaximized(true); 
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,7 +34,7 @@ public class Main extends Application {
     	Scanner scanner = new Scanner(System.in);
         String mode = "";
         
-     // Loop per input valido ("demo" o "full")
+     // Loop per input valido ("demo" , "full" o "file")
         while (true) {
             System.out.print("Enter the mode (demo/full/file): "); 	//---------anche per interfaccia javaFX o CLI (?)
          try {
@@ -62,16 +63,16 @@ public class Main extends Application {
 
 /*
  1) signup e login (logica e controlli)
- 2) gestione eccezioni (con exception handling) (DAOException)   **
+ 2) gestione eccezioni (con exception handling) (DAOException)   
  3) Interfaccia coach + controller 
- 4) Interfaccia trainer + plan training (non intrappolare l'utente) *****
- 5) SonarCloud 	
+ 4) Interfaccia trainer + plan training (non intrappolare l'utente) ***
+ 5) SonarCloud 	**
  6) 
  7) Interfaccia footballer
  8) Regole aziendali (controlli generici) 
  9) Codice duplicato 
- 10) Persistenza (DB + CSV) *
- 11) Interfaccia CLI ***
+ 10) Persistenza (DB + CSV) 
+ 11) Interfaccia CLI *
  12) Test ****
  
  */
