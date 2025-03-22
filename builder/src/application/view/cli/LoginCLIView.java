@@ -9,12 +9,10 @@ public class LoginCLIView implements CLIView {
 	
 	private LoginApplicationController loginController;
     private Scanner scanner;
-    private final CLIView signupView;
 
     public LoginCLIView() {
         this.loginController = new LoginApplicationController();
         this.scanner = new Scanner(System.in);
-        this.signupView = new SignupCLIView();
     }
 
 	@Override
@@ -45,7 +43,7 @@ public class LoginCLIView implements CLIView {
                 String choice = scanner.nextLine();
                 
                 if (choice.equals("1")) {
-                	signupView.start();           
+                	CLIViewNavigator.getInstance().openSignupView();;           
                 } else {
                 	start();
                 }

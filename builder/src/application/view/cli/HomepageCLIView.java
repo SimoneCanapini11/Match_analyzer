@@ -29,12 +29,14 @@ public class HomepageCLIView implements CLIView {
                 case "2":
                 case "3":
                 case "4":
-                	LoginCLIView loginView = new LoginCLIView();
-                	loginView.start();
+                	/*LoginCLIView loginView = new LoginCLIView();
+                	loginView.start();*/
+                	CLIViewNavigator.getInstance().openLoginView();
                 	break;
                 case "5":
-                	SignupCLIView signupView = new SignupCLIView();
-                	signupView.start();                	
+                	/*SignupCLIView signupView = new SignupCLIView();
+                	signupView.start();        */
+                	CLIViewNavigator.getInstance().openSignupView();
                     break;
                 case "6":
                 	System.exit(0);          
