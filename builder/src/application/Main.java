@@ -14,8 +14,6 @@ import java.util.Scanner;
 
 public class Main extends Application {
 	
-	  private static Scanner scanner;
-
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -33,48 +31,49 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-    	scanner = new Scanner(System.in);
-        String view = "";
-    	String mode = "";
-    	
-    	// Loop per input valido ("cli" o "gui")
-    	 while (true) {
-             System.out.print("Enter the interface (GUI/CLI): "); 	
-          try {
-        	  view = scanner.nextLine().trim().toLowerCase();
-          } catch (NoSuchElementException e) {   
-         	 e.printStackTrace();
-          }
-             if ("cli".equals(view) || "gui".equals(view)) {
-                 break;
-             } else {
-                 System.out.println("Invalid input.");
-             }
-         }
-        
-    	// Loop per input valido ("demo" , "full" o "file")
-        while (true) {
-            System.out.print("Enter the mode (demo/full/file): "); 	
-         try {
-            mode = scanner.nextLine().trim().toLowerCase();
-         } catch (NoSuchElementException e) {   
-        	 e.printStackTrace();
-         }
-            if ("demo".equals(mode) || "full".equals(mode) || "file".equals(mode)) {
-                break;
-            } else {
-                System.out.println("Invalid input.");
-            }
-        }
-        
-     // Inizializza il contesto globale
-        AppConfig.init(mode);      
-        
-        if ("cli".equals(view)) {
-        	new HomepageCLIView().start();
-        } else {
-        	launch(args);
-        }        
+    	try (Scanner scanner = new Scanner(System.in)) {
+			String view = "";
+			String mode = "";
+			
+			// Loop per input valido ("cli" o "gui")
+			 while (true) {
+			     System.out.print("Enter the interface (GUI/CLI): "); 	
+			  try {
+				  view = scanner.nextLine().trim().toLowerCase();
+			  } catch (NoSuchElementException e) {   
+			 	 e.printStackTrace();
+			  }
+			     if ("cli".equals(view) || "gui".equals(view)) {
+			         break;
+			     } else {
+			         System.out.println("Invalid input.");
+			     }
+			 }
+			
+			// Loop per input valido ("demo" , "full" o "file")
+			while (true) {
+			    System.out.print("Enter the mode (demo/full/file): "); 	
+			 try {
+			    mode = scanner.nextLine().trim().toLowerCase();
+			 } catch (NoSuchElementException e) {   
+				 e.printStackTrace();
+			 }
+			    if ("demo".equals(mode) || "full".equals(mode) || "file".equals(mode)) {
+			        break;
+			    } else {
+			        System.out.println("Invalid input.");
+			    }
+			}
+			
+    // Inizializza il contesto globale
+			AppConfig.init(mode);      
+			
+			if ("cli".equals(view)) {
+				new HomepageCLIView().start();
+			} else {
+				launch(args);
+			}
+		}        
     }
 }
 

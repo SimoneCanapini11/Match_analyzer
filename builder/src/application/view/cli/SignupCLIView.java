@@ -50,7 +50,7 @@ public class SignupCLIView implements CLIView {
            String choice = scanner.nextLine();
            
            if (choice.equals("1")) {
-           	new LoginCLIView().start();;
+           	new LoginCLIView().start();
            } else {
            	start();
            }
