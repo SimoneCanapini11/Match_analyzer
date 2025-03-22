@@ -1,7 +1,7 @@
 package application;
 
 import application.config.AppConfig;
-
+import application.view.cli.HomepageCLIView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +13,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main extends Application {
+	
+	  private static Scanner scanner;
 
     @Override
     public void start(Stage primaryStage) {
@@ -31,12 +33,28 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-    	Scanner scanner = new Scanner(System.in);
-        String mode = "";
+    	scanner = new Scanner(System.in);
+        String view = "";
+    	String mode = "";
+    	
+    	// Loop per input valido ("cli" o "gui")
+    	 while (true) {
+             System.out.print("Enter the interface (GUI/CLI): "); 	
+          try {
+        	  view = scanner.nextLine().trim().toLowerCase();
+          } catch (NoSuchElementException e) {   
+         	 e.printStackTrace();
+          }
+             if ("cli".equals(view) || "gui".equals(view)) {
+                 break;
+             } else {
+                 System.out.println("Invalid input.");
+             }
+         }
         
-     // Loop per input valido ("demo" , "full" o "file")
+    	// Loop per input valido ("demo" , "full" o "file")
         while (true) {
-            System.out.print("Enter the mode (demo/full/file): "); 	//---------anche per interfaccia javaFX o CLI (?)
+            System.out.print("Enter the mode (demo/full/file): "); 	
          try {
             mode = scanner.nextLine().trim().toLowerCase();
          } catch (NoSuchElementException e) {   
@@ -52,9 +70,11 @@ public class Main extends Application {
      // Inizializza il contesto globale
         AppConfig.init(mode);      
         
-        scanner.close(); // Letture da tastiera terminate
-                
-        launch(args);
+        if ("cli".equals(view)) {
+        	new HomepageCLIView().start();
+        } else {
+        	launch(args);
+        }        
     }
 }
 
@@ -71,7 +91,7 @@ public class Main extends Application {
  7) Interfaccia footballer
  8) Regole aziendali (controlli generici) 
  9) Codice duplicato 
- 10) Persistenza (DB + CSV) 
+ 10) 
  11) Interfaccia CLI *
  12) Test ****
  
