@@ -37,7 +37,8 @@ public class HomepageCLIView implements CLIView {
                 	signupView.start();                	
                     break;
                 case "6":
-                	System.exit(0);                    
+                	System.exit(0);          
+                	break;
                 default:
                     System.out.println("Invalid choice. Please try again.");}
 		}
