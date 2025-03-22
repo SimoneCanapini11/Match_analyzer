@@ -12,7 +12,7 @@ public class HomepageCLIView implements CLIView {
 	
 	@Override
 	public void start() {	
-		while (true) {
+		
 			System.out.println("\n==== Homepage ====");
             System.out.println("1. Get the Lineup");
             System.out.println("2. Manage your Team");
@@ -40,8 +40,9 @@ public class HomepageCLIView implements CLIView {
                 	System.exit(0);          
                 	break;
                 default:
-                    System.out.println("Invalid choice. Please try again.");}
-		}
+                    System.out.println("Invalid choice. Please try again.\n");
+                    start();
+            }		
 	}
 	
 }

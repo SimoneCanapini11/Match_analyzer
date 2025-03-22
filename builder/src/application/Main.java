@@ -58,7 +58,7 @@ public class Main extends Application {
 			 } catch (NoSuchElementException e) {   
 				 e.printStackTrace();
 			 }
-			    if ("demo".equals(mode) || "full".equals(mode) || "file".equals(mode)) {
+			    if (isValidMode(mode)) {	
 			        break;
 			    } else {
 			        System.out.println("Invalid input.");
@@ -74,6 +74,10 @@ public class Main extends Application {
 				launch(args);
 			}
 		}        
+    }
+    
+    private static boolean isValidMode(String mode) {
+    	return "demo".equals(mode) || "full".equals(mode) || "file".equals(mode);
     }
 }
 
