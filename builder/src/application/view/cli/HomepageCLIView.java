@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class HomepageCLIView implements CLIView {
 	
 	private Scanner scanner; 
+	private final NavigatorCLI navigator;
 	
-	public HomepageCLIView() {
+	public HomepageCLIView(NavigatorCLI navigator) {
 		this.scanner = new Scanner(System.in);
+		this.navigator = navigator;
 	}
 	
 	@Override
@@ -29,14 +31,10 @@ public class HomepageCLIView implements CLIView {
                 case "2":
                 case "3":
                 case "4":
-                	/*LoginCLIView loginView = new LoginCLIView();
-                	loginView.start();*/
-                	CLIViewNavigator.getInstance().openLoginView();
+                	new LoginCLIView(navigator).start();
                 	break;
-                case "5":
-                	/*SignupCLIView signupView = new SignupCLIView();
-                	signupView.start();        */
-                	CLIViewNavigator.getInstance().openSignupView();
+                case "5":      
+                	new SignupCLIView(navigator).start();                	
                     break;
                 case "6":
                 	System.exit(0);          

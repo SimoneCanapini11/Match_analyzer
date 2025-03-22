@@ -6,7 +6,7 @@ public class CLIViewUtils {
 	
 	private CLIViewUtils() {}
 	
-	 public static void openRoleView(String userRole) {
+	 public static void openRoleView(String userRole, NavigatorCLI navigator) {
 	        System.out.println("\n Login riuscito! Sei un: " + userRole);
 	        
 	      // Apri la schermata in base al ruolo dell'utente
@@ -18,16 +18,11 @@ public class CLIViewUtils {
 	                new TrainerCLIView().start();
 	                break;
 	            default:
-	                openHomepage("Role not recognized.");
+	            	navigator.navigateToHomepage("Role not recognized.");
 	        }
 	    }
 
-	 public static void openHomepage(String str) {
-		 System.out.println();
-		 System.out.println(str);
-         HomepageCLIView homepageView = new HomepageCLIView();
-         homepageView.start();
-	 }
+	 
 	 
 	 public static void printList(List<String> list) {
 		 System.out.println("\nAvailable options:");

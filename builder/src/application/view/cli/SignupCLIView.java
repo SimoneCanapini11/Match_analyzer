@@ -12,10 +12,12 @@ public class SignupCLIView implements CLIView {
 	
 	private SignupApplicationController signupController;
     private Scanner scanner;
+    private final NavigatorCLI navigator;
 
-    public SignupCLIView() {
+    public SignupCLIView(NavigatorCLI navigator) {
     	this.signupController = new SignupApplicationController(); 	
         this.scanner = new Scanner(System.in);
+        this.navigator = navigator;
     }
 
 	@Override
@@ -50,13 +52,13 @@ public class SignupCLIView implements CLIView {
            String choice = scanner.nextLine();
            
            if (choice.equals("1")) {
-        	   CLIViewNavigator.getInstance().openLoginView();
+        	   navigator.navigateToLogin();
            } else {
            	start();
            }
          
 	   } catch (Exception e) {
-		   CLIViewUtils.openHomepage("Something went wrong, try again.");
+		   navigator.navigateToHomepage("Something went wrong, try again.");
 	   }
 	}
 
@@ -96,10 +98,10 @@ public class SignupCLIView implements CLIView {
                	// Lancio view in base al ruolo	
                	String userRole = signupController.getUserRole();
                	if (userRole.equals("footballer")) {
-               		CLIViewUtils.openHomepage("Coming soon.");
+               		navigator.navigateToHomepage("Coming soon");
                		return;
                	}
-                CLIViewUtils.openRoleView(userRole);		
+                CLIViewUtils.openRoleView(userRole, navigator);		
                }
             } catch (ValidationException ve) {
             	System.out.println("Sign Up confirm error: " + ve.getMessage());
@@ -107,10 +109,10 @@ public class SignupCLIView implements CLIView {
             	confirmSignup();
            	 
             } catch (DAOException dae) {
-            	CLIViewUtils.openHomepage("Error saving: " + dae.getMessage());
+            	navigator.navigateToHomepage("Error saving: " + dae.getMessage());
                 
             } catch (Exception e) {
-            	CLIViewUtils.openHomepage("Something went wrong, try again.");
+            	navigator.navigateToHomepage("Something went wrong, try again.");
             }   
         
 	}

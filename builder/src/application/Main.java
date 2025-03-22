@@ -1,7 +1,7 @@
 package application;
 
 import application.config.AppConfig;
-import application.view.cli.HomepageCLIView;
+import application.view.cli.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -69,7 +69,8 @@ public class Main extends Application {
 			AppConfig.init(mode);      
 			
 			if ("cli".equals(view)) {
-				new HomepageCLIView().start();
+				NavigatorCLI navigator = new CLIViewNavigator();
+				new HomepageCLIView(navigator).start();
 			} else {
 				launch(args);
 			}

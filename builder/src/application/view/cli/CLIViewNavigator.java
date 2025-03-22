@@ -1,20 +1,21 @@
 package application.view.cli;
 
-public class CLIViewNavigator {
+public class CLIViewNavigator implements NavigatorCLI {
 
-private static CLIViewNavigator instance = new CLIViewNavigator();
-    
-    private CLIViewNavigator() {} 
+	 @Override
+	    public void navigateToLogin() {
+	        new LoginCLIView(this).start();
+	    }
 
-    public static CLIViewNavigator getInstance() {
-        return instance;
-    }
+	    @Override
+	    public void navigateToSignup() {
+	        new SignupCLIView(this).start();
+	    }
 
-    public void openLoginView() {
-        new LoginCLIView().start();
-    }
-
-    public void openSignupView() {
-        new SignupCLIView().start();
-    }
+	    @Override
+	    public void navigateToHomepage(String message) {
+	    	System.out.println();
+        	System.out.println(message);
+	        new HomepageCLIView(this).start();
+	    }
 }

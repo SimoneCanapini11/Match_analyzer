@@ -9,10 +9,12 @@ public class LoginCLIView implements CLIView {
 	
 	private LoginApplicationController loginController;
     private Scanner scanner;
+    private final NavigatorCLI navigator;
 
-    public LoginCLIView() {
+    public LoginCLIView(NavigatorCLI navigator) {
         this.loginController = new LoginApplicationController();
         this.scanner = new Scanner(System.in);
+        this.navigator = navigator;
     }
 
 	@Override
@@ -32,7 +34,7 @@ public class LoginCLIView implements CLIView {
                 if (isAuthenticated) {
                 	// Lancio view in base al ruolo 
                     String userRole = loginController.getUserRole();
-                    CLIViewUtils.openRoleView(userRole);
+                    CLIViewUtils.openRoleView(userRole, navigator);
                 }
 
             } catch (ValidationException ve) {
@@ -43,13 +45,13 @@ public class LoginCLIView implements CLIView {
                 String choice = scanner.nextLine();
                 
                 if (choice.equals("1")) {
-                	CLIViewNavigator.getInstance().openSignupView();;           
+                	navigator.navigateToSignup();   
                 } else {
                 	start();
                 }
                 
             } catch (Exception e) {
-               CLIViewUtils.openHomepage("Something went wrong, try again.");
+            	navigator.navigateToHomepage("Something went wrong, try again.");
             }
 	}
 	
