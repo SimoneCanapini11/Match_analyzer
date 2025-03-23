@@ -19,6 +19,10 @@ public class GetLineupCLIView implements CLIView {
 	private UserApplicationController coachController;	
 	private GetLineupApplicationController lineupController;
 	
+	private static final String CHOICE = "Enter a choice: ";
+	private static final String INVALID_CHOICE = "Invalid choice. Please try again.";
+	private static final String TRY_AGAIN = "Something went wrong, try again.";
+	
 	
 	public GetLineupCLIView(NavigatorCLI navigator) {
         this.navigator = navigator;
@@ -39,7 +43,7 @@ public class GetLineupCLIView implements CLIView {
         System.out.println("3. Back to Coach View");        
         System.out.println("4. Sign Out");
         System.out.println("5. Exit");
-        System.out.print("\nEnter a choice: ");
+        System.out.print("\n" + CHOICE);
         
         String choice = scanner.nextLine();
         
@@ -60,7 +64,7 @@ public class GetLineupCLIView implements CLIView {
             	System.exit(0);          
             	break;
             default:
-                System.out.println("Invalid choice. Please try again.\n");
+                System.out.println(INVALID_CHOICE + "\n");
                 start();
         }
 	}
@@ -84,7 +88,7 @@ public class GetLineupCLIView implements CLIView {
     		System.out.println("1. Return to Lineup");
             System.out.println("2. Back to Get Lineup View");
             System.out.println("3. Exit");
-            System.out.print("\nEnter a choice: ");
+            System.out.print("\n" + CHOICE);
             
             String choice = scanner.nextLine();
             
@@ -99,7 +103,7 @@ public class GetLineupCLIView implements CLIView {
                 	System.exit(0);          
                 	break;
                 default:
-                    System.out.println("Invalid choice. Please try again.\n");
+                	System.out.println(INVALID_CHOICE + "\n");
                     showOpponent();
             }		
 			
@@ -107,7 +111,7 @@ public class GetLineupCLIView implements CLIView {
 			System.out.println(le.getMessage());
 			showLineup();
 		} catch (Exception e) {
-			navigator.navigateToHomepage("Something went wrong, try again.");
+			navigator.navigateToHomepage(TRY_AGAIN);
 		}
 		
 	}
@@ -133,7 +137,7 @@ public class GetLineupCLIView implements CLIView {
         System.out.println("2. Get best Lineup");
         System.out.println("3. Back to Get Lineup View");
         System.out.println("4. Exit");
-        System.out.print("\nEnter a choice: ");
+        System.out.print("\n" + CHOICE);
         
         String choice = scanner.nextLine();
         
@@ -155,7 +159,7 @@ public class GetLineupCLIView implements CLIView {
             	System.exit(0);          
             	break;
             default:
-                System.out.println("Invalid choice. Please try again.\n");
+            	System.out.println(INVALID_CHOICE + "\n");
                 showLineup();
         }		
 		
@@ -182,7 +186,7 @@ public class GetLineupCLIView implements CLIView {
 			start();
 			
 		} catch (Exception e) {
-			navigator.navigateToHomepage("Something went wrong, try again.");
+			navigator.navigateToHomepage(TRY_AGAIN);
 		}
         
     }
@@ -247,7 +251,7 @@ public class GetLineupCLIView implements CLIView {
 			navigator.navigateToCoachView();
 		
 		} catch (Exception e) {
-			navigator.navigateToHomepage("Something went wrong, try again.");
+			navigator.navigateToHomepage(TRY_AGAIN);
 		}
     }
     
