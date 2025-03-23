@@ -32,20 +32,22 @@ public class SignupApplicationController {
         	 throw new ValidationException("Invalid email format");
         }	
         String formattedEmail = Formatter.removeBlanks(email.toLowerCase());
+        String fomattedPassword = Formatter.removeBlanks(password);
+        String formattedRepPassword = Formatter.removeBlanks(repPassword);
                 
-        if (!Validator.isValidLenghtPassword(password)) {	
+        if (!Validator.isValidLenghtPassword(fomattedPassword)) {	
         	throw new ValidationException("Password must be at least 8 characters");
         }
         
-        if (!Validator.isValidBlankPassword(password)) {	
+        if (!Validator.isValidBlankPassword(fomattedPassword)) {	
         	throw new ValidationException("Password must not contain any blanks");
         }
         
-        if (!Validator.isValidFormatPassword(password)) {	       
+        if (!Validator.isValidFormatPassword(fomattedPassword)) {	       
         	throw new ValidationException("The password must contain at least one uppercase letter, one lowercase letter, one special character and one number");
         }
         
-        if (!password.equals(repPassword)) {
+        if (!fomattedPassword.equals(formattedRepPassword)) {
         	throw new ValidationException("The passwords do not match");
         }
         
@@ -56,7 +58,7 @@ public class SignupApplicationController {
         
         User newUser = new User();
         newUser.setEmail(formattedEmail);
-        newUser.setPassword(PasswordCrypt.hashPassword(password));  		
+        newUser.setPassword(PasswordCrypt.hashPassword(fomattedPassword));  		
         
         sessionManager.setCurrentUser(newUser); // Memorizza l'utente nella "sessione"
         

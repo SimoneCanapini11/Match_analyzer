@@ -6,6 +6,7 @@ import application.exception.ValidationException;
 import application.model.bean.User;
 import application.model.dao.DAOFactory;
 import application.model.dao.UserDAO;
+import application.util.Formatter;
 import application.util.PasswordCrypt;
 import application.util.Validator;
 
@@ -19,7 +20,8 @@ public class LoginApplicationController {
 	    }
 
 	public boolean authenticate(String email, String password) throws ValidationException {
-		String formattedEmail = email.toLowerCase();
+		String formattedEmail = Formatter.removeBlanks(email.toLowerCase());
+		 String fomattedPassword = Formatter.removeBlanks(password);
 		
 		 // Validazione dei dati
         if (!Validator.isValidEmail(formattedEmail)) {
@@ -28,7 +30,7 @@ public class LoginApplicationController {
 		
 		User user = userDAO.findByEmail(formattedEmail);
 	
-		if (!(user != null && PasswordCrypt.checkPassword(password, user.getPassword()))) {			
+		if (!(user != null && PasswordCrypt.checkPassword(fomattedPassword, user.getPassword()))) {			
 			throw new ValidationException("Invalid email or password");
 		}
 		

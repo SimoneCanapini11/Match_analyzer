@@ -78,7 +78,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets right="400.0" />
+                  <Insets right="500.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="btnLogin" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openWindow" prefHeight="31.0" prefWidth="58.0" style="-fx-cursor: hand; -fx-background-color: black;" text="Login" textFill="WHITE">
@@ -94,7 +94,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets />
+                  <Insets right="20.0" />
                </HBox.margin>
             </Button>
          </children>

@@ -370,7 +370,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 			 playerNames.add(choiceBoxPlayers.get(i).getValue());
 		 }
 		 
-		 // Passa i dati al controller applicativo per il calcolo.
+		 // Passa i dati al controller applicativo per il calcolo
 		 try {
 			lineupController.updateSuccessRate(formation, playStyle, marking, playerNames, coachController.getUserTeam());
 			
@@ -379,7 +379,6 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		
 		} catch (Exception e) {
 		  AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 
-	   
 		}
 	 }
 	 

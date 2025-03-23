@@ -2,7 +2,7 @@ package application.view.cli;
 
 public class CLIViewNavigator implements NavigatorCLI {
 
-	 @Override
+	 	@Override
 	    public void navigateToLogin() {
 	        new LoginCLIView(this).start();
 	    }
@@ -18,4 +18,19 @@ public class CLIViewNavigator implements NavigatorCLI {
         	System.out.println(message);
 	        new HomepageCLIView(this).start();
 	    }
+
+		@Override
+		public void navigateToCoachView() {
+			new CoachCLIView(this).start();
+		}
+
+		@Override
+		public void navigateToTrainerView() {
+			new TrainerCLIView(this).start();
+		}
+
+		@Override
+		public void navigateToGetLineupView() {
+			new GetLineupCLIView(this).start();
+		}
 }

@@ -78,7 +78,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: black;" text="Team Stats" textFill="WHITE">
+            <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Team Stats" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

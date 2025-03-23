@@ -7,15 +7,13 @@ public class CLIViewUtils {
 	private CLIViewUtils() {}
 	
 	 public static void openRoleView(String userRole, NavigatorCLI navigator) {
-	        System.out.println("\n Login riuscito! Sei un: " + userRole);
-	        
 	      // Apri la schermata in base al ruolo dell'utente
 	        switch (userRole) {
 	            case "coach":
-	                new CoachCLIView().start();
+	                navigator.navigateToCoachView();
 	                break;
 	            case "trainer":
-	                new TrainerCLIView().start();
+	                navigator.navigateToTrainerView();
 	                break;
 	            default:
 	            	navigator.navigateToHomepage("Role not recognized.");
