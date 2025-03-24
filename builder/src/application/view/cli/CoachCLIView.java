@@ -38,7 +38,7 @@ public class CoachCLIView implements CLIView {
             	break;
             case "2":
             	System.out.println("\nComing soon\n");
-            	start();
+            	navigator.navigateToCoachView();
             	break;
             case "3":
             	handleSignOut();
