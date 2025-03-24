@@ -7,4 +7,5 @@ public interface NavigatorCLI {
     void navigateToCoachView();
     void navigateToTrainerView();
     void navigateToGetLineupView();
+    void navigateToScheduleMatchView();
 }

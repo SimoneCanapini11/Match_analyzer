@@ -26,17 +26,17 @@ public class ScheduleMatchApplicationController {
 	}
 	
 	
-	public int saveMatch(String teamName, LocalDate selectedDate, LocalTime selectedTime, String opponent, String selectedRadioValue) throws TrainerException {
+	public int saveMatch(String teamName, LocalDate date, LocalTime time, String opponent, String matchLocation) throws TrainerException {
 		
-		 if (selectedDate == null) {
-			 throw new TrainerException("Enter the match date");
+		 if (date == null) {
+			 throw new TrainerException("Enter the match date (dd/MM/yyyy)");
 		 }
 		 
 		 if (opponent == null) {
 			 throw new TrainerException("Enter the Opponent");
 		 }
 		 
-		 LocalDateTime matchDateTime = LocalDateTime.of(selectedDate, selectedTime);
+		 LocalDateTime matchDateTime = LocalDateTime.of(date, time);
 		 // Controlla che la data/ora non sia nel passato
 		 if (matchDateTime.isBefore(LocalDateTime.now())) {
 			 throw new TrainerException("The match date and time must be in the future");
@@ -45,7 +45,7 @@ public class ScheduleMatchApplicationController {
 		 String homeTeam;
 		 String awayTeam;
 		 
-		 if ("Home".equals(selectedRadioValue)) {
+		 if ("Home".equals(matchLocation)) {
 			 homeTeam = teamName;
 			 awayTeam = opponent;
 		 } else {
@@ -59,17 +59,17 @@ public class ScheduleMatchApplicationController {
 	        
 		 // Controllo su esistenza match con gli stessi valori
 		 for (Match m : existingMatches) {
-			 if (isAlreadySet(m, homeTeam, awayTeam, selectedDate, selectedTime)) {
+			 if (isAlreadySet(m, homeTeam, awayTeam, date, time)) {
 	                return 0;
 	            }
 		 }
 		 
 		 // Controllo su esistenza match con stessa data per update
 		 for (Match m : existingMatches) {
-			 if (m.getMatchDate().equals(selectedDate) && 
+			 if (m.getMatchDate().equals(date) && 
 				(m.getHomeTeam().equalsIgnoreCase(teamName) || m.getAwayTeam().equalsIgnoreCase(teamName))) {
 				 // Aggiorna il match
-				 Match updatedMatch = new Match(homeTeam, awayTeam, selectedDate, selectedTime);
+				 Match updatedMatch = new Match(homeTeam, awayTeam, date, time);
 				 matchDAO.updateMatch(updatedMatch, teamName);
 				 return 1;
 			 }
@@ -86,7 +86,7 @@ public class ScheduleMatchApplicationController {
         }
          
 		// Salva il match
-		Match newMatch = new Match(homeTeam, awayTeam, selectedDate, selectedTime);
+		Match newMatch = new Match(homeTeam, awayTeam, date, time);
 		matchDAO.saveMatch(newMatch);
         
 		// Notifica per il coach in caso di richiesta

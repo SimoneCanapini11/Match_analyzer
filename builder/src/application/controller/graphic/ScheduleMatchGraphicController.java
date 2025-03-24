@@ -124,7 +124,7 @@ public class ScheduleMatchGraphicController {
 		configureDatePicker(); 
 		 
 		// Converter personalizzato
-		matchDate.setConverter(new DateConverter());	//--------indip. da view
+		matchDate.setConverter(new DateConverter());	
 
         // Listener per ogni modifica del testo
 		matchDate.getEditor().focusedProperty().addListener((obs, wasFocused, isFocused) -> {
@@ -192,11 +192,11 @@ public class ScheduleMatchGraphicController {
     	 }
     	 
     	 RadioButton selectedRadio = (RadioButton) selectedToggle;
-		 String selectedRadioValue = selectedRadio.getText(); 
+		 String matchLocation = selectedRadio.getText(); 
 		 
     	 int isSaved;
 		try {
-			isSaved = scheduleController.saveMatch(trainerController.getUserTeam(), selectedDate, selectedTime, opponent, selectedRadioValue);
+			isSaved = scheduleController.saveMatch(trainerController.getUserTeam(), selectedDate, selectedTime, opponent, matchLocation);
 		 
 			if (isSaved == 0) {				
 				AlertUtils.showAlert(Alert.AlertType.INFORMATION, null, "Match saved successfully!");

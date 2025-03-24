@@ -33,4 +33,9 @@ public class CLIViewNavigator implements NavigatorCLI {
 		public void navigateToGetLineupView() {
 			new GetLineupCLIView(this).start();
 		}
+
+		@Override
+		public void navigateToScheduleMatchView() {
+			new ScheduleMatchCLIView(this).start();
+		}
 }
