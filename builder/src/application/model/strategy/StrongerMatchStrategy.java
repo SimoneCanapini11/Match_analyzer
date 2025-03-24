@@ -28,18 +28,18 @@ public class StrongerMatchStrategy implements TacticStrategy {
 	}
 
 
-	private String adjustFormation(String ourTeamFormation) {	//-----aggiungere altri 
+	private String adjustFormation(String ourTeamFormation) {	
 		
-		if (ourTeamFormation.equals("5-3-2")) {
-            return "3-5-2";
-        }
-        
 		if (ourTeamFormation.equals("5-2-2-1")) {
             return "3-4-2-1";
         }
 		
 		if (ourTeamFormation.equals("4-5-1")) {
             return "4-3-3";
+        }
+		
+		if (ourTeamFormation.equals("5-3-2")) {
+            return "3-5-2";
         }
 		
         return ourTeamFormation; 

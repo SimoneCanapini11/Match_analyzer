@@ -46,16 +46,16 @@ public class WeakerMatchStrategy implements TacticStrategy {
 	
 	private String adjustPlayStyle(String opponentPlayStyle) {
 		
-		if (opponentPlayStyle.equalsIgnoreCase("Tiki-Taka")) {
-            return "Park the Bus";
-        }
-		
 		if (opponentPlayStyle.equalsIgnoreCase("Direct Play")) {
             return "Wing Play";
         }
 		
 		if (opponentPlayStyle.equalsIgnoreCase("Wing Play")) {
             return "Direct Play";
+        }
+		
+		if (opponentPlayStyle.equalsIgnoreCase("Tiki-Taka")) {
+            return "Park the Bus";
         }
 		
         return "Counter-Attack";  
