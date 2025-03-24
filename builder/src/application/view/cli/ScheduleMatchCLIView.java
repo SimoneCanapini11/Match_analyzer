@@ -91,16 +91,7 @@ public class ScheduleMatchCLIView implements CLIView {
 		System.out.println("\n==== Insert new Match ====");
 		
 		 // Acquisizione e validazione date
-        LocalDate date = null;
-        while (date == null) {
-            System.out.print("\nEnter match date (dd/MM/yyyy): ");
-            String dateInput = scanner.nextLine();
-            try {
-                date = LocalDate.parse(dateInput, DATE_FORMAT);
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Please use dd/MM/yyyy.");
-            }
-        }
+        LocalDate date = checkValidDate();
 
         // Acquisizione e validazione time
         LocalTime time = null;
@@ -124,9 +115,10 @@ public class ScheduleMatchCLIView implements CLIView {
         	
         	if (!CLIViewUtils.isInvalidOption(input, locations)) {
         		matchLocation = input;
-        	} else {
-        		System.out.println(INVALID_CHOICE + "\n");
-        	}
+        		break;
+        	} 
+        	System.out.println(INVALID_CHOICE + "\n");
+        	
         }
         
         List<String> opponentsList = scheduleController.getOpponentList(teamName);
@@ -139,8 +131,9 @@ public class ScheduleMatchCLIView implements CLIView {
             
             if (opponentsList.contains(input)) {
                 opponent = input;
-            } else {
-                System.out.println(INVALID_CHOICE + "\n");            }
+                break;
+            } 
+            System.out.println(INVALID_CHOICE + "\n");            
         }
         
         int isSaved;
@@ -168,4 +161,19 @@ public class ScheduleMatchCLIView implements CLIView {
         trainerController.signOut();
         navigator.navigateToHomepage("Sign out successful");
     }
+	
+	
+	private LocalDate checkValidDate() {		
+		LocalDate date = null;
+		 while (date == null) {
+	            System.out.print("\nEnter match date (dd/MM/yyyy): ");
+	            String dateInput = scanner.nextLine();
+	            try {
+	                date = LocalDate.parse(dateInput, DATE_FORMAT);
+	            } catch (DateTimeParseException e) {
+	                System.out.println("Invalid date format. Please use dd/MM/yyyy.");
+	            }
+	    }
+		 return date;
+	}
 }
