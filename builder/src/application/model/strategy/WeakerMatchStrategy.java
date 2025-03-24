@@ -20,8 +20,8 @@ public class WeakerMatchStrategy implements TacticStrategy {
 	@Override
 	public List<String> suggestTactics() {
 		
-		String suggestedFormation = adjustFormation(ourTeamFormation);
-        String suggestedPlayStyle = adjustPlayStyle(opponentPlayStyle);
+		String suggestedPlayStyle = adjustPlayStyle(opponentPlayStyle);
+		String suggestedFormation = adjustFormation(ourTeamFormation);        
         String suggestedMarkingType = TacticUtils.adjustMarkingType(opponentFormation, ourTeamFormation);
 
         return new ArrayList<>(Arrays.asList(suggestedFormation, suggestedPlayStyle, suggestedMarkingType));
