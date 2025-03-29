@@ -17,7 +17,7 @@ public class DAOFactory {
 	private static final String MODE_DEMO = "demo";
 	private static final String MODE_FILE = "file";  
 	private static final String MODE_EXCEPTION = "Mode not initialized!";
-	private static String mode = AppConfig.getInstance().getMode(); // "demo" o "full"
+	private static String mode = AppConfig.getInstance().getMode(); 
 	
 	private static DemoLineupDAO instanceLineup;	// singleton lineupDAO
 	private static DemoUserDAO instanceUser;    // singleton userDAO

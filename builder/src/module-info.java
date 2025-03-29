@@ -8,6 +8,7 @@ module builder {
 	requires javafx.base;
 	requires java.prefs;
 	requires jbcrypt;
+	requires org.junit.jupiter.api;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens application.controller.graphic to javafx.fxml;

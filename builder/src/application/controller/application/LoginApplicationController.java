@@ -14,10 +14,11 @@ public class LoginApplicationController {
 	 private UserDAO userDAO;
 	 private SessionManager sessionManager; // gestisce lo stato globale
 	    
-	    public LoginApplicationController() {
-	        this.userDAO = DAOFactory.getUserDAO();
-	        this.sessionManager = SessionManager.getInstance();
-	    }
+	 
+	 public LoginApplicationController() {
+		 this.userDAO = DAOFactory.getUserDAO();
+		 this.sessionManager = SessionManager.getInstance();
+	 }
 
 	public boolean authenticate(String email, String password) throws ValidationException {
 		String formattedEmail = Formatter.removeBlanks(email.toLowerCase());
