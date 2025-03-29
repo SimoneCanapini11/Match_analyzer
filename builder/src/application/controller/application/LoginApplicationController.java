@@ -22,7 +22,7 @@ public class LoginApplicationController {
 
 	public boolean authenticate(String email, String password) throws ValidationException {
 		String formattedEmail = Formatter.removeBlanks(email.toLowerCase());
-		 String fomattedPassword = Formatter.removeBlanks(password);
+		String fomattedPassword = Formatter.removeBlanks(password);
 		
 		 // Validazione dei dati
         if (!Validator.isValidEmail(formattedEmail)) {

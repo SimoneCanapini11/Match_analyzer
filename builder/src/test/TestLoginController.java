@@ -35,7 +35,7 @@ class TestLoginController {
     void testAuthenticate_NotValidEmailFormat() throws ValidationException {
         // Verifica che l'autenticazione fallisca
     	ValidationException thrown = assertThrows(ValidationException.class, () -> {
-    		loginController.authenticate("notvalidgmail.com", "Password1!");
+    		loginController.authenticate("notvalidmail.com", "Password1!");
     	 });
     	
     	// Verifica messaggio dell'eccezione
