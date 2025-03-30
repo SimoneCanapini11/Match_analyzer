@@ -11,11 +11,12 @@ import application.model.dao.TeamDAO;
 
 public class FileTeamDAO implements TeamDAO {
 	
-	 private static String FILE_PATH = "data/teams.csv"; 
+	 private static String FILE_PATH; 
 	 private static final String HEADER = "nameTeam,stadium,city";
 	 
 	 // Predefinito
 	 public FileTeamDAO() {
+		 FILE_PATH = "data/teams.csv";  
 		 FileUtils.ensureFileExists(FILE_PATH, HEADER);
 	 }
 
