@@ -11,19 +11,19 @@ import application.model.dao.TeamDAO;
 
 public class FileTeamDAO implements TeamDAO {
 	
-	 private String FILE_PATH; 
+	 private String filePath; 
 	 private static final String HEADER = "nameTeam,stadium,city";
 	 
 	 // Predefinito
 	 public FileTeamDAO() {
-		 FILE_PATH = "data/teams.csv";  
-		 FileUtils.ensureFileExists(FILE_PATH, HEADER);
+		 filePath = "data/teams.csv";  
+		 FileUtils.ensureFileExists(filePath, HEADER);
 	 }
 
 	 // Test
 	 public FileTeamDAO( String TEST_FILE_PATH) {
-		 FILE_PATH = TEST_FILE_PATH;
-		 FileUtils.ensureFileExists(FILE_PATH, HEADER);
+		 filePath = TEST_FILE_PATH;
+		 FileUtils.ensureFileExists(filePath, HEADER);
 	 }
 		 
 	 
@@ -32,7 +32,7 @@ public class FileTeamDAO implements TeamDAO {
 	public Team getTeamByName(String teamName) {		
 		Team team = null;
 		
-		 try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+		 try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 			 	@SuppressWarnings("unused")
 	            String header = br.readLine();
 			 
@@ -61,7 +61,7 @@ public class FileTeamDAO implements TeamDAO {
 	public List<String> getOpponentList(String teamName) {
 		 List<String> opponents = new ArrayList<>();
 		 
-	        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+	        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 	        	@SuppressWarnings("unused")
 	            String header = br.readLine();
 	        	
@@ -87,7 +87,7 @@ public class FileTeamDAO implements TeamDAO {
 	public List<String> getTeamNameList() {
 		 List<String> teams = new ArrayList<>();
 		 
-	        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+	        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 	        	@SuppressWarnings("unused")
 	            String header = br.readLine();
 	        	
