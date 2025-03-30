@@ -21,8 +21,8 @@ public class FileTeamDAO implements TeamDAO {
 	 }
 
 	 // Test
-	 public FileTeamDAO( String TEST_FILE_PATH) {
-		 filePath = TEST_FILE_PATH;
+	 public FileTeamDAO( String testFilePath) {
+		 filePath = testFilePath;
 		 FileUtils.ensureFileExists(filePath, HEADER);
 	 }
 		 
