@@ -20,9 +20,9 @@ class TestLoginController {
     }
 
     @Test
-    void testAuthenticate_WrongPassword() throws ValidationException {
+    void testAuthenticate_WrongPassword() {
     	 // Verifica che venga lanciata una ValidationException per password errata
-        ValidationException thrown = assertThrows(ValidationException.class, () -> {
+        Exception thrown = assertThrows(ValidationException.class, () -> {
             loginController.authenticate("simone.inzaghi@gmail.com", "WrongPassword1!"); 
         });
 
@@ -32,9 +32,9 @@ class TestLoginController {
     
 
     @Test
-    void testAuthenticate_NotValidEmailFormat() throws ValidationException {
+    void testAuthenticate_NotValidEmailFormat() {
         // Verifica che l'autenticazione fallisca
-    	ValidationException thrown = assertThrows(ValidationException.class, () -> {
+    	Exception thrown = assertThrows(ValidationException.class, () -> {
     		loginController.authenticate("notvalidmail.com", "Password1!");
     	 });
     	
