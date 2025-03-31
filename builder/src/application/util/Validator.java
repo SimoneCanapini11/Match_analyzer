@@ -11,9 +11,9 @@ public class Validator {
 	
 	// Regex per validare un'email
 	private static final String EMAIL_REGEX =
-		    "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+){0,10}@"  // Limitato a 10 sottodomini
+		    "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+){0,10}@"  
 		    + "[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?"
-		    + "(?:\\.[a-zA-Z]{2,6}){1,3}$";  // Limitato a 3 livelli di dominio
+		    + "(?:\\.[a-zA-Z]{2,6}){1,3}$";  
 	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
     
     
@@ -26,13 +26,13 @@ public class Validator {
     
     
     public static boolean isValidLenghtPassword(String password) {        	
-        return isValidString(password) && password.trim().length() >= 8;		//------provare se password= 8 spazi bianchi + 1!Aa viene accettata
+        return isValidString(password) && password.trim().length() >= 8;		
     }
     
     
     // Controllo presenza di blank nella password 
     public static boolean isValidBlankPassword(String password) {
-        return !password.matches(".*\\s.*");
+    	return !Pattern.compile("\\s").matcher(password).find();
     }
     
     
