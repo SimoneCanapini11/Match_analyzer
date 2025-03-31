@@ -1,6 +1,8 @@
 package application.model.dao.full;
 
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,8 @@ import application.model.dao.full.queries.*;
 import application.model.dao.UserDAO;
 
 public class FullUserDAO implements UserDAO {
+	
+	private static final Logger LOGGER = Logger.getLogger(FullUserDAO.class.getName());
 
 	@Override
 	public User findByEmail(String email) {
@@ -32,7 +36,7 @@ public class FullUserDAO implements UserDAO {
                 );
             }
         } catch (SQLException se) {
-            se.printStackTrace(); 
+        	LOGGER.log(Level.SEVERE, "Error finding user by email", se);
         }
         return user;
 	}
@@ -52,7 +56,7 @@ public class FullUserDAO implements UserDAO {
 	            stmt.executeUpdate();
 	            
 		} catch (SQLException se) {
-            se.printStackTrace(); 
+			LOGGER.log(Level.SEVERE, "Error saving user", se);
         }
 	}
 
@@ -69,7 +73,7 @@ public class FullUserDAO implements UserDAO {
 	                exists = true;
 	            }
 	        } catch (SQLException se) {
-	            se.printStackTrace(); 
+	        	LOGGER.log(Level.SEVERE, "Error checking coach existence", se);
 	        }
 	        return exists;
 	} 

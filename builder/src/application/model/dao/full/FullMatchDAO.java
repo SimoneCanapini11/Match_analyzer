@@ -1,6 +1,8 @@
 package application.model.dao.full;
 
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,8 @@ import application.model.dao.MatchDAO;
 import application.model.dao.full.queries.SQLQueries;
 
 public class FullMatchDAO implements MatchDAO {
+	
+	private static final Logger logger = Logger.getLogger(FullMatchDAO.class.getName());
 	
 	private static final String HOME_TEAM = "home_team";
 	private static final String AWAY_TEAM = "away_team";
@@ -39,7 +43,7 @@ public class FullMatchDAO implements MatchDAO {
 			            upcomingMatches.add(match);
 			        }
 		  } catch (SQLException se) {
-		        se.printStackTrace();
+			    logger.log(Level.SEVERE, "Error in getting upcoming matches", se);
 		  }
 		  return upcomingMatches;
 	}
@@ -67,7 +71,7 @@ public class FullMatchDAO implements MatchDAO {
 		            }
 		        }
 		 } catch (SQLException se) {
-		        se.printStackTrace();
+			    logger.log(Level.SEVERE, "Error in getting next match", se);
 		 }
 		 return nextMatch;		 
 	}
@@ -95,7 +99,7 @@ public class FullMatchDAO implements MatchDAO {
 		            	teamMatches.add(match);
 		        }
 		 } catch (SQLException se) {
-		        se.printStackTrace();
+			    logger.log(Level.SEVERE, "Error in getting matches by team", se);
 		 }
 		return teamMatches;
 	}
@@ -115,7 +119,7 @@ public class FullMatchDAO implements MatchDAO {
 		        stmt.executeUpdate();
 		        
 		 } catch (SQLException se) {
-		        se.printStackTrace();
+			 logger.log(Level.SEVERE, "Error in saving match", se);
 		 }
 	}
 
@@ -136,7 +140,7 @@ public class FullMatchDAO implements MatchDAO {
 		        stmt.executeUpdate();
 		        
 		 } catch (SQLException se) {
-		        se.printStackTrace();
+			 logger.log(Level.SEVERE, "Error in updating match", se);
 		 }
 	}
 

@@ -6,9 +6,13 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.io.IOException;
 import java.io.FileInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DatabaseConnection {
+	
+	private static final Logger LOGGER = Logger.getLogger(DatabaseConnection.class.getName());
 
 	private DatabaseConnection() {} 
 	
@@ -31,7 +35,7 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.SEVERE, "Error loading database properties", e);
         }
         
         // Chiude la connessione quando l'applicazione termina
@@ -39,7 +43,7 @@ public class DatabaseConnection {
         	try {
 				closeConnection();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				LOGGER.log(Level.SEVERE, "Error closing database connection", e);
 			}
         }));
     }

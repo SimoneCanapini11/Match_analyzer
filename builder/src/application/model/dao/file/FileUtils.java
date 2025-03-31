@@ -22,7 +22,7 @@ public class FileUtils {
                 Files.write(file.toPath(), Collections.singleton(header), StandardOpenOption.CREATE);
                 
             } catch (IOException e) {
-            	LOGGER.log(Level.SEVERE, "Error creating file: " + e.getMessage());
+            	LOGGER.log(Level.SEVERE, "Error creating file: " + e);
             }
         }
     }
