@@ -29,7 +29,6 @@ public class Validator {
         return isValidString(password) && password.trim().length() >= 8;		
     }
     
-    
     // Controllo presenza di blank nella password 
     public static boolean isValidBlankPassword(String password) {
     	return !Pattern.compile("\\s").matcher(password).find();
@@ -48,7 +47,7 @@ public class Validator {
         }
         
      // Controllo presenza di un carattere speciale
-        if (!Pattern.compile("[!@#$%^&*(),.?\\\":{}|<>\\\\[\\\\]~-]").matcher(password).find()) {
+        if (!Pattern.compile("[!@#$%^&*(),.?\":{}|<>\\[\\]~-]").matcher(password).find()) {
         	return false;
         }
         
@@ -65,7 +64,7 @@ public class Validator {
     
     public static boolean isValidFormatString(String str) {
     	// Controllo presenza di un carattere speciale
-        if (Pattern.compile("[!@#$%^&*(),.?\\\":{}|<>\\\\[\\\\]~-]").matcher(str).find()) {
+        if (Pattern.compile("[!@#$%^&*(),.?\":{}|<>\\[\\]~-]").matcher(str).find()) {
         	return false;
         }
         

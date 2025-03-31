@@ -1,6 +1,8 @@
 package application;
 
 import application.config.AppConfig;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import application.view.cli.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,8 @@ import java.util.Scanner;
 
 public class Main extends Application {
 	
+	 private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+	
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -26,7 +30,7 @@ public class Main extends Application {
             primaryStage.setMaximized(true); 
             primaryStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.SEVERE, "Main exception", e);
         }
     }
 
@@ -41,7 +45,7 @@ public class Main extends Application {
 			  try {
 				  view = scanner.nextLine().trim().toLowerCase();
 			  } catch (NoSuchElementException e) {   
-			 	 e.printStackTrace();
+				  LOGGER.log(Level.SEVERE, "Scanner exception", e);
 			  }
 			     if ("cli".equals(view) || "gui".equals(view)) {
 			         break;
@@ -56,7 +60,7 @@ public class Main extends Application {
 			 try {
 			    mode = scanner.nextLine().trim().toLowerCase();
 			 } catch (NoSuchElementException e) {   
-				 e.printStackTrace();
+				 LOGGER.log(Level.SEVERE, "Scanner exception", e);
 			 }
 			    if (isValidMode(mode)) {	
 			        break;
@@ -81,27 +85,4 @@ public class Main extends Application {
     	return "demo".equals(mode) || "full".equals(mode) || "file".equals(mode);
     }
 }
-
-
-
-
-/*
- 1) signup e login (logica e controlli)
- 2) gestione eccezioni (con exception handling) (DAOException)   
- 3) Interfaccia coach + controller 
- 4) Interfaccia trainer + plan training (non intrappolare l'utente) ***
- 5) SonarCloud 	**
- 6) 
- 7) Interfaccia footballer
- 8) Regole aziendali (controlli generici) 
- 9) Codice duplicato 
- 10) 
- 11) Interfaccia CLI *
- 12) Test ****
- 
- */
-
-
-
-
 
