@@ -24,7 +24,7 @@ public class LoginApplicationController {
 		String formattedEmail = Formatter.removeBlanks(email.toLowerCase());
 		String fomattedPassword = Formatter.removeBlanks(password);
 		
-		 // Validazione dei dati
+		// Validazione dei dati
         if (!Validator.isValidEmail(formattedEmail)) {
         	throw new ValidationException("Invalid email format. Example: name@mail.com");
         }

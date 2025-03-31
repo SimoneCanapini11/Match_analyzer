@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
@@ -57,4 +58,9 @@ public class LoginGraphicController {
 	    	AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again.");		
 	    }
 	 }	    
+	 
+	 @FXML
+     private void comingSoonBtn(MouseEvent event) {
+    	 AlertUtils.comingSoonAlert();
+     }
 }
