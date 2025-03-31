@@ -1,6 +1,8 @@
 package application.model.dao.file;
 
 import java.io.BufferedReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +12,9 @@ import application.model.bean.Team;
 import application.model.dao.TeamDAO;
 
 public class FileTeamDAO implements TeamDAO {
+	
+	private static final Logger LOGGER = Logger.getLogger(FileTeamDAO.class.getName());
+	private static final String READING_ERROR = "Error reading file";
 	
 	 private String filePath; 
 	 private static final String HEADER = "nameTeam,stadium,city";
@@ -52,7 +57,7 @@ public class FileTeamDAO implements TeamDAO {
 	                }
 	            }
 	        } catch (IOException e) {
-	            e.printStackTrace();
+	        	LOGGER.log(Level.SEVERE, READING_ERROR, e);
 	        }
 		 return team;
 	}
@@ -78,7 +83,7 @@ public class FileTeamDAO implements TeamDAO {
 	                }
 	            }
 	        } catch (IOException e) {
-	            e.printStackTrace();
+	        	LOGGER.log(Level.SEVERE, READING_ERROR, e);	       
 	        }
 	        return opponents;
 	}
@@ -100,7 +105,7 @@ public class FileTeamDAO implements TeamDAO {
 	                teams.add(fields[0].trim());
 	            }
 	        } catch (IOException e) {
-	            e.printStackTrace();
+	        	LOGGER.log(Level.SEVERE, READING_ERROR, e);
 	        }
 	        return teams;
 	}

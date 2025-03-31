@@ -1,6 +1,8 @@
 package application.model.dao.file;
 
 import java.io.BufferedReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,6 +18,8 @@ import application.model.bean.Match;
 import application.model.dao.MatchDAO;
 
 public class FileMatchDAO implements MatchDAO {
+	
+	private static final Logger logger = Logger.getLogger(FileMatchDAO.class.getName());
 	
 	private static final String FILE_PATH = "data/matches.csv";
     private static final String HEADER = "homeTeam,awayTeam,matchDate,matchTime";
@@ -87,8 +91,8 @@ public class FileMatchDAO implements MatchDAO {
 		 try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
 	            writer.write(match.getHomeTeam() + "," + match.getAwayTeam() + "," + match.getMatchDate() + "," + match.getMatchTime() + "\n");
 	            writer.newLine();
-	        } catch (IOException e) {
-	            e.printStackTrace();
+	        } catch (IOException e) {	            
+	        	logger.log(Level.SEVERE, "Error saving match to file", e);
 	        }
 	}
 
@@ -137,7 +141,7 @@ public class FileMatchDAO implements MatchDAO {
                 matches.add(match);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+        	logger.log(Level.SEVERE, "Error reading matches from file", e);
         }
         return matches;
     }
@@ -155,7 +159,7 @@ public class FileMatchDAO implements MatchDAO {
 	                writer.write(match.getHomeTeam() + "," + match.getAwayTeam() + "," + match.getMatchDate() + "," + match.getMatchTime() + "\n");
 	            }
 	        } catch (IOException e) {
-	            e.printStackTrace();
+	        	logger.log(Level.SEVERE, "Error writing matches to file", e);
 	        }
 	    }
 }

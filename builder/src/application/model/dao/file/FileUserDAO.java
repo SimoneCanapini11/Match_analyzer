@@ -1,6 +1,8 @@
 package application.model.dao.file;
 
 import java.io.BufferedReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,6 +13,8 @@ import application.model.bean.User;
 import application.model.dao.UserDAO;
 
 public class FileUserDAO implements UserDAO {
+	
+	private static final Logger LOGGER = Logger.getLogger(FileUserDAO.class.getName());
 	
 	private static final String FILE_PATH = "data/users.csv";
     private static final String HEADER = "email,password,name,surname,role,team";
@@ -33,7 +37,7 @@ public class FileUserDAO implements UserDAO {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.SEVERE, "Error reading user data from file: ", e);
         }
         return user; 
 	}
@@ -48,7 +52,7 @@ public class FileUserDAO implements UserDAO {
             writer.newLine();
             
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.SEVERE, "Error writing user data to file: ", e);
         }
 	}
 
@@ -73,7 +77,7 @@ public class FileUserDAO implements UserDAO {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.SEVERE, "Error reading user data from file: ", e);
         }
 
         return false; 
