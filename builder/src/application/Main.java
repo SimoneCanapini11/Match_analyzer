@@ -50,7 +50,7 @@ public class Main extends Application {
 			     if ("cli".equals(view) || "gui".equals(view)) {
 			         break;
 			     } else {
-			         System.out.println("Invalid input.");
+			    	 LOGGER.info("Invalid input.");
 			     }
 			 }
 			
@@ -65,7 +65,7 @@ public class Main extends Application {
 			    if (isValidMode(mode)) {	
 			        break;
 			    } else {
-			        System.out.println("Invalid input.");
+			    	LOGGER.info("Invalid input.");
 			    }
 			}
 			
