@@ -38,22 +38,22 @@ public class Validator {
     
     public static boolean isValidFormatPassword(String password) {
     	// Controllo presenza di una lettera maiuscola
-    	if (!password.matches(".*[A-Z].*")) {
+    	if (!Pattern.compile("[A-Z]").matcher(password).find()) {
            return false;
         }
         
     	// Controllo presenza di una lettera minuscola
-        if (!password.matches(".*[a-z].*")) {
+        if (!Pattern.compile("[a-z]").matcher(password).find()) {
         	return false;
         }
         
      // Controllo presenza di un carattere speciale
-        if (!password.matches(".*[!@#$%^&*(),.?\":{}|<>\\[\\]~-].*")) {
+        if (!Pattern.compile("[!@#$%^&*(),.?\\\":{}|<>\\\\[\\\\]~-]").matcher(password).find()) {
         	return false;
         }
         
      // Controllo presenza di un numero
-       return password.matches(".*\\d.*");
+       return Pattern.compile("\\d").matcher(password).find();
    } 
     
    
@@ -65,11 +65,11 @@ public class Validator {
     
     public static boolean isValidFormatString(String str) {
     	// Controllo presenza di un carattere speciale
-        if (str.matches(".*[!@#$%^&*(),.?\":{}|<>\\[\\]~-].*")) {
+        if (Pattern.compile("[!@#$%^&*(),.?\\\":{}|<>\\\\[\\\\]~-]").matcher(str).find()) {
         	return false;
         }
         
      // Controllo presenza di un numero
-    	return !str.matches(".*\\d.*");
+    	return !Pattern.compile("\\d").matcher(str).find();
     }
 }

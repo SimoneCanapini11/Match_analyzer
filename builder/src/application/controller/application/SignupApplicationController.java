@@ -84,7 +84,7 @@ public class SignupApplicationController {
 			throw new ValidationException("You need to enter a role");
 		}
 		
-		RoleUser role = RoleUser.fromString(roleStr);		//----------------se Role = Footballer -> controlli 'regole aziendali'
+		RoleUser role = RoleUser.fromString(roleStr);		
 		
 		if (!Validator.isValidString(team)) {
 			throw new ValidationException("You need to enter a team");
