@@ -255,7 +255,7 @@ public class GetLineupApplicationController {
 	// Strategy
 	private List<String> determineTactic(int setStrategy, String opponentFormation, String opponentPlayStyle, String ourTeamFormation, String ourTeamPlayStyle) {
 		 
-		TacticContext context = new TacticContext();
+		TacticManager context = new TacticContext();
 	        
 		if (setStrategy == 3) {
 			// Team di uguale forza
