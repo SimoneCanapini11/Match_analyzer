@@ -5,6 +5,7 @@ import application.model.bean.User;
 import application.model.dao.DAOFactory;
 import application.model.dao.TeamDAO;
 import application.model.dao.UserDAO;
+import application.model.enums.RoleUser;
 import application.util.Formatter;
 import application.util.PasswordCrypt;
 
@@ -13,7 +14,6 @@ import java.util.List;
 import application.config.SessionManager;
 import application.exception.DAOException;
 import application.exception.ValidationException;
-import application.model.bean.RoleUser;
 
 public class SignupApplicationController {
 	private UserDAO userDAO;

@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.model.enums.RoleFootballer;
+
 public class Footballer {
 	   private String name;
 	   private String surname;
@@ -21,6 +23,8 @@ public class Footballer {
            this.attributes = attributes;
            this.roleAffinities = new ArrayList<>();
 	   }
+	   
+	   public Footballer() {}
 
 	// Getters e setters
 	public String getName() {

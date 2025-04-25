@@ -17,6 +17,8 @@ public class Lineup {
 		this.markingType = markingType;
 		this.startingLineup = startingLineup;
 	}
+	 
+	 public Lineup() {}
 
 
 	public String getTeamName() {

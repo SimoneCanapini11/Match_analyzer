@@ -1,8 +1,8 @@
 package application.model.dao.demo;
 
 import application.model.bean.User;
-import application.model.bean.RoleUser;
 import application.model.dao.UserDAO;
+import application.model.enums.RoleUser;
 import application.util.PasswordCrypt;
 
 import java.util.HashMap;

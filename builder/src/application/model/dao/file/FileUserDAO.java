@@ -8,9 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import application.model.bean.RoleUser;
 import application.model.bean.User;
 import application.model.dao.UserDAO;
+import application.model.enums.RoleUser;
 
 public class FileUserDAO implements UserDAO {
 	

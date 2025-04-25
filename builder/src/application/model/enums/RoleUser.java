@@ -1,4 +1,4 @@
-package application.model.bean;
+package application.model.enums;
 
 import java.util.Arrays;
 import java.util.List;

@@ -15,6 +15,8 @@ public class Match {
 		this.matchDate = matchDate;
 		this.matchTime = matchTime;
 	}
+	
+	public Match() {}
 
 	public String getHomeTeam() {
 		return homeTeam;

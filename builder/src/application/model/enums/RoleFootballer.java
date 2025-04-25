@@ -1,4 +1,4 @@
-package application.model.bean;
+package application.model.enums;
 
 import application.exception.DAOException;
 

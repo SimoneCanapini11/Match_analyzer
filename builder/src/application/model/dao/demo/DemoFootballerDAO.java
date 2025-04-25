@@ -7,8 +7,8 @@ import java.util.*;
 import java.time.LocalDate;
 import application.model.bean.Footballer;
 import application.model.bean.FootballerAttributes;
-import application.model.bean.RoleFootballer;
 import application.model.dao.FootballerDAO;
+import application.model.enums.RoleFootballer;
 
 public class DemoFootballerDAO implements FootballerDAO  {
 	// Mappa che associa il nome della squadra alla lista dei giocatori

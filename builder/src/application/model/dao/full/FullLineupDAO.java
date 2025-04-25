@@ -16,9 +16,9 @@ import application.exception.DAOException;
 import application.model.bean.Footballer;
 import application.model.bean.FootballerAttributes;
 import application.model.bean.Lineup;
-import application.model.bean.RoleFootballer;
 import application.model.dao.LineupDAO;
 import application.model.dao.full.queries.SQLQueries;
+import application.model.enums.RoleFootballer;
 
 public class FullLineupDAO implements LineupDAO {
 	

@@ -1,5 +1,7 @@
 package application.model.bean;
 
+import application.model.enums.RoleFootballer;
+
 public class RoleAffinity {
 
 	 private RoleFootballer role;

@@ -7,9 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import application.model.bean.RoleUser;
 import application.model.bean.User;
 import application.model.dao.full.queries.*;
+import application.model.enums.RoleUser;
 import application.model.dao.UserDAO;
 
 public class FullUserDAO implements UserDAO {

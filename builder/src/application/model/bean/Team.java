@@ -10,6 +10,8 @@ public class Team {
         this.stadium = stadium;
         this.city = city;
 	}
+	
+	public Team() {}
 
 	public String getNameTeam() {
 		return nameTeam;
@@ -39,7 +41,7 @@ public class Team {
 	
 	
 	@Override
-	public String toString() {			//------------------------------------Per debug
+	public String toString() {			
 		return "Team [nameTeam=" + nameTeam + ", stadium=" + stadium
 				+ ", city=" + city + "]";
 	}

@@ -1,5 +1,7 @@
 package application.model.bean;
 
+import application.model.enums.RoleUser;
+
 public class User {
 	private String email;
     private String password;	
@@ -68,12 +70,5 @@ public class User {
         this.team = team;
     }
 
-
-    
-    @Override
-	public String toString() {	//------------------------------------Per debug
-		return "User [email=" + email + ", password=" + password + ", name=" + name + ", surname=" + surname + ", role="
-				+ role + ", team=" + team + "]";
-	}
    
 }
