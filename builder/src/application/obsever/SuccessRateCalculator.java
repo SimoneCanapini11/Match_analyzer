@@ -41,9 +41,9 @@ public class SuccessRateCalculator extends Subject {
 	            tacticPenalty += markingPenaltyWeight;
 	        }
 	        
-	        // Forza media dei giocatori basata sul loro "ready to play".
+	        // Forza media dei giocatori basata sul loro "ready to play"
 	        double totalReady = 0;
-	        // Per ogni Footballer calcola il proprio ready-to-play per un ruolo specifico.
+	        // Per ogni Footballer calcola il proprio ready-to-play per un ruolo specifico
 	        for (int i = 0; i < players.size(); i++) {
 	            totalReady += players.get(i).getReadyToPlay(roles.get(i));
 	        }
@@ -65,6 +65,6 @@ public class SuccessRateCalculator extends Subject {
 	        successRate = Math.max(0, Math.min(calculatedRate, 100));
 
 	        // Notifica gli observer
-	        notifyObservers(successRate);
+	        setSuccessRate(successRate);
 	    }	 
 }

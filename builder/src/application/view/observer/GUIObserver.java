@@ -4,7 +4,7 @@ import application.obsever.Observer;
 import javafx.scene.control.Label;
 
 public class GUIObserver implements Observer {
-	// Label che mostra la success rate nella GUI.
+	// Label che mostra la success rate nella GUI
 	 private Label successRateLabel;
 
 	    public GUIObserver(Label successRateLabel) {
