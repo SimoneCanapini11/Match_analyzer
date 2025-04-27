@@ -359,7 +359,6 @@ public class GetLineupApplicationController {
 	
 	private void validateDeployableFootballers(List<Footballer> footballers) throws LineupException {
 	    for (Footballer footballer : footballers) {
-	        // Assumiamo che footballer.getAttributes() non sia null
 	        if (footballer.getAttributes().getDeployable() == 0) {
 	            throw new LineupException(footballer.getName() + " " + footballer.getSurname() + " is not deployable");
 	        }
