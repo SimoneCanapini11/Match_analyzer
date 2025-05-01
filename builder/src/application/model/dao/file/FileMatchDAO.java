@@ -29,7 +29,7 @@ public class FileMatchDAO implements MatchDAO {
     }
     
 	@Override
-	public List<Match> getUpcomingMatches() {
+	public List<Match> fetchUpcomingMatches() {
 		 List<Match> allMatches = getAllMatches();
 		 List<Match> upcomingMatches = new ArrayList<>();
 		 LocalDateTime now = LocalDateTime.now();
@@ -47,7 +47,7 @@ public class FileMatchDAO implements MatchDAO {
 	}
 
 	@Override
-	public Match getNextMatch(String nameTeam) {
+	public Match fetchNextMatch(String nameTeam) {
 		 List<Match> allMatches = getAllMatches();
 		 LocalDateTime now = LocalDateTime.now();
 		 Match nextMatch = null;
@@ -66,7 +66,7 @@ public class FileMatchDAO implements MatchDAO {
 	}
 
 	@Override
-	public List<Match> getMatchesByTeam(String teamName) {
+	public List<Match> fetchMatchesByTeam(String teamName) {
 		 List<Match> allMatches = getAllMatches();
 		 List<Match> teamMatches = new ArrayList<>();
 		 LocalDateTime now = LocalDateTime.now();

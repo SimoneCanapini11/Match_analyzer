@@ -32,12 +32,12 @@ public class DemoMatchDAO implements MatchDAO {
 	 
 	 
 	@Override
-	public List<Match> getUpcomingMatches() {
+	public List<Match> fetchUpcomingMatches() {
 		return matches;		
 	}
 
 	@Override
-	public Match getNextMatch(String nameTeam) {
+	public Match fetchNextMatch(String nameTeam) {
 		 return matches.stream()
 	                .filter(match -> match.getHomeTeam().equalsIgnoreCase(nameTeam) 
 	                              || match.getAwayTeam().equalsIgnoreCase(nameTeam))
@@ -46,7 +46,7 @@ public class DemoMatchDAO implements MatchDAO {
 	}	
 	
 	@Override
-    public List<Match> getMatchesByTeam(String teamName) {
+    public List<Match> fetchMatchesByTeam(String teamName) {
 		return matches.stream()
                 .filter(match -> teamName.equalsIgnoreCase(match.getHomeTeam()) 
                               || teamName.equalsIgnoreCase(match.getAwayTeam()))

@@ -64,7 +64,7 @@ public class GetLineupApplicationController {
 	
 	public boolean saveLineup(String teamName, String formation, String playStyle, String markingType, List<String> startingLineup) throws LineupException {
 		
-		Lineup newLineup = lineupDAO.getFormationByTeam(teamName);
+		Lineup newLineup = lineupDAO.fetchFormationByTeam(teamName);
 		
 		if (formation == null || playStyle == null || markingType == null) {
 			throw new LineupException("All fields must be filled");
@@ -156,7 +156,7 @@ public class GetLineupApplicationController {
 	
 	
 	public String getFormation(String teamName) {			
-		return lineupDAO.getFormationByTeam(teamName).getFormation() ;	
+		return lineupDAO.fetchFormationByTeam(teamName).getFormation() ;	
 	}
 	
 	public List<String> getRequiredRoles(String formation) {   
@@ -164,7 +164,7 @@ public class GetLineupApplicationController {
 	}
 	
 	public List<String> getStartingLineup(String teamName) {        
-		List<Footballer> startingLineup = lineupDAO.getFormationByTeam(teamName).getStartingLineup();
+		List<Footballer> startingLineup = lineupDAO.fetchFormationByTeam(teamName).getStartingLineup();
 		
 		return startingLineup.stream()
 				.map(f -> f.getName() + " " + f.getSurname())
@@ -172,11 +172,11 @@ public class GetLineupApplicationController {
 	}
 	
 	public String getPlayStyle(String teamName) {        
-		return lineupDAO.getFormationByTeam(teamName).getPlayStyle();
+		return lineupDAO.fetchFormationByTeam(teamName).getPlayStyle();
 	}
 	
 	public String getMarkingType(String teamName) {        
-        return lineupDAO.getFormationByTeam(teamName).getMarkingType();
+        return lineupDAO.fetchFormationByTeam(teamName).getMarkingType();
     }
 	
 	public List<String> getFormationList() {		
@@ -194,7 +194,7 @@ public class GetLineupApplicationController {
 	
 	public String getNextOpponent(String teamName) throws LineupException {        
 		// Trova il prossimo match
-        nextMatch = matchDAO.getNextMatch(teamName);
+        nextMatch = matchDAO.fetchNextMatch(teamName);
                         
         if (nextMatch == null) {      
         	// Sollecita il trainer a inserire il nextMatch
@@ -211,7 +211,7 @@ public class GetLineupApplicationController {
 	
 	private int getTeamStrength(String teamName) {
         // Ottieni la lista dei giocatori della squadra
-        List<Footballer> teamPlayers = footballerDAO.getFootballersByTeam(teamName);
+        List<Footballer> teamPlayers = footballerDAO.fetchFootballersByTeam(teamName);
        
         // Calcola la forza media: somma degli overallRating diviso per il numero dei giocatori
         double totalRating = teamPlayers.stream()
@@ -329,7 +329,7 @@ public class GetLineupApplicationController {
 
 
 	private List<Footballer> getAvailableFootballers(String teamName) {        
-		return footballerDAO.getFootballersByTeam(teamName).stream()
+		return footballerDAO.fetchFootballersByTeam(teamName).stream()
 				  .filter(player -> player.getDeployable() == 1)
 				  .collect(Collectors.toList());
 	}
@@ -337,7 +337,7 @@ public class GetLineupApplicationController {
 	
 	private List<Footballer> convertNamesToFootballers(List<String> playerNames, String teamName) {
 		
-		List<Footballer> allFootballers = footballerDAO.getFootballersByTeam(teamName);
+		List<Footballer> allFootballers = footballerDAO.fetchFootballersByTeam(teamName);
 		
 		 return playerNames.stream()
 	                .map(name -> {

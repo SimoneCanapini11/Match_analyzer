@@ -26,7 +26,7 @@ public class DemoLineupDAO implements LineupDAO {
     	//Inter
     	final String TEAM_NAME_INTER = "Inter";
     	// Lista dei nomi dei giocatori titolari, in ordine (dalla posizione 1 a 11)
-    	 List<Footballer> allInterPlayers = footballerDAO.getFootballersByTeam(TEAM_NAME_INTER);
+    	 List<Footballer> allInterPlayers = footballerDAO.fetchFootballersByTeam(TEAM_NAME_INTER);
     	 
     	 List<Footballer> startingInterLineup = new ArrayList<>();
          // Titolari: primi 11 
@@ -40,7 +40,7 @@ public class DemoLineupDAO implements LineupDAO {
     	// Juventus
     	final String TEAM_NAME_JUVE = "Juventus";
     	// Lista dei nomi dei giocatori titolari, in ordine (dalla posizione 1 a 11)
-    	 List<Footballer> allJuvePlayers = footballerDAO.getFootballersByTeam(TEAM_NAME_JUVE);
+    	 List<Footballer> allJuvePlayers = footballerDAO.fetchFootballersByTeam(TEAM_NAME_JUVE);
     	 
     	 List<Footballer> startingJuveLineup = new ArrayList<>();
          // Titolari: primi 11 
@@ -54,7 +54,7 @@ public class DemoLineupDAO implements LineupDAO {
         // Milan
         final String TEAM_NAME_MILAN = "Milan";
     	// Lista dei nomi dei giocatori titolari, in ordine (dalla posizione 1 a 11)
-    	 List<Footballer> allMilanPlayers = footballerDAO.getFootballersByTeam(TEAM_NAME_MILAN);
+    	 List<Footballer> allMilanPlayers = footballerDAO.fetchFootballersByTeam(TEAM_NAME_MILAN);
     	 
     	 List<Footballer> startingMilanLineup = new ArrayList<>();
          // Titolari: primi 11 
@@ -67,7 +67,7 @@ public class DemoLineupDAO implements LineupDAO {
 	
 
 	@Override
-	public Lineup getFormationByTeam(String nameTeam) {
+	public Lineup fetchFormationByTeam(String nameTeam) {
 		Lineup lineup = defaultLineup.get(nameTeam);
 		if (lineup == null) {
             throw new DAOException("Details not found for team: " + nameTeam);

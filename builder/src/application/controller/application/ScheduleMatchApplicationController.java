@@ -55,7 +55,7 @@ public class ScheduleMatchApplicationController {
 			 
 		 
 		 // Lista dei match esistenti per teamName dal DAO
-		 List<Match> existingMatches = matchDAO.getMatchesByTeam(teamName);
+		 List<Match> existingMatches = matchDAO.fetchMatchesByTeam(teamName);
 	        
 		 // Controllo su esistenza match con gli stessi valori
 		 for (Match m : existingMatches) {
@@ -79,7 +79,7 @@ public class ScheduleMatchApplicationController {
 			 throw new TrainerException("The team already has a match within 24 hours");
          }
 		
-		List<Match> existingOpponentMatches = matchDAO.getMatchesByTeam(opponent);
+		List<Match> existingOpponentMatches = matchDAO.fetchMatchesByTeam(opponent);
 		
 		if (!checkMatch(matchDateTime, existingOpponentMatches)) {
 			 throw new TrainerException(opponent + " already has a match within 24 hours");
@@ -117,7 +117,7 @@ public class ScheduleMatchApplicationController {
 	
 	public List<List<String>> getNextFiveMatches(String teamName) {
 		
-		List<Match> upcomingMatches = matchDAO.getMatchesByTeam(teamName);
+		List<Match> upcomingMatches = matchDAO.fetchMatchesByTeam(teamName);
 		
 		 List<List<String>> matchesData = new ArrayList<>();
 	        

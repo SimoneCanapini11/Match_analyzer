@@ -25,7 +25,7 @@ public class FullMatchDAO implements MatchDAO {
 	private static final String MATCH_TIME = "match_time";
 
 	@Override
-	public List<Match> getUpcomingMatches() {
+	public List<Match> fetchUpcomingMatches() {
 		
 		 List<Match> upcomingMatches = new ArrayList<>();
 		 
@@ -50,7 +50,7 @@ public class FullMatchDAO implements MatchDAO {
 	
 
 	@Override
-	public Match getNextMatch(String nameTeam) {
+	public Match fetchNextMatch(String nameTeam) {
 		
 		Match nextMatch = null;
 		
@@ -78,7 +78,7 @@ public class FullMatchDAO implements MatchDAO {
 
 	
 	@Override
-	public List<Match> getMatchesByTeam(String teamName) {
+	public List<Match> fetchMatchesByTeam(String teamName) {
 
 		List<Match> teamMatches = new ArrayList<>();
 		

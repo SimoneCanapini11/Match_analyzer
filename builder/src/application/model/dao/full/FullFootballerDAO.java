@@ -22,7 +22,7 @@ public class FullFootballerDAO implements FootballerDAO  {
 	private static final Logger logger = Logger.getLogger(FullFootballerDAO.class.getName());
 
 	@Override
-	public List<Footballer> getFootballersByTeam(String teamName) {
+	public List<Footballer> fetchFootballersByTeam(String teamName) {
 		
 		 List<Footballer> footballers = new ArrayList<>();
 		 Map<Integer, Footballer> footballerMap = new HashMap<>();

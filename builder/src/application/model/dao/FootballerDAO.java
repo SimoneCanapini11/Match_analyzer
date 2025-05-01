@@ -4,5 +4,5 @@ import application.model.bean.Footballer;
 import java.util.List;
 
 public interface FootballerDAO {
-	List<Footballer> getFootballersByTeam(String teamName);
+	List<Footballer> fetchFootballersByTeam(String teamName);
 }

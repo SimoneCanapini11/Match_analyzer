@@ -25,7 +25,7 @@ public class FullLineupDAO implements LineupDAO {
 	private static final Logger logger = Logger.getLogger(FullLineupDAO.class.getName());
 
 	@Override
-	public Lineup getFormationByTeam(String nameTeam) {
+	public Lineup fetchFormationByTeam(String nameTeam) {
 		
 		Lineup lineup = null;
 		
