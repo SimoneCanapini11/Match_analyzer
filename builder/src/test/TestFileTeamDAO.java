@@ -42,7 +42,7 @@ class TestFileTeamDAO {
 	    
 	    @Test
 	    void testGetTeamByName_Found() {
-	        Team team = teamDAO.getTeamByName("Inter");
+	        Team team = teamDAO.fetchTeamByName("Inter");
 	        assertNotNull(team);
 	        assertEquals("Inter", team.getNameTeam());
 	        assertEquals("San Siro", team.getStadium());
@@ -51,13 +51,13 @@ class TestFileTeamDAO {
 	    
 	    @Test
 	    void testGetTeamByName_NotFound() {
-	        Team team = teamDAO.getTeamByName("Napoli");
+	        Team team = teamDAO.fetchTeamByName("Napoli");
 	        assertNull(team);
 	    }
 	    
 	    @Test
 	    void testGetOpponentList() {
-	        List<String> opponents = teamDAO.getOpponentList("Inter");
+	        List<String> opponents = teamDAO.fetchOpponentList("Inter");
 	        assertEquals(3, opponents.size());
 	        assertTrue(opponents.contains("Milan"));
 	        assertTrue(opponents.contains("Juventus"));
@@ -67,7 +67,7 @@ class TestFileTeamDAO {
 	    
 	    @Test
 	    void testGetTeamNameList() {
-	        List<String> teamNames = teamDAO.getTeamNameList();
+	        List<String> teamNames = teamDAO.fetchTeamNameList();
 	        System.out.println(teamNames.size());
 	        assertEquals(4, teamNames.size());
 	        assertTrue(teamNames.contains("Inter"));

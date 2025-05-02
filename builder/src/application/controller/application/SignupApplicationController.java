@@ -119,6 +119,6 @@ public class SignupApplicationController {
 	}
 	
 	public List<String> getTeamNames() {
-        return teamDAO.getTeamNameList();
+        return teamDAO.fetchTeamNameList();
     }
 }

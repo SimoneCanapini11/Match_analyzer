@@ -20,7 +20,7 @@ public class FullTeamDAO implements TeamDAO {
 	private static final String NAME_TEAM = "name_team";
 
 	@Override
-	public Team getTeamByName(String teamName) {
+	public Team fetchTeamByName(String teamName) {
 		Team team = null;
 		try (Connection conn = DatabaseConnection.getConnection();
 		         PreparedStatement stmt = conn.prepareStatement(SQLQueries.FIND_TEAM_BY_NAME)) {
@@ -42,7 +42,7 @@ public class FullTeamDAO implements TeamDAO {
 	}
 
 	@Override
-	public List<String> getOpponentList(String teamName) {
+	public List<String> fetchOpponentList(String teamName) {
 		List<String> opponents = new ArrayList<>();
 		
 		try (Connection conn = DatabaseConnection.getConnection();
@@ -61,7 +61,7 @@ public class FullTeamDAO implements TeamDAO {
 	}
 
 	@Override
-	public List<String> getTeamNameList() {
+	public List<String> fetchTeamNameList() {
 		 List<String> teamNames = new ArrayList<>();
 		 
 		 try (Connection conn = DatabaseConnection.getConnection();

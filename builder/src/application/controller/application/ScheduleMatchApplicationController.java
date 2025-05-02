@@ -98,7 +98,7 @@ public class ScheduleMatchApplicationController {
 	
 
 	public List<String> getOpponentList(String teamName) {
-		return teamDAO.getOpponentList(teamName);
+		return teamDAO.fetchOpponentList(teamName);
 	}
 	
 	

@@ -34,7 +34,7 @@ public class FileTeamDAO implements TeamDAO {
 	 
 	 
 	@Override
-	public Team getTeamByName(String teamName) {		
+	public Team fetchTeamByName(String teamName) {		
 		Team team = null;
 		
 		 try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -63,7 +63,7 @@ public class FileTeamDAO implements TeamDAO {
 	}
 
 	@Override
-	public List<String> getOpponentList(String teamName) {
+	public List<String> fetchOpponentList(String teamName) {
 		 List<String> opponents = new ArrayList<>();
 		 
 	        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -89,7 +89,7 @@ public class FileTeamDAO implements TeamDAO {
 	}
 
 	@Override
-	public List<String> getTeamNameList() {
+	public List<String> fetchTeamNameList() {
 		 List<String> teams = new ArrayList<>();
 		 
 	        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

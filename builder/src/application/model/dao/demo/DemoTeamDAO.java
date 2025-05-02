@@ -24,12 +24,12 @@ public class DemoTeamDAO implements TeamDAO {
 	}
 	
 	@Override
-    public Team getTeamByName(String teamName) {
+    public Team fetchTeamByName(String teamName) {
         return teams.get(teamName);
     }
 	
 	@Override
-	public List<String> getOpponentList(String teamName) {
+	public List<String> fetchOpponentList(String teamName) {
 		List<String> teamNames = new ArrayList<>();
 		
 	    for (String key : teams.keySet()) {
@@ -41,7 +41,7 @@ public class DemoTeamDAO implements TeamDAO {
 	}
 	
 	@Override
-	public List<String> getTeamNameList() {
+	public List<String> fetchTeamNameList() {
 		List<String> teamNames = new ArrayList<>();
 		teamNames.addAll(teams.keySet());
 		return teamNames;
