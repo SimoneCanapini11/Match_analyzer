@@ -20,7 +20,7 @@ public class SuccessRateCalculator extends Subject {
 	 
 	 
 	 // Metodo per calcolare il success rate 	  				
-	 public void calculateAndUpdate(List<String> chosenTactics, List<Footballer> players, 
+	 public void computeSuccessRate(List<String> chosenTactics, List<Footballer> players, 
 			 						List<String> roles, List<String> bestTactics, boolean homeMatch, int opponentStrength) {
 	        
 		 // Inizializza il penalty a 0.

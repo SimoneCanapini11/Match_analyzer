@@ -139,7 +139,7 @@ public class GetLineupApplicationController {
     	int opponentStrength = getTeamStrength(getNextOpponent(teamName));
     	List<String> chosenTactics = Arrays.asList(formation, playStyle, marking);
     			
-        rateCalculator.calculateAndUpdate(chosenTactics, players, roles, bestTactics, homeMach, opponentStrength);
+        rateCalculator.computeSuccessRate(chosenTactics, players, roles, bestTactics, homeMach, opponentStrength);
     }
 
     
