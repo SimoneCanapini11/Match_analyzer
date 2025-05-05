@@ -52,7 +52,7 @@ public class GetLineupApplicationController {
 		// Filtra i giocatori che hanno un'affinità per il ruolo richiesto 
 		List<Footballer> filteredPlayers = availablePlayers.stream()
 				.filter(player -> player.getRoleAffinities().stream()
-						.anyMatch(ra -> ra.getRole() == requiredRole && ra.getAffinity() > 0))	// valore minimo di affinita
+						.anyMatch(ra -> ra.getRole() == requiredRole && ra.getAffinity() > 0))	// valore minimo di affinità
 				.collect(Collectors.toList());
 		
 		// Ritorna la lista dei nomi e cognomi dei giocatori trovati
