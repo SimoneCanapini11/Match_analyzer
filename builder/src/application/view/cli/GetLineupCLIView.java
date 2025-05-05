@@ -82,7 +82,7 @@ public class GetLineupCLIView implements CLIView {
                             + ", Play Style: " + opponentPlayStyle);			
             List<String> opponetLineup = lineupController.getStartingLineup(opponentName);
             System.out.println("\nOpponent starting Lineup: \n");
-            printLineupByFormation(opponentFormation, opponetLineup);
+            printLineupInFormationStyle(opponentFormation, opponetLineup);
             
             System.out.println("\n");
     		System.out.println("1. Return to Lineup");
@@ -128,7 +128,7 @@ public class GetLineupCLIView implements CLIView {
 							+ ", Play Style: " + playStyle + ", Marking Type: " + markingType);
 		List<String> lineup = lineupController.getStartingLineup(teamName);
 		System.out.println("\nStarting Lineup: \n");
-		printLineupByFormation(formation, lineup);
+		printLineupInFormationStyle(formation, lineup);
         
         updateSuccessRate(teamName, lineup);
 		
@@ -143,12 +143,12 @@ public class GetLineupCLIView implements CLIView {
         
         switch (choice) {
             case "1":
-            	saveLineup(formation, playStyle, markingType, lineup);
+            	handleSaveLineup(formation, playStyle, markingType, lineup);
             	System.out.println("Lineup saved successfully");
             	navigator.navigateToCoachView();
             	break;
             case "2":
-            	getBestLineup();
+            	showBestLineup();
          		System.out.println("Best lineup inserted");
             	showLineup();
             	break;
@@ -166,7 +166,7 @@ public class GetLineupCLIView implements CLIView {
 	}
 	
 	
-    private void saveLineup(String formation, String playStyle, String markingType, List<String> lineup) {
+    private void handleSaveLineup(String formation, String playStyle, String markingType, List<String> lineup) {
     	
     	String teamName = coachController.getUserTeam();     	
     	boolean isUpdated;
@@ -192,7 +192,7 @@ public class GetLineupCLIView implements CLIView {
     }
     
     
-    private void getBestLineup() {
+    private void showBestLineup() {
     	
     	 List<String> tactics;
 		 
@@ -209,7 +209,7 @@ public class GetLineupCLIView implements CLIView {
  			lineup.addAll(tactics.subList(3, 3 + 11));
  			System.out.println("\nBest Lineup: " +  String.join(" - ", lineup));
  			
- 			saveLineup(tactics.get(0), tactics.get(1), tactics.get(2), lineup);
+ 			handleSaveLineup(tactics.get(0), tactics.get(1), tactics.get(2), lineup);
  			
  		} catch (LineupException le) {
  			System.out.println(le.getMessage());
@@ -255,7 +255,7 @@ public class GetLineupCLIView implements CLIView {
 		}
     }
     
-    private void printLineupByFormation(String formation, List<String> lineup) {
+    private void printLineupInFormationStyle(String formation, List<String> lineup) {
     	 String[] parts = formation.split("-");
     	    int numGroups = parts.length; 
 
