@@ -42,10 +42,9 @@ public class HomepageGraphicController {
     	        	title = homepageTitle;
     	        	break;    	        
     	    }
-    	    // Ottenengo lo Stage corrente (cioè la finestra) che contiene l'elemento che ha generato un evento
 			Stage parentStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
     	
-            // Carica la vista file.fxml
+            // Carica file.fxml
         	if (title.equals("Sign Up") || title.equals("Login")) {
         		OpenWindowUtils.openFXMLWindow(fxmlFile, title, null, parentStage, true);   
         		

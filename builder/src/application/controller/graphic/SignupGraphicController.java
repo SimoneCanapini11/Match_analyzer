@@ -81,7 +81,7 @@ public class SignupGraphicController {
 	 private void handleCreateAccount(ActionEvent event) {
 	        // Acquisisci i dati dalla View
 	        String email = emailField.getText();
-	        String password = passwordField.getText();				//------come aggiungere "occhio" per vedere password inserita
+	        String password = passwordField.getText();				
 	        String repPassword = repPasswordField.getText();
 
 	    try {
