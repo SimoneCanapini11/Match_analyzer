@@ -376,6 +376,9 @@ public class GetLineupGraphicController extends BaseGraphicController {
 			
 		} catch (LineupException le) {
 			AlertUtils.showAlert(Alert.AlertType.WARNING, null, le.getMessage());
+			
+		} catch (DAOException dae) {
+			AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());	
 		
 		} catch (Exception e) {
 		  AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 

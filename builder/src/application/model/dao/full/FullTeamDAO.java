@@ -1,21 +1,18 @@
 package application.model.dao.full;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import java.util.List;
 import application.model.dao.full.queries.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import application.exception.DAOException;
 import application.model.bean.Team;
 import application.model.dao.TeamDAO;
 
 public class FullTeamDAO implements TeamDAO {
-	
-	private static final Logger logger = Logger.getLogger(FullTeamDAO.class.getName());
 	
 	private static final String NAME_TEAM = "name_team";
 
@@ -36,7 +33,7 @@ public class FullTeamDAO implements TeamDAO {
 		            );
 		        }
 		 } catch (SQLException se) {
-			 logger.log(Level.SEVERE, "Error in getting team", se);
+			 throw new DAOException("Error in getting team");
 		 }
 		return team; 
 	}
@@ -55,7 +52,7 @@ public class FullTeamDAO implements TeamDAO {
 		            opponents.add(rs.getString(NAME_TEAM));
 		        }
 		 } catch (SQLException se) {
-			 logger.log(Level.SEVERE, "Error in getting opponents", se);
+			 throw new DAOException("Error in getting opponents");
 		 }
 		return opponents;     
 	}
@@ -73,7 +70,7 @@ public class FullTeamDAO implements TeamDAO {
 		            teamNames.add(rs.getString(NAME_TEAM));
 			 }
 		 } catch (SQLException se) {
-			 logger.log(Level.SEVERE, "Error in getting team names", se);
+			 throw new DAOException("Error in getting team names");
 		 }
 		 return teamNames;
 	}

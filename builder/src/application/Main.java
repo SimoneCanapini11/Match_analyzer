@@ -86,3 +86,9 @@ public class Main extends Application {
     }
 }
 
+
+//TEST
+// 1) provare DAOException
+// 2) doppia view contemporanea
+
+

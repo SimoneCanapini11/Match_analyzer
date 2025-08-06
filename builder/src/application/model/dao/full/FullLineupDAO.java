@@ -1,8 +1,6 @@
 package application.model.dao.full;
 
 import java.sql.Connection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,8 +19,6 @@ import application.model.dao.full.queries.SQLQueries;
 import application.model.enums.RoleFootballer;
 
 public class FullLineupDAO implements LineupDAO {
-	
-	private static final Logger logger = Logger.getLogger(FullLineupDAO.class.getName());
 
 	@Override
 	public Lineup fetchFormationByTeam(String nameTeam) {
@@ -81,7 +77,7 @@ public class FullLineupDAO implements LineupDAO {
 		            lineup = new Lineup(nameTeam, formation, playStyle, markingType, new ArrayList<>(playersMap.values()));
 		        }
 		    } catch (SQLException se) {
-		    	logger.log(Level.SEVERE, "Error in finding the formation", se);
+		    	throw new DAOException("Error in finding the Lineup");
 		    }
 		
 		if (lineup == null) {
@@ -116,7 +112,7 @@ public class FullLineupDAO implements LineupDAO {
 		        stmtGetLineupId.setString(1, lineup.getTeamName());
 		        ResultSet rsLineupId = stmtGetLineupId.executeQuery();
 		        if (!rsLineupId.next()) {
-		            throw new SQLException("Lineup not found for team: " + lineup.getTeamName());
+		            throw new DAOException("Lineup not found for team: " + lineup.getTeamName());
 		        }
 		        int lineupId = rsLineupId.getInt("id");
 
@@ -168,7 +164,7 @@ public class FullLineupDAO implements LineupDAO {
 		        conn.commit(); // Conferma la transazione
 		        
 		    } catch (SQLException se) {
-		    	logger.log(Level.SEVERE, "Error in updating tactics", se);
+		    	throw new DAOException("Error in updating tactics");
 		    }
 	}
 

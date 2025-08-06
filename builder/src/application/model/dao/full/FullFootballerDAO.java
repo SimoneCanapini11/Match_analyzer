@@ -1,8 +1,6 @@
 package application.model.dao.full;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.Map;
 import java.util.HashMap;
 import java.sql.Connection;
@@ -11,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import application.exception.DAOException;
 import application.model.bean.Footballer;
 import application.model.bean.FootballerAttributes;
 import application.model.dao.FootballerDAO;
@@ -18,8 +17,6 @@ import application.model.dao.full.queries.SQLQueries;
 import application.model.enums.RoleFootballer;
 
 public class FullFootballerDAO implements FootballerDAO  {
-	
-	private static final Logger logger = Logger.getLogger(FullFootballerDAO.class.getName());
 
 	@Override
 	public List<Footballer> fetchFootballersByTeam(String teamName) {
@@ -55,7 +52,7 @@ public class FullFootballerDAO implements FootballerDAO  {
 		                footballerMap.put(id, footballer); 
 		            }
 		        } catch (SQLException se) {
-		        	logger.log(Level.SEVERE, "Error getting footballers by team", se);
+		        	throw new DAOException("Error getting footballers by team");
 		        }      
 		  
 		  try (Connection conn = DatabaseConnection.getConnection();
@@ -75,11 +72,9 @@ public class FullFootballerDAO implements FootballerDAO  {
 		                }
 		            }
 		  } catch (SQLException se) {
-			      logger.log(Level.SEVERE, "Error getting footballer role affinities", se);
+			  throw new DAOException("Error getting footballer role affinities");
 		  } 
 		  
 		  return footballers;
 	}
-	
-
 }
