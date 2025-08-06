@@ -137,7 +137,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		
         
         // Imposta lineup salvata
-        setTeamLineup(teamName);
+        displayLineup(teamName);
         
         // Inizializzazione choiceBoxPlayStyle e Marking
         choiceBoxPlayStyle.setItems(FXCollections.observableArrayList(lineupController.getPlayStyleList()));
@@ -306,7 +306,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 	    setTeamPlayers(teamName);
 	    
 	    // Popola la ChoiceBox con startingLineup
-	    setTeamLineup(teamName);	    
+	    displayLineup(teamName);	    
 	}	 
 	 
 	 // Popola le choiceBoxPlayer con i giocatori della squadra
@@ -339,7 +339,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 	 
 	 
 	 // Imposta la lineup di default per una squadra
-	 private void setTeamLineup(String teamName) {			
+	 private void displayLineup(String teamName) {			
 		 
 		 List<String> lineup = lineupController.getStartingLineup(teamName);
 		 

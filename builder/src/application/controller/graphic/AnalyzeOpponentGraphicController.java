@@ -112,7 +112,7 @@ public class AnalyzeOpponentGraphicController extends BaseGraphicController {
 		    
 		    updateFormationAndRoles();
 		    
-		    setTeamLineup(opponentName);
+		    displayOpponentLineup(opponentName);
 		    
 			
     	} catch (LineupException le) {
@@ -159,7 +159,7 @@ public class AnalyzeOpponentGraphicController extends BaseGraphicController {
 	}
 	
 	 // Imposta la lineup di default per una squadra
-	 private void setTeamLineup(String teamName) {			
+	 private void displayOpponentLineup(String teamName) {			
 		 
 		 List<String> lineup = lineupController.getStartingLineup(teamName);
 		 
