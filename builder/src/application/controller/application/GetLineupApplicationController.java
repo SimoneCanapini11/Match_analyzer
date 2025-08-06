@@ -20,7 +20,7 @@ import application.model.dao.LineupDAO;
 import application.model.dao.MatchDAO;
 import application.model.enums.RoleFootballer;
 import application.model.strategy.*;
-import application.obsever.SuccessRateCalculator;
+import application.observer.SuccessRateCalculator;
 import application.util.Formatter;
 
 
@@ -123,7 +123,7 @@ public class GetLineupApplicationController {
 		List<String> tactics = determineTactic(setStrategy, opponentFormation, opponentPlayStyle, ourTeamFormation, ourTeamPlayStyle);	
 		
 		// Scelta Footballer
-		tactics.addAll(getBestFootballers(tactics.get(0)));
+		tactics.addAll(computeBestFootballers(tactics.get(0)));
 		
 		return tactics;
 	}
@@ -271,7 +271,7 @@ public class GetLineupApplicationController {
 	}
 	
 	
-	private List<String> getBestFootballers(String formation) {    
+	private List<String> computeBestFootballers(String formation) {    
 		
 		List<String> requiredRoles = getRequiredRoles(formation);    // prendo i ruoli dalla formazione scelta
 		
@@ -315,13 +315,13 @@ public class GetLineupApplicationController {
             }
         }
 
-        // Costruisci la lista di output, con "nome surname" per ogni ruolo
+        // Costruisce la lista di output, con "nome surname" per ogni ruolo
         List<String> lineup = new ArrayList<>();
         for (Footballer f : assignment) {
             if (f != null) {
                 lineup.add(f.getName() + " " + f.getSurname());
             } else {
-                lineup.add("No player"); // oppure lascia una stringa vuota
+                lineup.add("No player"); //Altrimenti lascia una stringa senza player
             }
         }
         return lineup;
@@ -352,7 +352,7 @@ public class GetLineupApplicationController {
 	                            .findFirst()
 	                            .orElse(null);
 	                })
-	                .filter(f -> f != null) // Rimuove eventuali null
+	                .filter(f -> f != null) // Rimuove i null se esistenti
 	                .collect(Collectors.toList());
 	}
 	

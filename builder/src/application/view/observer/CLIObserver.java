@@ -1,6 +1,6 @@
 package application.view.observer;
 
-import application.obsever.Observer;
+import application.observer.Observer;
 
 public class CLIObserver implements Observer {
 	

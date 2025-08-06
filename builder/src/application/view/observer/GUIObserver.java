@@ -1,6 +1,6 @@
 package application.view.observer;
 
-import application.obsever.Observer;
+import application.observer.Observer;
 import javafx.scene.control.Label;
 
 public class GUIObserver implements Observer {

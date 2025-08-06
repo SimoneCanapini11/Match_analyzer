@@ -1,4 +1,4 @@
-package application.obsever;
+package application.observer;
 
 import java.util.List;
 

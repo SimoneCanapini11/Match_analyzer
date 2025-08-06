@@ -1,4 +1,4 @@
-package application.obsever;
+package application.observer;
 
 public interface Observer {
 	void update(int successRate);
