@@ -121,12 +121,12 @@
                   <AnchorPane prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;">
                      <children>
                         <ChoiceBox fx:id="choiceBoxFormation" layoutX="35.0" layoutY="204.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#openAnalyzeOpponent" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;" text="Analyze Opponent" textFill="WHITE">
+                        <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#openAnalyzeOpponent" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-border-color: #c8c8c8; -fx-border-width: 3;" text="Analyze Opponent" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnSaveLineup" alignment="CENTER" layoutX="1026.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#handleSaveLineup" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;" text="Save Lineup" textFill="WHITE">
+                        <Button fx:id="btnSaveLineup" alignment="CENTER" layoutX="1021.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#handleSaveLineup" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-border-width: 3; -fx-border-color: #c8c8c8;" text="Save Lineup" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
@@ -372,7 +372,12 @@
                               </Label>
                            </children>
                         </StackPane>
-                        <Button fx:id="btnGetBestLineup" alignment="CENTER" layoutX="82.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#getBestLineup" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 12; -fx-border-radius: 10; -fx-cursor: hand; -fx-border-color: #ff9000; -fx-border-width: 3;" text="Get best Lineup" textFill="WHITE">
+                        <Button fx:id="btnGetBestLineup" alignment="CENTER" layoutX="146.0" layoutY="630.0" mnemonicParsing="false" onMouseClicked="#getBestLineup" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 12; -fx-border-radius: 10; -fx-cursor: hand; -fx-border-color: #c8c8c8; -fx-border-width: 3;" text="Get best Lineup" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnBack" alignment="CENTER" layoutX="18.0" layoutY="632.0" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Back">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
