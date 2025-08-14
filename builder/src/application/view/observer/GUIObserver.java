@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 public class GUIObserver implements Observer {
 	// Label che mostra la success rate nella GUI
 	 private Label successRateLabel;
+	 private int observerState; 
 
 	    public GUIObserver(Label successRateLabel) {
 	        this.successRateLabel = successRateLabel;
@@ -13,6 +14,7 @@ public class GUIObserver implements Observer {
 
 	    @Override
 	    public void update(int successRate) {
-	        successRateLabel.setText(String.format("%d%%", successRate));
+	    	this.observerState = successRate;
+	        successRateLabel.setText(String.format("%d%%", observerState));
 	    }
 }
