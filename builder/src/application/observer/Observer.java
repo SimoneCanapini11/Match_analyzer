@@ -1,5 +1,5 @@
 package application.observer;
 
 public interface Observer {
-	void update(int successRate);
+	void update();
 }

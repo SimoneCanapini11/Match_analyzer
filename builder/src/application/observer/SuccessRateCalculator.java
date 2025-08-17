@@ -15,7 +15,7 @@ public class SuccessRateCalculator extends Subject {
 	 public void setSuccessRate(int newSuccessRate) {
 		 this.successRate = newSuccessRate;
 		 // Notifica tutti gli observer registrati
-		 notifyObservers(successRate);
+		 notifyObservers();
 	 }
 	 
 	 

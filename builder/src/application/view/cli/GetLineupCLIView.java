@@ -8,6 +8,7 @@ import application.controller.application.GetLineupApplicationController;
 import application.controller.application.UserApplicationController;
 import application.exception.DAOException;
 import application.exception.LineupException;
+import application.observer.SuccessRateCalculator;
 import application.view.observer.CLIObserver;
 
 
@@ -29,7 +30,10 @@ public class GetLineupCLIView implements CLIView {
         this.scanner = new Scanner(System.in);
         this.coachController = new UserApplicationController();
         this.lineupController = new GetLineupApplicationController();
-        lineupController.getSuccessRateCalculator().registerObserver(new CLIObserver());
+        
+        SuccessRateCalculator calculator = lineupController.getSuccessRateCalculator();
+        CLIObserver cliObserver = new CLIObserver(calculator);
+        calculator.registerObserver(cliObserver);
     }
 	
 	@Override

@@ -17,9 +17,9 @@ public abstract class Subject {
 	        observers.remove(o);
 	    }
 
-	    protected void notifyObservers(int successRate) {
+	    protected void notifyObservers() {
 	        for (Observer o : observers) {
-	            o.update(successRate);
+	            o.update();
 	        }
 	    }
 }

@@ -12,6 +12,7 @@ import application.controller.application.GetLineupApplicationController;
 import application.controller.application.UserApplicationController;
 import application.exception.DAOException;
 import application.exception.LineupException;
+import application.observer.SuccessRateCalculator;
 import application.view.observer.GUIObserver;
 import application.view.utils.AlertUtils;
 import application.view.utils.LineupLayoutUtils;
@@ -180,7 +181,9 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		}
         
         // Registra l'observer GUI al SuccessRateCalculator 
-        lineupController.getSuccessRateCalculator().registerObserver(new GUIObserver(successRateLabel));
+		SuccessRateCalculator calculator = lineupController.getSuccessRateCalculator();
+		GUIObserver guiObserver = new GUIObserver(successRateLabel, calculator);
+		calculator.registerObserver(guiObserver);
         
         // Listener: ogni volta che cambia un valore, aggiorna il success rate
         choiceBoxFormation.valueProperty().addListener((obs, oldVal, newVal) -> updateSuccessRate());
@@ -381,7 +384,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 			AlertUtils.showAlert(Alert.AlertType.ERROR, "Error saving", dae.getMessage());	
 		
 		} catch (Exception e) {
-		  AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 
+		 AlertUtils.showAlert(Alert.AlertType.ERROR, "Error", "Something went wrong, try again."); 
 		}
 	 }
 	 
