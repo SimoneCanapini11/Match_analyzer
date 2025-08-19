@@ -32,6 +32,7 @@ public class GetLineupApplicationController {
 	private List<Footballer> availablePlayers;
 	private SuccessRateCalculator rateCalculator;
 	private SessionManager sessionManager;
+	private TacticManager context;
 
 	public GetLineupApplicationController() {
         this.footballerDAO = DAOFactory.getFactoryInstance().getFootballerDAO();
@@ -39,6 +40,7 @@ public class GetLineupApplicationController {
         this.matchDAO = DAOFactory.getFactoryInstance().getMatchDAO();
         this.rateCalculator = new SuccessRateCalculator();	
         this.sessionManager = SessionManager.getInstance();
+        this.context = new TacticContext();
     }
 	
 	
@@ -254,9 +256,7 @@ public class GetLineupApplicationController {
 	
 	// Strategy
 	private List<String> determineTactic(int setStrategy, String opponentFormation, String opponentPlayStyle, String ourTeamFormation, String ourTeamPlayStyle) {
-		 
-		TacticManager context = new TacticContext();
-	        
+		    
 		if (setStrategy == 3) {
 			// Team di uguale forza
 			context.setStrategy(new EvenMatchStrategy(opponentFormation, opponentPlayStyle, ourTeamFormation, ourTeamPlayStyle));		
