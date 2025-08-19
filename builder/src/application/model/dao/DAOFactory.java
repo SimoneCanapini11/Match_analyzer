@@ -9,29 +9,35 @@ import application.model.dao.file.*;
 
 public class DAOFactory {
 	
-	  private DAOFactory() {
-		    throw new IllegalStateException("DAOFactory class");
-	  }
+	  private DAOFactory() {}
 
-	
+	private static DAOFactory instance = null;
+		
 	private static final String MODE_DEMO = "demo";
 	private static final String MODE_FILE = "file";  
 	private static final String MODE_EXCEPTION = "Mode not initialized!";
 	private static String mode = AppConfig.getInstance().getMode(); 
 	
-	private static DemoLineupDAO instanceLineup;	// singleton lineupDAO
-	private static DemoUserDAO instanceUser;    // singleton userDAO
-	private static DemoMatchDAO instanceMatch;
+	private DemoLineupDAO lineupInstance;	
+	private DemoUserDAO userInstance;    
+	private DemoMatchDAO matchInstance;	
 	
-    public static synchronized UserDAO getUserDAO() {
+	 public static synchronized DAOFactory getFactoryInstance() {
+	        if (instance == null) {
+	            instance = new DAOFactory();
+	        }
+	        return instance;
+	    }
+	
+    public UserDAO getUserDAO() {
     	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
     	if (MODE_DEMO.equals(mode)) { 
-    	    if (instanceUser == null) {  
-    	    	instanceUser = new DemoUserDAO();
+    	    if (userInstance == null) {  
+    	    	userInstance = new DemoUserDAO();
     	    }
-    	    return instanceUser;           
+    	    return userInstance;           
     	    
     	} else if (MODE_FILE.equals(mode)) {
     		return new FileUserDAO();
@@ -41,7 +47,7 @@ public class DAOFactory {
         }
     }
     
-    public static TeamDAO getTeamDAO() {
+    public TeamDAO getTeamDAO() {
     	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
@@ -56,7 +62,7 @@ public class DAOFactory {
         }
     } 
     
-    public static FootballerDAO getFootballerDAO() {
+    public FootballerDAO getFootballerDAO() {
     	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
@@ -68,30 +74,30 @@ public class DAOFactory {
         }
     } 
     
-    public static synchronized LineupDAO getLineupDAO() {
+    public LineupDAO getLineupDAO() {
     	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
     	if (MODE_DEMO.equals(mode)) { 
-    	    if (instanceLineup == null) {  
-    	    	instanceLineup = new DemoLineupDAO();
+    	    if (lineupInstance == null) {  
+    	    	lineupInstance = new DemoLineupDAO();
     	    }
-    	    return instanceLineup;        
+    	    return lineupInstance;        
     	    
     	} else {
         	return new FullLineupDAO();
         }
     } 
     
-    public static MatchDAO getMatchDAO() {
+    public MatchDAO getMatchDAO() {
     	if (mode == null) {					
             throw new IllegalStateException(MODE_EXCEPTION);
         }
         if (MODE_DEMO.equals(mode)) {
-        	if (instanceMatch == null) {  
-        		instanceMatch = new DemoMatchDAO();
+        	if (matchInstance == null) {  
+        		matchInstance = new DemoMatchDAO();
     	    }
-    	    return instanceMatch;  
+    	    return matchInstance;  
     	    
         } else if (MODE_FILE.equals(mode)) {
     		return new FileMatchDAO();

@@ -34,9 +34,9 @@ public class GetLineupApplicationController {
 	private SessionManager sessionManager;
 
 	public GetLineupApplicationController() {
-        this.footballerDAO = DAOFactory.getFootballerDAO();
-        this.lineupDAO = DAOFactory.getLineupDAO();
-        this.matchDAO = DAOFactory.getMatchDAO();
+        this.footballerDAO = DAOFactory.getFactoryInstance().getFootballerDAO();
+        this.lineupDAO = DAOFactory.getFactoryInstance().getLineupDAO();
+        this.matchDAO = DAOFactory.getFactoryInstance().getMatchDAO();
         this.rateCalculator = new SuccessRateCalculator();	
         this.sessionManager = SessionManager.getInstance();
     }

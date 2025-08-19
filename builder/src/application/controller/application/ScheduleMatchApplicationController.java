@@ -21,8 +21,8 @@ public class ScheduleMatchApplicationController {
 	private MatchDAO matchDAO;
 	
 	public ScheduleMatchApplicationController() {
-		this.teamDAO = DAOFactory.getTeamDAO();
-		this.matchDAO = DAOFactory.getMatchDAO();
+		this.teamDAO = DAOFactory.getFactoryInstance().getTeamDAO();
+		this.matchDAO = DAOFactory.getFactoryInstance().getMatchDAO();
 	}
 	
 	

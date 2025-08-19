@@ -16,7 +16,7 @@ public class LoginApplicationController {
 	    
 	 
 	 public LoginApplicationController() {
-		 this.userDAO = DAOFactory.getUserDAO();
+		 this.userDAO = DAOFactory.getFactoryInstance().getUserDAO();
 		 this.sessionManager = SessionManager.getInstance();
 	 }
 

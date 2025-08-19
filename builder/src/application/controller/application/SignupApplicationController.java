@@ -21,9 +21,9 @@ public class SignupApplicationController {
 	private TeamDAO teamDAO;
 		    
 	public SignupApplicationController() {
-		this.userDAO = DAOFactory.getUserDAO();
+		this.userDAO = DAOFactory.getFactoryInstance().getUserDAO();
         this.sessionManager = SessionManager.getInstance();
-        this.teamDAO = DAOFactory.getTeamDAO();
+        this.teamDAO = DAOFactory.getFactoryInstance().getTeamDAO();
 	}
 
 	public boolean register(String email, String password, String repPassword) throws ValidationException {
