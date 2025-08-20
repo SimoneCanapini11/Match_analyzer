@@ -8,22 +8,11 @@ public class FootballerAttributes {
 	private int deployable;
 
 	public FootballerAttributes(int overallRating, int physicalForm, int mentalClarity, int deployable) {
-		
-		if (overallRating < 0 || overallRating > 100) {
-            throw new IllegalArgumentException("Overall rating must be between 0 and 100");
-        }
-		
-        if (physicalForm < 0 || physicalForm > 100) {
-            throw new IllegalArgumentException("Physical form must be between 0 and 100");
-        }
-        
-        if (mentalClarity < 0 || mentalClarity > 100) {
-            throw new IllegalArgumentException("Mental clarity must be between 0 and 100");
-        }
-        
-        if (deployable != 0 && deployable != 1) {
-            throw new IllegalArgumentException("Deployable must be either 0 or 1");
-        }
+		  
+        validateRating("Overall rating", overallRating);
+        validateRating("Physical form", physicalForm);
+        validateRating("Mental clarity", mentalClarity);
+        validateDeployable(deployable);
 		
 		this.overallRating = overallRating;
 		this.physicalForm = physicalForm;
@@ -62,6 +51,20 @@ public class FootballerAttributes {
 	public void setDeployable(int deployable) {
 		this.deployable = deployable;
 	}
+	
+	 private void validateRating(String fieldName, int value) {
+	        if (value < 0 || value > 100) {
+	            throw new IllegalArgumentException(
+	                fieldName + " must be between 0 and 100");
+	        }
+	    }
+	    
+	    private void validateDeployable(int deployable) {
+	        if (deployable != 0 && deployable != 1) {
+	            throw new IllegalArgumentException(
+	                "Deployable must be either 0 or 1");
+	        }
+	    }
 
 	
 	
