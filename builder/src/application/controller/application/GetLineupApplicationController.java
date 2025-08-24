@@ -105,7 +105,7 @@ public class GetLineupApplicationController {
 	}
 	
 	
-	public List<String> getBestLineup(String teamName) throws LineupException {	
+	public List<String> computeBestLineup(String teamName) throws LineupException {	
 		// Determina il nome della squadra avversaria
 		String opponentTeamName = getNextOpponent(teamName);
 		
@@ -136,7 +136,7 @@ public class GetLineupApplicationController {
     	
     	List<Footballer> players = convertNamesToFootballers(playerNames, teamName);
     	List<String> roles = getRequiredRoles(formation);
-    	List<String> bestTactics = getBestLineup(teamName); 
+    	List<String> bestTactics = computeBestLineup(teamName); 
     	boolean homeMach = getHomeOrAway(teamName);
     	int opponentStrength = getTeamStrength(getNextOpponent(teamName));
     	List<String> chosenTactics = Arrays.asList(formation, playStyle, marking);

@@ -270,7 +270,7 @@ public class GetLineupGraphicController extends BaseGraphicController {
 		 List<String> tactics;
 		 
 		try {
-			tactics = lineupController.getBestLineup(coachController.getUserTeam());
+			tactics = lineupController.computeBestLineup(coachController.getUserTeam());
 		
 			// Set delle ChoiceBox
 			choiceBoxFormation.setValue(tactics.get(0));

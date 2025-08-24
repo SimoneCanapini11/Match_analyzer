@@ -201,7 +201,7 @@ public class GetLineupCLIView implements CLIView {
     	 List<String> tactics;
 		 
  		try {
- 			tactics = lineupController.getBestLineup(coachController.getUserTeam());
+ 			tactics = lineupController.computeBestLineup(coachController.getUserTeam());
  		
  			System.out.println("Best formation: " + tactics.get(0));
  			System.out.println("Best Play Style: " + tactics.get(1));
