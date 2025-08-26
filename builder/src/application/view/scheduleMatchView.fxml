@@ -47,7 +47,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.ScheduleMatchGraphicController">
+<BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.ScheduleMatchGraphicController">
    <top>
       <HBox alignment="CENTER" prefHeight="53.0" prefWidth="1300.0" spacing="15.0" style="-fx-background-color: black; -fx-padding: 10;" BorderPane.alignment="CENTER">
          <children>
@@ -82,7 +82,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Team Stats" textFill="WHITE">
+            <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Team Stats" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

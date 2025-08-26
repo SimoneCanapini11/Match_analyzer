@@ -37,6 +37,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -46,347 +47,352 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.GetLineupGraphicController">
-   <top>
-      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="1300.0" spacing="15.0" style="-fx-background-color: black; -fx-padding: 10;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="logoImage" fitHeight="66.0" fitWidth="66.0" onMouseClicked="#openRoleHome" style="-fx-cursor: hand;">
-               <image>
-                  <Image url="@../../images/logo_black.jpg" />
-               </image>
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </ImageView>
-            <Button fx:id="lineupHomeBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="31.0" prefWidth="59.0" style="-fx-cursor: hand; -fx-background-color: black;" text="Home" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="lineupBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openGetLineup" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Lineup" textFill="WHITE" underline="true">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="tableBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="23.0" prefWidth="57.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Table" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="FixturesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Fixtures" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Team Stats" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="250.0" />
-               </HBox.margin>
-            </Button>
-            <ImageView fx:id="teamLogoImage" fitHeight="66.0" fitWidth="66.0">
-               <image>
-                  <Image url="@../../images/logo_black.jpg" />
-               </image>
-            </ImageView>
-            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="20.0" prefWidth="142.0" text="Nome Cognome" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Button fx:id="btnSignOut" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleSignOut" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(227, 227, 227, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" text="Sign Out">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="70.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <AnchorPane BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="TOP_CENTER" prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.graphic.GetLineupGraphicController">
+   <content>
+      <BorderPane fx:id="rootPane" prefHeight="900.0" prefWidth="1300.0">
+         <top>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="1300.0" spacing="15.0" style="-fx-background-color: black; -fx-padding: 10;" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;">
-                     <children>
-                        <ChoiceBox fx:id="choiceBoxFormation" layoutX="35.0" layoutY="204.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#openAnalyzeOpponent" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-border-color: #c8c8c8; -fx-border-width: 3;" text="Analyze Opponent" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnSaveLineup" alignment="CENTER" layoutX="1021.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#handleSaveLineup" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-border-width: 3; -fx-border-color: #c8c8c8;" text="Save Lineup" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Label alignment="CENTER" layoutX="491.0" layoutY="55.0" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;" text="Success Rate:" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="successRateLabel" alignment="CENTER" layoutX="691.0" layoutY="43.0" prefHeight="57.0" prefWidth="92.0" style="-fx-background-color: black; -fx-background-radius: 50; -fx-border-radius: 50;" text="100 %" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="35.0" layoutY="164.0" prefHeight="44.0" prefWidth="88.0" text="Formation">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="35.0" layoutY="254.0" prefHeight="44.0" prefWidth="88.0" text="Play Style">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="choiceBoxPlayStyle" layoutX="35.0" layoutY="294.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Label layoutX="35.0" layoutY="344.0" prefHeight="44.0" prefWidth="88.0" text="Marking">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="choiceBoxMarking" layoutX="35.0" layoutY="384.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Label layoutX="35.0" layoutY="434.0" prefHeight="44.0" prefWidth="88.0" text="My Team is">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <RadioButton fx:id="radioButton1" layoutX="35.0" layoutY="480.0" mnemonicParsing="false" text="Stronger">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group1" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radioButton2" layoutX="35.0" layoutY="510.0" mnemonicParsing="false" text="Weaker" toggleGroup="$group1">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </RadioButton>
-                        <ImageView fitHeight="620.0" fitWidth="561.0" layoutX="426.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../images/lineup1.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="shirtPlayer1" alignment="CENTER" layoutX="617.0" layoutY="645.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer2" alignment="CENTER" layoutX="525.0" layoutY="559.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer3" alignment="CENTER" layoutX="617.0" layoutY="567.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer4" alignment="CENTER" layoutX="709.0" layoutY="559.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer5" alignment="CENTER" layoutX="617.0" layoutY="468.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer6" alignment="CENTER" layoutX="574.0" layoutY="247.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer7" alignment="CENTER" layoutX="556.0" layoutY="411.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer8" alignment="CENTER" layoutX="677.0" layoutY="411.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer9" alignment="CENTER" layoutX="487.0" layoutY="372.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer10" alignment="CENTER" layoutX="746.0" layoutY="372.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label fx:id="shirtPlayer11" alignment="CENTER" layoutX="662.0" layoutY="247.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
-                        <Label layoutX="1005.0" layoutY="142.0" prefHeight="44.0" prefWidth="75.0" text="Position">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="1158.0" layoutY="142.0" prefHeight="44.0" prefWidth="55.0" text="Player">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="choiceBoxPlayer11" layoutX="1106.0" layoutY="199.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <Label fx:id="rolePlayer11" alignment="CENTER" layoutX="1021.0" layoutY="197.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="ST">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer10" alignment="CENTER" layoutX="1021.0" layoutY="247.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="RM">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer9" alignment="CENTER" layoutX="1021.0" layoutY="297.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="LM">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer8" alignment="CENTER" layoutX="1021.0" layoutY="347.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CM">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer7" alignment="CENTER" layoutX="1021.0" layoutY="396.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CM">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer6" alignment="CENTER" layoutX="1021.0" layoutY="447.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CDM">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer5" alignment="CENTER" layoutX="1021.0" layoutY="497.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="RB">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer4" alignment="CENTER" layoutX="1021.0" layoutY="547.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CB">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer3" alignment="CENTER" layoutX="1021.0" layoutY="597.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CB">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer2" alignment="CENTER" layoutX="1021.0" layoutY="647.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="LB">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rolePlayer1" alignment="CENTER" layoutX="1021.0" layoutY="697.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="GK">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="choiceBoxPlayer10" layoutX="1106.0" layoutY="249.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer9" layoutX="1106.0" layoutY="299.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer8" layoutX="1106.0" layoutY="349.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer7" layoutX="1106.0" layoutY="399.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer6" layoutX="1106.0" layoutY="449.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer5" layoutX="1106.0" layoutY="499.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer4" layoutX="1106.0" layoutY="549.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer3" layoutX="1106.0" layoutY="599.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer2" layoutX="1106.0" layoutY="649.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <ChoiceBox fx:id="choiceBoxPlayer1" layoutX="1106.0" layoutY="699.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
-                        <RadioButton fx:id="radioButton3" layoutX="35.0" layoutY="540.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="109.0" text="Even Match" toggleGroup="$group1">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </RadioButton>
-                        <StackPane fx:id="panePlayer1" layoutX="573.0" layoutY="677.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer1" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 1" textAlignment="CENTER" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer2" layoutX="482.0" layoutY="589.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer2" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 2" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer4" layoutX="666.0" layoutY="590.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer4" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 4" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer3" layoutX="573.0" layoutY="598.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer3" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 3" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer10" layoutX="703.0" layoutY="404.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer10" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 10" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer9" layoutX="444.0" layoutY="404.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer9" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 9" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer8" layoutX="634.0" layoutY="443.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer8" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 8" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer7" layoutX="513.0" layoutY="443.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer7" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 7" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer5" layoutX="574.0" layoutY="499.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer5" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 5" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer6" layoutX="530.0" layoutY="279.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer6" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 6" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane fx:id="panePlayer11" layoutX="619.0" layoutY="279.0" prefHeight="29.0" prefWidth="122.0">
-                           <children>
-                              <Label fx:id="namePlayer11" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 11" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <Button fx:id="btnGetBestLineup" alignment="CENTER" layoutX="146.0" layoutY="630.0" mnemonicParsing="false" onMouseClicked="#getBestLineup" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 12; -fx-border-radius: 10; -fx-cursor: hand; -fx-border-color: #c8c8c8; -fx-border-width: 3;" text="Get best Lineup" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnBack" alignment="CENTER" layoutX="18.0" layoutY="632.0" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Back">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
+                  <ImageView fx:id="logoImage" fitHeight="66.0" fitWidth="66.0" onMouseClicked="#openRoleHome" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../../images/logo_black.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Button fx:id="lineupHomeBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="31.0" prefWidth="59.0" style="-fx-cursor: hand; -fx-background-color: black;" text="Home" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="lineupBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#openGetLineup" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Lineup" textFill="WHITE" underline="true">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tableBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="23.0" prefWidth="57.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Table" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="FixturesBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Fixtures" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="teamStatsBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#comingSoonBtn" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: black; -fx-cursor: hand;" text="Team Stats" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="250.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ImageView fx:id="teamLogoImage" fitHeight="66.0" fitWidth="66.0">
+                     <image>
+                        <Image url="@../../images/logo_black.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nameLabel" alignment="CENTER" prefHeight="20.0" prefWidth="142.0" text="Nome Cognome" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="btnSignOut" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleSignOut" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(227, 227, 227, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" text="Sign Out">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
-         </children>
-      </AnchorPane>
-   </center>
-</BorderPane>
+         </top>
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="814.0" prefWidth="1300.0" style="-fx-background-color: white;">
+                           <children>
+                              <ChoiceBox fx:id="choiceBoxFormation" layoutX="35.0" layoutY="204.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
+                              <Button fx:id="btnAnalyzeOpponent" alignment="CENTER" layoutX="82.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#openAnalyzeOpponent" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-border-color: #c8c8c8; -fx-border-width: 3;" text="Analyze Opponent" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnSaveLineup" alignment="CENTER" layoutX="1021.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#handleSaveLineup" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-border-width: 3; -fx-border-color: #c8c8c8;" text="Save Lineup" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Label alignment="CENTER" layoutX="491.0" layoutY="55.0" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;" text="Success Rate:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="successRateLabel" alignment="CENTER" layoutX="691.0" layoutY="43.0" prefHeight="57.0" prefWidth="92.0" style="-fx-background-color: black; -fx-background-radius: 50; -fx-border-radius: 50;" text="100 %" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="35.0" layoutY="164.0" prefHeight="44.0" prefWidth="88.0" text="Formation">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="35.0" layoutY="254.0" prefHeight="44.0" prefWidth="88.0" text="Play Style">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="choiceBoxPlayStyle" layoutX="35.0" layoutY="294.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
+                              <Label layoutX="35.0" layoutY="344.0" prefHeight="44.0" prefWidth="88.0" text="Marking">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="choiceBoxMarking" layoutX="35.0" layoutY="384.0" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7;" />
+                              <Label layoutX="35.0" layoutY="434.0" prefHeight="44.0" prefWidth="88.0" text="My Team is">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton fx:id="radioButton1" layoutX="35.0" layoutY="480.0" mnemonicParsing="false" text="Stronger">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="group1" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radioButton2" layoutX="35.0" layoutY="510.0" mnemonicParsing="false" text="Weaker" toggleGroup="$group1">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </RadioButton>
+                              <ImageView fitHeight="620.0" fitWidth="561.0" layoutX="426.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/lineup1.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="shirtPlayer1" alignment="CENTER" layoutX="617.0" layoutY="645.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer2" alignment="CENTER" layoutX="525.0" layoutY="559.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer3" alignment="CENTER" layoutX="617.0" layoutY="567.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer4" alignment="CENTER" layoutX="709.0" layoutY="559.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer5" alignment="CENTER" layoutX="617.0" layoutY="468.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer6" alignment="CENTER" layoutX="574.0" layoutY="247.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer7" alignment="CENTER" layoutX="556.0" layoutY="411.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer8" alignment="CENTER" layoutX="677.0" layoutY="411.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer9" alignment="CENTER" layoutX="487.0" layoutY="372.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer10" alignment="CENTER" layoutX="746.0" layoutY="372.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label fx:id="shirtPlayer11" alignment="CENTER" layoutX="662.0" layoutY="247.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: linear-gradient(to bottom, red 50%, white 50%); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" />
+                              <Label layoutX="1005.0" layoutY="142.0" prefHeight="44.0" prefWidth="75.0" text="Position">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1158.0" layoutY="142.0" prefHeight="44.0" prefWidth="55.0" text="Player">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="choiceBoxPlayer11" layoutX="1106.0" layoutY="199.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <Label fx:id="rolePlayer11" alignment="CENTER" layoutX="1021.0" layoutY="197.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="ST">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer10" alignment="CENTER" layoutX="1021.0" layoutY="247.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="RM">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer9" alignment="CENTER" layoutX="1021.0" layoutY="297.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="LM">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer8" alignment="CENTER" layoutX="1021.0" layoutY="347.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CM">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer7" alignment="CENTER" layoutX="1021.0" layoutY="396.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CM">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer6" alignment="CENTER" layoutX="1021.0" layoutY="447.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CDM">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer5" alignment="CENTER" layoutX="1021.0" layoutY="497.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="RB">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer4" alignment="CENTER" layoutX="1021.0" layoutY="547.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CB">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer3" alignment="CENTER" layoutX="1021.0" layoutY="597.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="CB">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer2" alignment="CENTER" layoutX="1021.0" layoutY="647.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="LB">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rolePlayer1" alignment="CENTER" layoutX="1021.0" layoutY="697.0" prefHeight="31.0" prefWidth="41.0" style="-fx-background-color: #e8e8e8; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 10;" text="GK">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="choiceBoxPlayer10" layoutX="1106.0" layoutY="249.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer9" layoutX="1106.0" layoutY="299.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer8" layoutX="1106.0" layoutY="349.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer7" layoutX="1106.0" layoutY="399.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer6" layoutX="1106.0" layoutY="449.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer5" layoutX="1106.0" layoutY="499.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer4" layoutX="1106.0" layoutY="549.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer3" layoutX="1106.0" layoutY="599.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer2" layoutX="1106.0" layoutY="649.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <ChoiceBox fx:id="choiceBoxPlayer1" layoutX="1106.0" layoutY="699.0" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 7; -fx-border-radius: 7; -fx-cursor: hand;" />
+                              <RadioButton fx:id="radioButton3" layoutX="35.0" layoutY="540.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="109.0" text="Even Match" toggleGroup="$group1">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </RadioButton>
+                              <StackPane fx:id="panePlayer1" layoutX="573.0" layoutY="677.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer1" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 1" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer2" layoutX="482.0" layoutY="589.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer2" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 2" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer4" layoutX="666.0" layoutY="590.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer4" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 4" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer3" layoutX="573.0" layoutY="598.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer3" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 3" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer10" layoutX="703.0" layoutY="404.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer10" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 10" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer9" layoutX="444.0" layoutY="404.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer9" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 9" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer8" layoutX="634.0" layoutY="443.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer8" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 8" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer7" layoutX="513.0" layoutY="443.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer7" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 7" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer5" layoutX="574.0" layoutY="499.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer5" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 5" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer6" layoutX="530.0" layoutY="279.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer6" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 6" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="panePlayer11" layoutX="619.0" layoutY="279.0" prefHeight="29.0" prefWidth="122.0">
+                                 <children>
+                                    <Label fx:id="namePlayer11" alignment="CENTER" prefHeight="23.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="Player 11" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Button fx:id="btnGetBestLineup" alignment="CENTER" layoutX="146.0" layoutY="630.0" mnemonicParsing="false" onMouseClicked="#getBestLineup" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: black; -fx-background-radius: 12; -fx-border-radius: 10; -fx-cursor: hand; -fx-border-color: #c8c8c8; -fx-border-width: 3;" text="Get best Lineup" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnBack" alignment="CENTER" layoutX="18.0" layoutY="632.0" mnemonicParsing="false" onMouseClicked="#openRoleHome" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: rgba(248, 247, 247, 1); -fx-border-color: rgba(109, 114, 147, 1); -fx-background-radius: 5; -fx-border-radius: 5; -fx-cursor: hand;" text="Back">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </content>
+</ScrollPane>
