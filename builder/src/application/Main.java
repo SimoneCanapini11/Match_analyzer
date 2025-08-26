@@ -24,7 +24,7 @@ public class Main extends Application {
             // Carica la schermata iniziale (Homepage)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/homepage.fxml"));
             Parent root = loader.load();
-
+//dd
             primaryStage.setTitle("Homapage");
             primaryStage.setScene(new Scene(root));
             primaryStage.setMaximized(true); 
